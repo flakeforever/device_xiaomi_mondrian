@@ -45,7 +45,6 @@
     <string-array name="config_defaultPinnerServiceFiles" translatable="false">
         <item>/system/framework/framework.jar</item>
         <item>/system/framework/services.jar</item>
-        <item>/apex/com.android.media/javalib/updatable-media.jar</item>
         <item>/system/bin/surfaceflinger</item>
         <item>/system/lib/libhwui.so</item>
         <item>/system/lib64/libhwui.so</item>
