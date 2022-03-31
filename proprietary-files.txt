@@ -1050,7 +1050,7 @@ vendor/lib64/libsdsprpc.so
 # CIT Sensor
 vendor/bin/hw/vendor.xiaomi.sensor.citsensorservice@2.0-service
 vendor/etc/init/vendor.xiaomi.sensor.citsensorservice@2.0-service.rc
--vendor/etc/vintf/manifest/vendor.xiaomi.sensor.citsensorservice@2.0-service.xml
+vendor/etc/vintf/manifest/vendor.xiaomi.sensor.citsensorservice@2.0-service.xml
 vendor/lib/vendor.xiaomi.sensor.citsensorservice@1.1.so
 vendor/lib/vendor.xiaomi.sensor.citsensorservice@2.0.so
 vendor/lib64/hw/vendor.xiaomi.sensor.citsensorservice@2.0-impl.so
@@ -1238,7 +1238,7 @@ system_ext/lib/vendor.qti.diaghal@1.0.so
 system_ext/lib64/vendor.qti.diaghal@1.0.so
 vendor/bin/diag-router
 vendor/etc/init/vendor.qti.diag.rc
--vendor/etc/vintf/manifest/vendor.qti.diag.hal.service.xml
+vendor/etc/vintf/manifest/vendor.qti.diag.hal.service.xml
 vendor/lib/vendor.qti.diaghal@1.0.so
 vendor/lib64/vendor.qti.diaghal@1.0.so
 
@@ -1253,9 +1253,9 @@ vendor/etc/init.panel_info.sh
 vendor/etc/init/init.qti.display_boot.rc
 vendor/etc/init/vendor.qti.hardware.display.allocator-service.rc
 vendor/etc/init/vendor.qti.hardware.display.composer-service.rc
--vendor/etc/vintf/manifest/android.hardware.graphics.mapper-impl-qti-display.xml
--vendor/etc/vintf/manifest/vendor.qti.hardware.display.allocator-service.xml
--vendor/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml
+vendor/etc/vintf/manifest/android.hardware.graphics.mapper-impl-qti-display.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.display.allocator-service.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml
 vendor/lib/libdisplaydebug.so
 vendor/lib/libgpu_tonemapper.so
 vendor/lib/libgralloccore.so
@@ -1392,7 +1392,7 @@ vendor/etc/miLut_9.txt
 vendor/etc/mi_gc_0.txt
 vendor/etc/mi_gc_1.txt
 vendor/etc/mi_gc_2.txt
--vendor/etc/vintf/manifest/vendor.xiaomi.hardware.displayfeature@1.0-service.xml
+vendor/etc/vintf/manifest/vendor.xiaomi.hardware.displayfeature@1.0-service.xml
 vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so
 vendor/lib/hw/displayfeature.default.so
 vendor/lib/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
@@ -1445,7 +1445,7 @@ vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
 vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service
 vendor/etc/dolby/dax-default.xml
 vendor/etc/init/vendor.dolby.hardware.dms@2.0-service.rc
--vendor/etc/vintf/manifest/manifest_vendor.dolby.hardware.dms.xml
+vendor/etc/vintf/manifest/manifest_vendor.dolby.hardware.dms.xml
 vendor/lib/vendor.dolby.hardware.dms@2.0.so
 vendor/lib64/libdlbdsservice.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0-impl.so
@@ -1629,9 +1629,9 @@ vendor/etc/seccomp_policy/gnss@2.0-base.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtra-daemon.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtwifi-client.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtwifi-inet-agent.policy
--vendor/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
--vendor/etc/vintf/manifest/android.hardware.gnss@2.1-service-qti.xml
--vendor/etc/vintf/manifest/vendor.qti.gnss-service.xml
+vendor/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
+vendor/etc/vintf/manifest/android.hardware.gnss@2.1-service-qti.xml
+vendor/etc/vintf/manifest/vendor.qti.gnss-service.xml
 vendor/etc/xtra_root_cert.pem
 vendor/etc/xtwifi.conf
 vendor/lib/hw/android.hardware.gnss-aidl-impl-qti.so
@@ -1814,7 +1814,7 @@ vendor/lib64/hw/android.hardware.health@2.0-impl-2.1-qti.so
 # Identity service
 vendor/bin/hw/android.hardware.identity-service-qti
 vendor/etc/init/android.hardware.identity-service-qti.rc
--vendor/etc/vintf/manifest/manifest_lahaina_identity.xml
+vendor/etc/vintf/manifest/manifest_lahaina_identity.xml
 vendor/lib/libqtiidentitycredential.so
 vendor/lib64/libqtiidentitycredential.so
 
@@ -1856,13 +1856,13 @@ vendor/lib64/libqtikeymaster4.so
 vendor/bin/hw/android.hardware.security.keymint-service-qti
 vendor/etc/init/android.hardware.security.keymint-service-qti.rc
 vendor/etc/permissions/android.hardware.hardware_keystore.xml
--vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
+vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
 vendor/lib/libqtikeymint.so
 vendor/lib64/libqtikeymint.so
 
 # Listen
--vendor/etc/vintf/manifest/manifest_non_qmaa.xml
--vendor/etc/vintf/manifest/manifest_non_qmaa_extn.xml
+vendor/etc/vintf/manifest/manifest_non_qmaa.xml
+vendor/etc/vintf/manifest/manifest_non_qmaa_extn.xml
 vendor/lib/hw/sound_trigger.primary.taro.so
 vendor/lib/libeai_fixed_32.so
 vendor/lib/liblistensoundmodel2vendor.so
@@ -1923,8 +1923,8 @@ vendor/etc/seccomp_policy/c2audio.vendor.ext-arm.policy
 vendor/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy
 vendor/etc/seccomp_policy/codec2.vendor.base-arm64.policy
 vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy
--vendor/etc/vintf/manifest/c2_manifest_vendor.xml
--vendor/etc/vintf/manifest/c2_manifest_vendor_audio.xml
+vendor/etc/vintf/manifest/c2_manifest_vendor.xml
+vendor/etc/vintf/manifest/c2_manifest_vendor_audio.xml
 vendor/lib/libEvrcSwCodec.so
 vendor/lib/libOmxCore.so
 vendor/lib/libQcelp13SwCodec.so
@@ -2027,10 +2027,10 @@ vendor/etc/init/vendor.xiaomi.hardware.mfidoca@1.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mtdservice@1.3-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.tidaservice@1.2-service.rc
--vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mfidoca.xml
--vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mlipay.xml
--vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mtdservice.xml
--vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.tidaservice.xml
+vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mfidoca.xml
+vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mlipay.xml
+vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mtdservice.xml
+vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.tidaservice.xml
 vendor/lib/libmfido.so
 vendor/lib/libmlipay.so
 vendor/lib/libmlipay@1.1.so
@@ -2071,7 +2071,7 @@ vendor/etc/public.libraries.txt
 # Neural networks
 vendor/bin/hw/android.hardware.neuralnetworks-shim-service-qti
 vendor/etc/init/android.hardware.neuralnetworks-shim-service-qti.rc
--vendor/etc/vintf/manifest/android.hardware.neuralnetworks-shim-service-qti.xml
+vendor/etc/vintf/manifest/android.hardware.neuralnetworks-shim-service-qti.xml
 vendor/lib/libQnnDspNetRunExtensions.so
 vendor/lib/libQnnGpuNetRunExtensions.so
 vendor/lib/libQnnGpuProfilingReader.so
@@ -2222,7 +2222,7 @@ vendor/etc/lm/prekill/prekill_2GB.data
 vendor/etc/lm/prekill/prekill_4GB.data
 vendor/etc/lm/prekill/prekill_6GB.data
 vendor/etc/lm/sPLHFeature.xml
--vendor/etc/vintf/manifest/vendor.qti.memory.pasrmanager@1.0-service.xml
+vendor/etc/vintf/manifest/vendor.qti.memory.pasrmanager@1.0-service.xml
 vendor/lib64/hw/vendor.qti.memory.pasrmanager@1.0-impl.so
 vendor/lib64/libadaptlaunch.so
 vendor/lib64/libapengine.so
@@ -2261,7 +2261,7 @@ vendor/etc/pwr/PowerFeatureConfig.xml
 vendor/etc/pwr/StandbyFeature.xml
 vendor/etc/pwr/VendorScenarioPowerOptFeature.xml
 vendor/etc/pwr/VideoPowerOptFeature.xml
--vendor/etc/vintf/manifest/vendor.qti.hardware.power.powermodule.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.power.powermodule.xml
 vendor/lib/libpsmoptfeature.so
 vendor/lib/libvendorscenariopoweroptfeature.so
 vendor/lib/libvideooptfeature.so
@@ -2410,7 +2410,7 @@ vendor/lib64/libsoc_helper_jni.so
 # QTI service tracker
 vendor/bin/hw/vendor.qti.hardware.servicetracker@1.2-service
 vendor/etc/init/vendor.qti.hardware.servicetracker@1.2-service.rc
--vendor/etc/vintf/manifest/vendor.qti.hardware.servicetracker@1.2-service.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.servicetracker@1.2-service.xml
 vendor/lib/hw/vendor.qti.hardware.servicetracker@1.2-impl.so
 vendor/lib64/hw/vendor.qti.hardware.servicetracker@1.2-impl.so
 
@@ -2474,7 +2474,7 @@ vendor/lib64/libqvrservice_v4l_ov7251_hvx_tuning.so
 vendor/lib64/libtracker_6dof_impl.so
 
 # QXR
--vendor/etc/vintf/manifest/vendor.qti.hardware.qxr-service.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.qxr-service.xml
 vendor/lib64/vendor.qti.hardware.qxr-V1-ndk_platform.so
 
 # RIL
@@ -3036,7 +3036,7 @@ vendor/lib64/libsxrservice.so
 # Thermal
 vendor/bin/hw/android.hardware.thermal@2.0-service.qti-v2
 vendor/etc/init/android.hardware.thermal@2.0-service.qti-v2.rc
--vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.qti.xml
+vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.qti.xml
 vendor/lib/libthermalclient.so
 vendor/lib64/libthermalclient.so
 
@@ -3355,8 +3355,8 @@ vendor/etc/configstore/vpp.configstore.xml
 vendor/etc/init/qconfig.rc
 vendor/etc/init/vppservice.rc
 vendor/etc/tunings.txt
--vendor/etc/vintf/manifest/vendor.qti.hardware.qconfig@1.0-service.xml
--vendor/etc/vintf/manifest/vendor.qti.hardware.vpp@2.0-service.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.qconfig@1.0-service.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.vpp@2.0-service.xml
 vendor/lib/libqconfigclient.so
 vendor/lib/libvppclient.so
 vendor/lib/libvppcommon.so
@@ -3403,7 +3403,7 @@ vendor/firmware/vpu20_4v.mdt
 # Widevine DRM
 vendor/bin/hw/android.hardware.drm@1.4-service.widevine
 vendor/etc/init/android.hardware.drm@1.4-service.widevine.rc
--vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.widevine.xml
+vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.widevine.xml
 vendor/lib/liboemcrypto.so
 vendor/lib/libtrustedapploader.so
 vendor/lib/libwvkeybox.so
