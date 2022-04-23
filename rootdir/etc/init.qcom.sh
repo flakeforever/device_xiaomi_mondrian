@@ -463,3 +463,27 @@ case "$buildvariant" in
         echo "4 4 1 4" > /proc/sys/kernel/printk
         ;;
 esac
+
+#modify permission of block_size node
+chown -h root.oem_2902 /sys/devices/platform/soc/6048000.tmc/coresight-tmc-etr/block_size
+chmod 660 /sys/devices/platform/soc/6048000.tmc/coresight-tmc-etr/block_size
+chown -h root.oem_2902 /sys/devices/platform/soc/6048000.tmc/coresight-tmc-etr/mem_type
+chmod 660 /sys/devices/platform/soc/6048000.tmc/coresight-tmc-etr/mem_type
+chown -h root.oem_2902 /sys/devices/platform/soc/6048000.tmc/coresight-tmc-etr/mem_size
+chmod 660 /sys/devices/platform/soc/6048000.tmc/coresight-tmc-etr/mem_size
+chown -h root.oem_2902 /sys/bus/coresight/devices/coresight-tmc-etr/block_size
+chmod 660 /sys/bus/coresight/devices/coresight-tmc-etr/block_size
+
+chown -h root.oem_2902 /sys/devices/platform/soc/6048000.tmc/coresight-tmc-etr/block_size
+chmod 660 /sys/devices/platform/soc/6048000.tmc/coresight-tmc-etr/block_size
+mkdir /config/stp-policy/coresight-stm:p_ost.policy
+chmod 660 /config/stp-policy/coresight-stm:p_ost.policy
+mkdir /config/stp-policy/coresight-stm:p_ost.policy/default
+chmod 660 /config/stp-policy/coresight-stm:p_ost.policy/default
+echo 0x10 > /sys/bus/coresight/devices/coresight-stm/traceid
+
+#enable coresight for diag_mdlog_system over qdss
+echo 0x2000000 > /sys/bus/coresight/devices/coresight-tmc-etr/buffer_size
+echo 1 > /sys/bus/coresight/devices/coresight-tmc-etr/enable_sink
+echo 1 > /sys/bus/coresight/devices/coresight-stm/enable_source
+echo 0 > /sys/bus/coresight/devices/coresight-stm/hwevent_enable
