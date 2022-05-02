@@ -51,14 +51,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.qcom \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
 
-# Kernel module blocklist
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/vendor_boot.blocklist:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.blocklist
-
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Recovery
+PRODUCT_PACKAGES += \
+    fastbootd
+
 PRODUCT_PACKAGES += \
     init.recovery.qcom.rc
 

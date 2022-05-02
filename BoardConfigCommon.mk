@@ -157,8 +157,6 @@ SOONG_CONFIG_NAMESPACES += ufsbsg
 SOONG_CONFIG_ufsbsg += ufsframework
 SOONG_CONFIG_ufsbsg_ufsframework := bsg
 
-#BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
-#BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -168,35 +166,31 @@ BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 # Vendor
 BOARD_PREBUILT_VENDORIMAGE := $(COMMON_PATH)/prebuilt/vendor.img
 
-#BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
-#BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.KERNEL_MODULE_DIRS := top
+# Vendor ramdisk
+BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
+BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.KERNEL_MODULE_DIRS := top
 
+# Kernel modules
 KERNEL_MODULE_DIR := device/xiaomi/cupid-kernel
 KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/*.ko)
 
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/vendor_boot.modules.load))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/vendor_boot.modules.load))
 ifndef BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD
 $(error vendor_boot.modules.load not found or empty)
 endif
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/vendor_boot.modules.load.recovery))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(COMMON_PATH)/vendor_boot.blocklist
+#BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/vendor_boot/, $(notdir $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD)))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_boot/*.ko)
+
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/vendor_boot.modules.load.recovery))
 ifndef BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD
 $(error vendor_boot.modules.load.recovery not found or empty)
 endif
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_boot/*.ko)
 
-#BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(COMMON_PATH)/vendor_boot.blocklist
-#BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/, $(notdir $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD)))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(KERNEL_MODULES)
-
-#BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/vendor_dlkm.modules.load))
-#ifndef BOARD_VENDOR_KERNEL_MODULES_LOAD
-#$(error vendor_dlkm.modules.load not found or empty)
-#endif
-#BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(COMMON_PATH)/vendor_dlkm.blocklist
-#BOARD_VENDOR_KERNEL_MODULES := $(KERNEL_MODULES)
-
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/vendor_dlkm.modules.load))
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/vendor_dlkm.modules.load))
 ifndef BOARD_VENDOR_KERNEL_MODULES_LOAD
-$(error recovery.modules.load not found or empty)
+$(error vendor_dlkm.modules.load not found or empty)
 endif
 BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(COMMON_PATH)/vendor_dlkm.blocklist
-BOARD_VENDOR_KERNEL_MODULES := $(KERNEL_MODULES)
+BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor/*.ko)
