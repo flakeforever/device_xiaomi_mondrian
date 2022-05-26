@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Natural</string>
+    <string name="beauty_makeups_qianjin">Caoba</string>
+    <string name="beauty_makeups_ruanmei">Adolescente</string>
+    <string name="beauty_makeups_xiazhi">Sombra de ojos de párpados</string>
+    <string name="beauty_makeups_yanku">Reina de hielo</string>
+    <string name="beauty_makeups_yuanqi">Fresco</string>
+    <string name="beauty_mutex_toast_tip">&lt;a href=>Desactiva&lt;/a> los efectos de maquillaje primero</string>
+    <string name="edit_cheekbone">Pómulos</string>
+    <string name="edit_head_narrow">Tamaño de la cabeza</string>
+    <string name="edit_jaw">Mandíbula inferior</string>
+    <string name="edit_nose_tip">Punta de la nariz</string>
+    <string name="edit_temple">Sienes</string>
+    <string name="edit_touch_up">Maquillaje</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Ajustar los efectos de maquillaje para hombres en fotos grupales</string>
+    <string name="pref_beauty_me_mp_switch_title">Ajustar los efectos de maquillaje para hombres</string>
+    <string name="pref_beauty_nvs_wp_desc">Elimina los lunares cuando se utilizan efectos suavizantes en la piel</string>
+    <string name="pref_beauty_nvs_wp_title">Eliminar lunares</string>
+    <string name="pref_true_colour_video_mode_description">Enriquece tus vídeos con detalles realistas, colores increíbles y un contraste sorprendente</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

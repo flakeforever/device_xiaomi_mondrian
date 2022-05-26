@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">న్యూడ్</string>
+    <string name="beauty_makeups_qianjin">ఆబర్న్</string>
+    <string name="beauty_makeups_ruanmei">టీన్</string>
+    <string name="beauty_makeups_xiazhi">కింది రెప్ప నీడ</string>
+    <string name="beauty_makeups_yanku">ఐస్ క్వీన్</string>
+    <string name="beauty_makeups_yuanqi">తాజా</string>
+    <string name="beauty_mutex_toast_tip">మొదట మేకప్ ప్రభావాలను &lt;a href=>ఆఫ్ చేయండి&lt;/a></string>
+    <string name="edit_cheekbone">బుగ్గ ఎముకలు</string>
+    <string name="edit_head_narrow">తల పరిమాణం</string>
+    <string name="edit_jaw">కింది దవడ</string>
+    <string name="edit_nose_tip">ముక్కు కొన</string>
+    <string name="edit_temple">కణతలు</string>
+    <string name="edit_touch_up">మేకప్</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">పురుషుల కోసం సమూహ ఫోటోల్లో మేకప్ ప్రభావాలను సర్దుబాటు చేస్తుంది</string>
+    <string name="pref_beauty_me_mp_switch_title">పురుషుల కోసం మేకప్ ప్రభావాలను సర్దుబాటు చేయి</string>
+    <string name="pref_beauty_nvs_wp_desc">చర్మాన్ని నునుపుగా చేసే ప్రభావాలను ఉపయోగించినప్పుడు పుట్టుమచ్చలను తీసివేస్తుంది</string>
+    <string name="pref_beauty_nvs_wp_title">పుట్టుమచ్చలను తీసివేయి</string>
+    <string name="pref_true_colour_video_mode_description">ప్రాణమున్నట్లు అనిపించే వివరాలు, అద్భుతమైన రంగులు మరియు కట్టిపడేసే వర్ణవ్యత్యాసంతో మీ వీడియోలను మెరుగుదిద్దుకోండి</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

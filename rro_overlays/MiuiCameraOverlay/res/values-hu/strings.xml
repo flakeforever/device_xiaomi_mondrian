@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Natúr</string>
+    <string name="beauty_makeups_qianjin">Gesztenye</string>
+    <string name="beauty_makeups_ruanmei">Tini</string>
+    <string name="beauty_makeups_xiazhi">Alsó szemhéjfesték</string>
+    <string name="beauty_makeups_yanku">Jégkirálynő</string>
+    <string name="beauty_makeups_yuanqi">Friss</string>
+    <string name="beauty_mutex_toast_tip">Először &lt;a href=>kapcsolja ki&lt;/a> a sminkhatásokat</string>
+    <string name="edit_cheekbone">Arccsontok</string>
+    <string name="edit_head_narrow">Fejméret</string>
+    <string name="edit_jaw">Alsó állkapocs</string>
+    <string name="edit_nose_tip">Orrhegy</string>
+    <string name="edit_temple">Halántékok</string>
+    <string name="edit_touch_up">Smink</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Sminkhatások beállítása férfiak számára csoportképeken</string>
+    <string name="pref_beauty_me_mp_switch_title">Sminkhatások beállítása férfiak számára</string>
+    <string name="pref_beauty_nvs_wp_desc">Anyajegyek eltávolítása bőrsimító hatások alkalmazásakor</string>
+    <string name="pref_beauty_nvs_wp_title">Anyajegyek eltávolítása</string>
+    <string name="pref_true_colour_video_mode_description">Gazdagítsa videóit élethű részletekkel, lenyűgöző színekkel és látványos kontrasztokkal</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

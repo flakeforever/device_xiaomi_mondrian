@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">برہنہ</string>
+    <string name="beauty_makeups_qianjin">سرخی مائل</string>
+    <string name="beauty_makeups_ruanmei">نوعمر</string>
+    <string name="beauty_makeups_xiazhi">نچلے پپوٹے کا آئی شیڈو</string>
+    <string name="beauty_makeups_yanku">آئس کوئین</string>
+    <string name="beauty_makeups_yuanqi">تازہ</string>
+    <string name="beauty_mutex_toast_tip">پہلے میک اپ کے اثرات &lt;a href=>آف کریں&lt;/a></string>
+    <string name="edit_cheekbone">گال کی ہڈی</string>
+    <string name="edit_head_narrow">سر کا سائز</string>
+    <string name="edit_jaw">نچلا جبڑا</string>
+    <string name="edit_nose_tip">ناک کی نوک</string>
+    <string name="edit_temple">کنپٹی</string>
+    <string name="edit_touch_up">میک اپ</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">گروپ فوٹوز پر آدمیوں کے لیے میک اپ اثرات ایڈجسٹ کریں</string>
+    <string name="pref_beauty_me_mp_switch_title">آدمیوں کے لیے میک اپ اثرات ایڈجسٹ کریں</string>
+    <string name="pref_beauty_nvs_wp_desc">جلد ہموار کرنے کے اثرات کا استعمال کرتے وقت مسوں کو دور کریں</string>
+    <string name="pref_beauty_nvs_wp_title">مسوں کو دور کریں</string>
+    <string name="pref_true_colour_video_mode_description">اپنے ویڈیوز کو جاندار تفصیلات, شاندار رنگوں, اور شاندار کنٹراسٹ سے مالا مال کریں</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

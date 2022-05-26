@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Prirodno</string>
+    <string name="beauty_makeups_qianjin">Kestenjasto</string>
+    <string name="beauty_makeups_ruanmei">Teen</string>
+    <string name="beauty_makeups_xiazhi">Sjena donjeg kapka</string>
+    <string name="beauty_makeups_yanku">Ledena kraljica</string>
+    <string name="beauty_makeups_yuanqi">Svježe</string>
+    <string name="beauty_mutex_toast_tip">Prvo &lt;a href=>ugasite&lt;/a> efekt šminke</string>
+    <string name="edit_cheekbone">Jagodice</string>
+    <string name="edit_head_narrow">Veličina glave</string>
+    <string name="edit_jaw">Donja čeljust</string>
+    <string name="edit_nose_tip">Vrh nosa</string>
+    <string name="edit_temple">Sljepoočnice</string>
+    <string name="edit_touch_up">Šminka</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Prilagodi makeup efekte za muškarce na grupnim fotografijama</string>
+    <string name="pref_beauty_me_mp_switch_title">Prilagodi makeup efekte za muškarce</string>
+    <string name="pref_beauty_nvs_wp_desc">Uklonite madeže kada se koriste efekti zaglađivanja kože</string>
+    <string name="pref_beauty_nvs_wp_title">Ukloni madeže</string>
+    <string name="pref_true_colour_video_mode_description">Uljepšajte svoje videozapise živopisnim pojedinostima, zapanjujućim bojama i nevjerojatnim kontrastom</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

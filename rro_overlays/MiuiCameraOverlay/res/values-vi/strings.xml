@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Nude</string>
+    <string name="beauty_makeups_qianjin">Nâu đỏ</string>
+    <string name="beauty_makeups_ruanmei">Trẻ trung</string>
+    <string name="beauty_makeups_xiazhi">Phấn mắt dưới</string>
+    <string name="beauty_makeups_yanku">Nữ hoàng băng</string>
+    <string name="beauty_makeups_yuanqi">Tươi mới</string>
+    <string name="beauty_mutex_toast_tip">&lt;a href=>Tắt&lt;/a> hiệu ứng trang điểm trước</string>
+    <string name="edit_cheekbone">Gò má</string>
+    <string name="edit_head_narrow">K.thước đầu</string>
+    <string name="edit_jaw">Cạnh hàm dưới</string>
+    <string name="edit_nose_tip">Chóp mũi</string>
+    <string name="edit_temple">Thái dương</string>
+    <string name="edit_touch_up">Trang điểm</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Điều chỉnh hiệu ứng trang điểm cho nam trong ảnh chụp nhóm</string>
+    <string name="pref_beauty_me_mp_switch_title">Điều chỉnh hiệu ứng trang điểm cho nam</string>
+    <string name="pref_beauty_nvs_wp_desc">Xóa nốt ruồi khi sử dụng hiệu ứng làm mịn da</string>
+    <string name="pref_beauty_nvs_wp_title">Xóa nốt ruồi</string>
+    <string name="pref_true_colour_video_mode_description">Làm phong phú video của bạn với chi tiết sống động như thật, màu sắc tuyệt đẹp và tương phản nổi bật</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

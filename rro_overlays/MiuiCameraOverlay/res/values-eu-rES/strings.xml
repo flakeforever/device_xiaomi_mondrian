@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Biluzi</string>
+    <string name="beauty_makeups_qianjin">Gorrixka</string>
+    <string name="beauty_makeups_ruanmei">Gaztea</string>
+    <string name="beauty_makeups_xiazhi">Beheko betazalaren begi-itzala</string>
+    <string name="beauty_makeups_yanku">Izotzezko erregina</string>
+    <string name="beauty_makeups_yuanqi">Freskoa</string>
+    <string name="beauty_mutex_toast_tip">&lt;a href=>Desaktibatu&lt;/a> makillaje efektuak lehenik</string>
+    <string name="edit_cheekbone">Masailezurrak</string>
+    <string name="edit_head_narrow">Goiburuaren tamaina</string>
+    <string name="edit_jaw">Baraila</string>
+    <string name="edit_nose_tip">Sudur punta</string>
+    <string name="edit_temple">Lokiak</string>
+    <string name="edit_touch_up">Makillajea</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Egokitu makillaje efektuak gizonentzako talde argazkietan</string>
+    <string name="pref_beauty_me_mp_switch_title">Egokitu makillaje efektuak gizonentzako</string>
+    <string name="pref_beauty_nvs_wp_desc">Oriztak kendu azal leuntze efektuak erabiltzen direnean</string>
+    <string name="pref_beauty_nvs_wp_title">Oriztak kendu</string>
+    <string name="pref_true_colour_video_mode_description">Zure bideoak xehetasun errealistekin, kolore ikusgarriekin eta kontraste harrigarriekin aberastu</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

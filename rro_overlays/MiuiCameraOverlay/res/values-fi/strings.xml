@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Nude</string>
+    <string name="beauty_makeups_qianjin">Punaruskea</string>
+    <string name="beauty_makeups_ruanmei">Teini</string>
+    <string name="beauty_makeups_xiazhi">Alaluomiväri</string>
+    <string name="beauty_makeups_yanku">Jääkuningatar</string>
+    <string name="beauty_makeups_yuanqi">Tuore</string>
+    <string name="beauty_mutex_toast_tip">&lt;a href=>Poista ensin&lt;/a> meikkitehosteet käytöstä</string>
+    <string name="edit_cheekbone">Poskipäät</string>
+    <string name="edit_head_narrow">Pään koko</string>
+    <string name="edit_jaw">Alaleuka</string>
+    <string name="edit_nose_tip">Nenäkärki</string>
+    <string name="edit_temple">Ohimot</string>
+    <string name="edit_touch_up">Meikki</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Säädä miesten meikkitehosteita ryhmäkuvissa</string>
+    <string name="pref_beauty_me_mp_switch_title">Säädä miesten meikkitehosteita</string>
+    <string name="pref_beauty_nvs_wp_desc">Poista luomet, kun käytät ihoa tasoittavia vaikutuksia</string>
+    <string name="pref_beauty_nvs_wp_title">Poista luomet</string>
+    <string name="pref_true_colour_video_mode_description">Täydennä videoitasi todentuntuisilla yksityiskohdilla, upeilla väreillä ja silmiinpistävällä kontrastilla</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

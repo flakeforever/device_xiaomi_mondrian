@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="dimen" name="config_wallpaperMaxScale">1.2</item>
+    <dimen name="system_app_widget_background_radius">16.72998dip</dimen>
+    <dimen name="system_app_widget_inner_radius">8.72998dip</dimen>
+</resources>

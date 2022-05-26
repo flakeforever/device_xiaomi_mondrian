@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Nude</string>
+    <string name="beauty_makeups_qianjin">Auburn</string>
+    <string name="beauty_makeups_ruanmei">Adolescent</string>
+    <string name="beauty_makeups_xiazhi">Pleoapa inferioară</string>
+    <string name="beauty_makeups_yanku">Regina gheții</string>
+    <string name="beauty_makeups_yuanqi">Proaspăt</string>
+    <string name="beauty_mutex_toast_tip">&lt;a href=>Dezactivează&lt;/a> mai întâi efectele de machiaj</string>
+    <string name="edit_cheekbone">Pomeți</string>
+    <string name="edit_head_narrow">Mărime cap</string>
+    <string name="edit_jaw">Maxilar inferior</string>
+    <string name="edit_nose_tip">Vârf nazal</string>
+    <string name="edit_temple">Tâmple</string>
+    <string name="edit_touch_up">Machiaj</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Ajustați efectele de machiaj pentru bărbați pe fotografiile de grup</string>
+    <string name="pref_beauty_me_mp_switch_title">Ajustați efectele de machiaj pentru bărbați</string>
+    <string name="pref_beauty_nvs_wp_desc">Îndepărtați alunițele atunci când sunt utilizate efecte de netezire a pielii</string>
+    <string name="pref_beauty_nvs_wp_title">Îndepărtați alunițe</string>
+    <string name="pref_true_colour_video_mode_description">Îmbogățiți-vă videoclipurile cu detalii realiste, culori uimitoare și contrast izbitor</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

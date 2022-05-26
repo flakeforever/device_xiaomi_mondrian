@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">ನ್ಯೂಡ್‌</string>
+    <string name="beauty_makeups_qianjin">ಆಬರ್ನ್‌</string>
+    <string name="beauty_makeups_ruanmei">ಟೀನ್‌</string>
+    <string name="beauty_makeups_xiazhi">ಕೆಳ ಕಣ್ಣುರೆಪ್ಪೆ</string>
+    <string name="beauty_makeups_yanku">ಐಸ್‌ ಕ್ವೀನ್‌</string>
+    <string name="beauty_makeups_yuanqi">ಫ್ರೆಶ್‌</string>
+    <string name="beauty_mutex_toast_tip">ಮೊದಲಿಗ ಮೇಕಪ್‌ ಎಫೆಕ್ಟ್‌ಗಳನ್ನು &lt;a href=>ಆಫ್‌ ಮಾಡಿ&lt;/a></string>
+    <string name="edit_cheekbone">ಗಲ್ಲ</string>
+    <string name="edit_head_narrow">ಶಿರ ಗಾತ್ರ</string>
+    <string name="edit_jaw">ಕೆಳ ದವಡೆ</string>
+    <string name="edit_nose_tip">ಮೂಗಿನ ತುದಿ</string>
+    <string name="edit_temple">ಟೆಂಪಲ್‌</string>
+    <string name="edit_touch_up">ಮೇಕಪ್‌</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">ಗುಂಪು ಫೋಟೋಗಳಲ್ಲಿ ಪುರುಷರಿಗಾಗಿ ಮೇಕಪ್‌ ಎಫೆಕ್ಟ್‌ಗಳನ್ನು ಹೊಂದಿಸಿ</string>
+    <string name="pref_beauty_me_mp_switch_title">ಪುರುಷರಿಗಾಗಿ ಮೇಕಪ್‌ ಎಫೆಕ್ಟ್‌ಗಳನ್ನು ಹೊಂದಿಸಿ</string>
+    <string name="pref_beauty_nvs_wp_desc">ಸ್ಕಿನ್‌ ಸ್ಮೂಥನಿಂಗ್‌ ಎಫೆಕ್ಟ್‌ಗಳನ್ನು ಬಳಸುವಾಗ ಮೋಲ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಿ</string>
+    <string name="pref_beauty_nvs_wp_title">ಮೋಲ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಿ</string>
+    <string name="pref_true_colour_video_mode_description">ಕಣ್ಣಿಗೆ ಕಟ್ಟುವಂಥ ವಿವರಗಳು, ಮನಮೋಹಕ ಬಣ್ಣಗಳು ಹಾಗೂ ಸ್ಟ್ರೈಕಿಂಗ್‌ ಕಾಂಟ್ರಾಸ್ಟ್‌ಗಳಿಂದ ನಿಮ್ಮ ವೀಡಿಯೊಗಳನ್ನು ಶ್ರೀಮಂತಗೊಳಿಸಿ</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Nude</string>
+    <string name="beauty_makeups_qianjin">Auburn</string>
+    <string name="beauty_makeups_ruanmei">Teen</string>
+    <string name="beauty_makeups_xiazhi">Lower lid eyeshadow</string>
+    <string name="beauty_makeups_yanku">Ice queen</string>
+    <string name="beauty_makeups_yuanqi">Fresh</string>
+    <string name="beauty_mutex_toast_tip">&lt;a href=>Turn off&lt;/a> makeup effects first</string>
+    <string name="edit_cheekbone">Cheekbones</string>
+    <string name="edit_head_narrow">Head size</string>
+    <string name="edit_jaw">Lower jaw</string>
+    <string name="edit_nose_tip">Nasal tip</string>
+    <string name="edit_temple">Temples</string>
+    <string name="edit_touch_up">Makeup</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Adjust makeup effects for men on group photos</string>
+    <string name="pref_beauty_me_mp_switch_title">Adjust makeup effects for men</string>
+    <string name="pref_beauty_nvs_wp_desc">Remove moles when skin smoothening effects are used</string>
+    <string name="pref_beauty_nvs_wp_title">Remove moles</string>
+    <string name="pref_true_colour_video_mode_description">Enrich your videos with lifelike details, stunning colours, and striking contrast</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

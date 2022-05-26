@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">न्यूड</string>
+    <string name="beauty_makeups_qianjin">तपकिरी</string>
+    <string name="beauty_makeups_ruanmei">किशोर</string>
+    <string name="beauty_makeups_xiazhi">लोअर लिड आयशॅडो</string>
+    <string name="beauty_makeups_yanku">आईस क्वीन</string>
+    <string name="beauty_makeups_yuanqi">फ्रेश</string>
+    <string name="beauty_mutex_toast_tip">&lt;a href=>आधी&lt;/a> मेकअप इफेक्ट्स बंद करा</string>
+    <string name="edit_cheekbone">गालाची हाडे</string>
+    <string name="edit_head_narrow">डोक्याचा आकार</string>
+    <string name="edit_jaw">खालचा जबडा</string>
+    <string name="edit_nose_tip">नाकाची टीप</string>
+    <string name="edit_temple">टेम्पल्स</string>
+    <string name="edit_touch_up">मेकअप</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">ग्रुप फोटोवर पुरुषांसाठी मेकअप इफेक्ट्स एडजस्ट करा</string>
+    <string name="pref_beauty_me_mp_switch_title">पुरुषांसाठी मेकअप इफेक्ट्स एडजस्ट करा</string>
+    <string name="pref_beauty_nvs_wp_desc">स्कीन स्मूथनिंग इफेक्ट्स वापरले जातात तेव्हा तीळ काढा</string>
+    <string name="pref_beauty_nvs_wp_title">तीळ काढून टाका</string>
+    <string name="pref_true_colour_video_mode_description">तुमचे व्हिडिओ सजीव तपशील, आकर्षक रंग आणि आकर्षक कॉन्ट्रास्टसह समृद्ध करा</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

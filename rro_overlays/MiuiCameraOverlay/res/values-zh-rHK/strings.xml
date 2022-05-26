@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="beauty_makeups_danyan">淡顏妝</string>
+    <string name="beauty_makeups_qianjin">千金妝</string>
+    <string name="beauty_makeups_ruanmei">軟妹妝</string>
+    <string name="beauty_makeups_xiazhi">下至妝</string>
+    <string name="beauty_makeups_yanku">鹽酷妝</string>
+    <string name="beauty_makeups_yuanqi">元氣妝</string>
+    <string name="beauty_mutex_toast_tip">請先關閉妝容效果，&lt;a href=>一鍵關閉&lt;/a></string>
+    <string name="edit_cheekbone">顴骨</string>
+    <string name="edit_head_narrow">小頭</string>
+    <string name="edit_jaw">下頜角</string>
+    <string name="edit_nose_tip">鼻尖</string>
+    <string name="edit_temple">太陽穴</string>
+    <string name="edit_touch_up">補妝</string>
+    <string name="pref_beauty_me_mp_switch_desc">男女合照時，適配男性的妝容效果</string>
+    <string name="pref_beauty_me_mp_switch_title">男性妝容適配</string>
+    <string name="pref_beauty_nvs_wp_desc">可在美肌磨皮生效時除痣</string>
+    <string name="pref_beauty_nvs_wp_title">除痣</string>
+    <string name="pref_true_colour_video_mode_description">讓你的影片擁有栩栩如生的畫面細節，令人驚嘆的色彩和無與倫比的對比度</string>
+    <string name="pref_true_colour_video_mode_title">杜比視界</string>
+</resources>
