@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Component name for the default module metadata provider on this device -->
     <string name="config_defaultModuleMetadataProvider">com.google.android.modulemetadata</string>
 </resources>
