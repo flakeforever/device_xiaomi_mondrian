@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Натуральны</string>
+    <string name="beauty_makeups_qianjin">Чырвона-карычневы</string>
+    <string name="beauty_makeups_ruanmei">Падлетак</string>
+    <string name="beauty_makeups_xiazhi">Цень ніжняга веку</string>
+    <string name="beauty_makeups_yanku">Ледзяная каралева</string>
+    <string name="beauty_makeups_yuanqi">Свежы</string>
+    <string name="beauty_mutex_toast_tip">Спачатку &lt;a href=>адключыце&lt;/a> эфекты макіяжа</string>
+    <string name="edit_cheekbone">Скулы</string>
+    <string name="edit_head_narrow">Памер галавы</string>
+    <string name="edit_jaw">Ніжняя сківіца</string>
+    <string name="edit_nose_tip">Кончык носа</string>
+    <string name="edit_temple">Скроні</string>
+    <string name="edit_touch_up">Макіяж</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Карэкціраваць эфекты макіяжу для мужчын на групавых фата</string>
+    <string name="pref_beauty_me_mp_switch_title">Карэкціраваць эфекты макіяжу для мужчын</string>
+    <string name="pref_beauty_nvs_wp_desc">Выдаляць радзімкі, калі выкарыстоўваюцца эфекты згладжвання скуры</string>
+    <string name="pref_beauty_nvs_wp_title">Выдаленне радзімак</string>
+    <string name="pref_true_colour_video_mode_description">Палепшыце свае відэа з дапамогай рэалістычных дэталяў, узрушаючых колераў і яркага кантрасту</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

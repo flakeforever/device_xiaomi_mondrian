@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Naturalny</string>
+    <string name="beauty_makeups_qianjin">Kasztanowy</string>
+    <string name="beauty_makeups_ruanmei">Nastoletni</string>
+    <string name="beauty_makeups_xiazhi">Cień do powiek na dolnej powiece</string>
+    <string name="beauty_makeups_yanku">Królowa Lodu</string>
+    <string name="beauty_makeups_yuanqi">Świeży</string>
+    <string name="beauty_mutex_toast_tip">Najpierw &lt;a href=>wyłącz&lt;/a> efekty makijażu</string>
+    <string name="edit_cheekbone">Kości policzkowe</string>
+    <string name="edit_head_narrow">Rozmiar głowy</string>
+    <string name="edit_jaw">Żuchwa</string>
+    <string name="edit_nose_tip">Czubek nosa</string>
+    <string name="edit_temple">Skroń</string>
+    <string name="edit_touch_up">Makijaż</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Dostosuj efekty makijażu dla mężczyzn do zdjęć grupowych</string>
+    <string name="pref_beauty_me_mp_switch_title">Dostosuj efekty makijażu dla mężczyzn</string>
+    <string name="pref_beauty_nvs_wp_desc">Usuwaj pieprzyki, gdy włączony jest efekt wygładzania</string>
+    <string name="pref_beauty_nvs_wp_title">Usuń pieprzyki</string>
+    <string name="pref_true_colour_video_mode_description">Wzbogać swoje filmy o realistyczne szczegóły, oszałamiające kolory i uderzający kontrast</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

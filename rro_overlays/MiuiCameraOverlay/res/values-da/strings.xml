@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Nøgen</string>
+    <string name="beauty_makeups_qianjin">Kastanjebrun</string>
+    <string name="beauty_makeups_ruanmei">Teenager</string>
+    <string name="beauty_makeups_xiazhi">Nedre øjenskygge</string>
+    <string name="beauty_makeups_yanku">Isdronning</string>
+    <string name="beauty_makeups_yuanqi">Frisk</string>
+    <string name="beauty_mutex_toast_tip">&lt;a href=>Deaktivér&lt;/a> makeup-effekter først</string>
+    <string name="edit_cheekbone">Kindben</string>
+    <string name="edit_head_narrow">Hovedstørrelse</string>
+    <string name="edit_jaw">Underkæbe</string>
+    <string name="edit_nose_tip">Næsetip</string>
+    <string name="edit_temple">Tinding</string>
+    <string name="edit_touch_up">Makeup</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Justér makeup-effekter for mænd på gruppefotos</string>
+    <string name="pref_beauty_me_mp_switch_title">Justér makeup-effekter for mænd</string>
+    <string name="pref_beauty_nvs_wp_desc">Fjern modermærker, når der anvendes hududglattende effekter</string>
+    <string name="pref_beauty_nvs_wp_title">Fjern modermærker</string>
+    <string name="pref_true_colour_video_mode_description">Berig dine videoer med naturtro detaljer, forbløffende farver og storslåede kontrast</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

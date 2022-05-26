@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Naket</string>
+    <string name="beauty_makeups_qianjin">Rödbrunt</string>
+    <string name="beauty_makeups_ruanmei">Tonåring</string>
+    <string name="beauty_makeups_xiazhi">Ögonskugga</string>
+    <string name="beauty_makeups_yanku">Isdrottning</string>
+    <string name="beauty_makeups_yuanqi">Fräsch</string>
+    <string name="beauty_mutex_toast_tip">&lt;a href=>Stäng av&lt;/a> sminkeffekter först</string>
+    <string name="edit_cheekbone">Käkben</string>
+    <string name="edit_head_narrow">Huvudstorlek</string>
+    <string name="edit_jaw">Haka</string>
+    <string name="edit_nose_tip">Nästipp</string>
+    <string name="edit_temple">Tinningar</string>
+    <string name="edit_touch_up">Smink</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Justera sminkeffekter för män på gruppfoton</string>
+    <string name="pref_beauty_me_mp_switch_title">Justera sminkeffekter för män</string>
+    <string name="pref_beauty_nvs_wp_desc">Ta bort födelsemärken när hudutjämningseffekter används</string>
+    <string name="pref_beauty_nvs_wp_title">Ta bort födelsemärken</string>
+    <string name="pref_true_colour_video_mode_description">Berika dina videor med verklighetstrogna detaljer, enastående färger, och slående kontrast</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

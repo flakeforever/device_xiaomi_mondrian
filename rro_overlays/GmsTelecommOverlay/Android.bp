@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "GmsTelecommOverlay",
+    product_specific: true,
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">ਨਿਉਡ</string>
+    <string name="beauty_makeups_qianjin">ਕੱਕਾ</string>
+    <string name="beauty_makeups_ruanmei">ਕਿਸ਼ੋਰ</string>
+    <string name="beauty_makeups_xiazhi">ਹੇਠਲੀ ਪਲਕ ਲਈ ਆਈਸ਼ੈਡੋ</string>
+    <string name="beauty_makeups_yanku">ਆਈਸ ਕ੍ਵੀਨ</string>
+    <string name="beauty_makeups_yuanqi">ਤਾਜ਼ਾ</string>
+    <string name="beauty_mutex_toast_tip">ਸਭ ਤੋਂ ਪਹਿਲਾਂ ਸ਼ਿੰਗਾਰ ਪ੍ਰਭਾਵ &lt;a href=>ਬੰਦ ਕਰੋ&lt;/a></string>
+    <string name="edit_cheekbone">ਗੱਲ੍ਹ ਦੀਆਂ ਹੱਡੀਆਂ</string>
+    <string name="edit_head_narrow">ਸਿਰ ਦਾ ਆਕਾਰ</string>
+    <string name="edit_jaw">ਹੇਠਲਾ ਜਬਾੜਾ</string>
+    <string name="edit_nose_tip">ਨੱਕ ਦੀ ਨੋਕ</string>
+    <string name="edit_temple">ਪੁੜਪੁੜੀ</string>
+    <string name="edit_touch_up">ਸ਼ਿੰਗਾਰ</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">ਗਰੁੱਪ ਫ਼ੋਟੋਆਂ ਵਿੱਚ ਆਦਮੀਆਂ ਲਈ ਮੇਕ-ਅੱਪ ਪ੍ਰਭਾਵ ਵਿਵਸਥਿਤ ਕਰੋ</string>
+    <string name="pref_beauty_me_mp_switch_title">ਆਦਮੀਆਂ ਲਈ ਮੇਰ-ਅੱਪ ਪ੍ਰਭਾਵਾਂ ਦੀ ਵਿਵਸਥਾ ਕਰੋ</string>
+    <string name="pref_beauty_nvs_wp_desc">ਚਹਿਰੇ ਦੀ ਕੋਮਲਤਾ ਦੇ ਪ੍ਰਭਾਵਾਂ ਦੀ ਵਰਤੋਂ ਕੀਤੇ ਜਾਣ ਸਮੇਂ ਮੌਕੇ ਹਟਾਓ</string>
+    <string name="pref_beauty_nvs_wp_title">ਮੌਕੇ ਹਟਾਓ</string>
+    <string name="pref_true_colour_video_mode_description">ਆਪਣੇ ਵੀਡੀਓ ਨੂੰ ਸਜੀਵ ਵੇਰਵੇ, ਸ਼ਾਨਦਾਰ ਰੰਗ ਅਤੇ ਉੱਧੜਵੇਂ ਕੰਟ੍ਰਾਸਟ ਦੀ ਮਦਦ ਨਾਲ ਹੋਰ ਵੀ ਸੋਹਣਾ ਬਣਾਓ</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="flash_force_off_light_state">4</integer>
+</resources>

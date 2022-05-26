@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">חשוף</string>
+    <string name="beauty_makeups_qianjin">אובורן</string>
+    <string name="beauty_makeups_ruanmei">נוער</string>
+    <string name="beauty_makeups_xiazhi">צללית עפעפיים תחתונות</string>
+    <string name="beauty_makeups_yanku">מלכת הקרח</string>
+    <string name="beauty_makeups_yuanqi">רענן</string>
+    <string name="beauty_mutex_toast_tip">&lt;a href=>כבה&lt;/a> קודם אפקטים של איפור</string>
+    <string name="edit_cheekbone">עצמות לחיים</string>
+    <string name="edit_head_narrow">גודל ראש</string>
+    <string name="edit_jaw">לסת תחתונה</string>
+    <string name="edit_nose_tip">קצה האף</string>
+    <string name="edit_temple">רקות</string>
+    <string name="edit_touch_up">איפור</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">התאמת האפקטים של איפור עבור גברים בתמונות קבוצתיות</string>
+    <string name="pref_beauty_me_mp_switch_title">התאמת האפקטים של איפור עבור גברים</string>
+    <string name="pref_beauty_nvs_wp_desc">הסרת שומות בשימוש באפקטים של החלקת העור</string>
+    <string name="pref_beauty_nvs_wp_title">הסרת שומות</string>
+    <string name="pref_true_colour_video_mode_description">העשרת הסרטונים שלך בפרטים הנראים כמו בחיים האמיתיים, צבעים מהממים וניגודיות מרשימה</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

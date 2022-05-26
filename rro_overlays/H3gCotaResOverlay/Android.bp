@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "H3gCotaResOverlay",
+    product_specific: true,
+}

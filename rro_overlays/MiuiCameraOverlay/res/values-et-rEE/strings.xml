@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Alasti</string>
+    <string name="beauty_makeups_qianjin">Kastanipunane</string>
+    <string name="beauty_makeups_ruanmei">Teismeline</string>
+    <string name="beauty_makeups_xiazhi">Alumise lau värv</string>
+    <string name="beauty_makeups_yanku">Jääkuninganna</string>
+    <string name="beauty_makeups_yuanqi">Värske</string>
+    <string name="beauty_mutex_toast_tip">Kõigepealt &lt;a href=>lülita välja&lt;/a> meigiefektid</string>
+    <string name="edit_cheekbone">Põsesarnad</string>
+    <string name="edit_head_narrow">Pea suurus</string>
+    <string name="edit_jaw">Alalõug</string>
+    <string name="edit_nose_tip">Ninaots</string>
+    <string name="edit_temple">Meelekoht</string>
+    <string name="edit_touch_up">Meik</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Kohandage grupifotodel meeste meigiefekte</string>
+    <string name="pref_beauty_me_mp_switch_title">Kohandage meeste meigiefekte</string>
+    <string name="pref_beauty_nvs_wp_desc">Eemaldage sünnimärgid, kui kasutate nahka siluvaid efekte</string>
+    <string name="pref_beauty_nvs_wp_title">Eemaldage sünnimärgid</string>
+    <string name="pref_true_colour_video_mode_description">Rikastage oma videoid elutruude detailide, vapustavate värvide ja silmatorkava kontrastiga</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

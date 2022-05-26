@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Dəri rəngi</string>
+    <string name="beauty_makeups_qianjin">Tünd qırmızı</string>
+    <string name="beauty_makeups_ruanmei">Gənc</string>
+    <string name="beauty_makeups_xiazhi">Aşağı göz kölgəsi</string>
+    <string name="beauty_makeups_yanku">Buz kraliçası</string>
+    <string name="beauty_makeups_yuanqi">Gümrah</string>
+    <string name="beauty_mutex_toast_tip">Əvvəlcə makiyaj effektlərini &lt;a href=>söndür&lt;/a></string>
+    <string name="edit_cheekbone">Almacıq sümüyü</string>
+    <string name="edit_head_narrow">Baş ölçüsü</string>
+    <string name="edit_jaw">Aşağı çənə</string>
+    <string name="edit_nose_tip">Burun ucu</string>
+    <string name="edit_temple">Gicgah</string>
+    <string name="edit_touch_up">Makiyaj</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Qrup şəkillərində kişilər üçün makiyaj effektlərini tənzimləyin</string>
+    <string name="pref_beauty_me_mp_switch_title">Kişilər üçün makiyaj effektlərini tənzimləyin</string>
+    <string name="pref_beauty_nvs_wp_desc">Dəri hamarlaşdırıcı effektlərdən istifadə edildikdə, xalları silin</string>
+    <string name="pref_beauty_nvs_wp_title">Xalları silin</string>
+    <string name="pref_true_colour_video_mode_description">Videolarınızı canlı detallar, heyrətamiz rənglər və parlaq kontrastla zənginləşdirin</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

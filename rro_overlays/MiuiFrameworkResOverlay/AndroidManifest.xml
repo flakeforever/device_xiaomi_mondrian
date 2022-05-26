@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="android.miui.overlay">
+    <overlay android:targetPackage="com.miui.rom"
+                   android:isStatic="true"
+                   android:priority="100"/>
+</manifest>

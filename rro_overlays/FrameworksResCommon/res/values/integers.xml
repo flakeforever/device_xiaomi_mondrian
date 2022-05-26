@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="config_defaultPeakRefreshRate">240</integer>
+    <integer name="config_defaultRefreshRate">0</integer>
+    <integer name="config_multiuserMaximumUsers">5</integer>
+    <integer name="config_safe_media_volume_index">100</integer>
+    <integer name="config_screenBrightnessDoze">17</integer>
+</resources>

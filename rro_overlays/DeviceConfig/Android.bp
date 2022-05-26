@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "DeviceConfig",
+    product_specific: true,
+}

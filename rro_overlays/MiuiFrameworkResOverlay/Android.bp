@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "MiuiFrameworkResOverlay",
+    product_specific: true,
+}

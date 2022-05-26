@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Природен</string>
+    <string name="beauty_makeups_qianjin">Костенлив</string>
+    <string name="beauty_makeups_ruanmei">Тинејџерско</string>
+    <string name="beauty_makeups_xiazhi">Сенка за очи</string>
+    <string name="beauty_makeups_yanku">Ice queen</string>
+    <string name="beauty_makeups_yuanqi">Свежо</string>
+    <string name="beauty_mutex_toast_tip">&lt;a href=>Прво искл.&lt;/a> ефекти на шминка</string>
+    <string name="edit_cheekbone">јаболчници</string>
+    <string name="edit_head_narrow">Размер на глава</string>
+    <string name="edit_jaw">Ниска вилица</string>
+    <string name="edit_nose_tip">Врв на нос</string>
+    <string name="edit_temple">Слепоочници</string>
+    <string name="edit_touch_up">Шминка</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Прилагоди ефекти за шминка за мажи на групни слики</string>
+    <string name="pref_beauty_me_mp_switch_title">Прилагоди ефекти за шминка за мажи</string>
+    <string name="pref_beauty_nvs_wp_desc">Отстрани бемки кога се користат ефекти за измазнета кожа</string>
+    <string name="pref_beauty_nvs_wp_title">Отстрани ги бемките</string>
+    <string name="pref_true_colour_video_mode_description">Збогатете ги вашите видеа со живописни детали, убави бои и огромни контрасти</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>

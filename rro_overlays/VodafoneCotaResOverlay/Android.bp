@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "VodafoneCotaResOverlay",
+    product_specific: true,
+}

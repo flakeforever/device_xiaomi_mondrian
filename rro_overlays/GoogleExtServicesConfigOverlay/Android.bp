@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "GoogleExtServicesConfigOverlay",
+    product_specific: true,
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">Neutralus</string>
+    <string name="beauty_makeups_qianjin">Kaštoninis</string>
+    <string name="beauty_makeups_ruanmei">Paaugliškas</string>
+    <string name="beauty_makeups_xiazhi">Apatinio voko akių šešėliai</string>
+    <string name="beauty_makeups_yanku">Ledo karalienė</string>
+    <string name="beauty_makeups_yuanqi">Šviežias</string>
+    <string name="beauty_mutex_toast_tip">Pirmiausia &lt;a href=>išjunkite&lt;/a> makiažo efektus</string>
+    <string name="edit_cheekbone">Skruostikauliai</string>
+    <string name="edit_head_narrow">Galvos dydis</string>
+    <string name="edit_jaw">Apatinis žandikaulis</string>
+    <string name="edit_nose_tip">Nosies galiukas</string>
+    <string name="edit_temple">Smilkiniai</string>
+    <string name="edit_touch_up">Makiažas</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">Koreguoti makiažo efektus vyrams grupinėse nuotraukose</string>
+    <string name="pref_beauty_me_mp_switch_title">Koreguoti makiažo efektus vyrams</string>
+    <string name="pref_beauty_nvs_wp_desc">Pašalinti apgamus, kai naudojami odos glotninimo efektai</string>
+    <string name="pref_beauty_nvs_wp_title">Pašalinti apgamus</string>
+    <string name="pref_true_colour_video_mode_description">Praturtinkite savo vaizdo įrašus tikroviškomis detalėmis, nuostabiomis spalvomis ir įspūdingu kontrastu</string>
+    <string name="pref_true_colour_video_mode_title">„Dolby vision“</string>
+</resources>

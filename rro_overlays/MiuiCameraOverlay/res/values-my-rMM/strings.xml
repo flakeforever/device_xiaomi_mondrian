@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_video_sky_function_on">打开视频换天功能</string>
+    <string name="accessibility_video_sky_function_panel_on">打开视频换天功能面板</string>
+    <string name="beauty_makeups_danyan">မိတ်ကပ်ညိုရောင်</string>
+    <string name="beauty_makeups_qianjin">အော်ဘင်</string>
+    <string name="beauty_makeups_ruanmei">ဆယ်ကျော်သက်</string>
+    <string name="beauty_makeups_xiazhi">အောက်မျက်ခမ်း လိုင်နာ</string>
+    <string name="beauty_makeups_yanku">ရေခဲဘုရင်မ</string>
+    <string name="beauty_makeups_yuanqi">လန်းဆန်း</string>
+    <string name="beauty_mutex_toast_tip">မိတ်ကပ်အထူးပြုလုပ်ချက်ကို ဦးစွာ &lt;a href=>ပိတ်ပါ&lt;/a></string>
+    <string name="edit_cheekbone">ပါးရိုး</string>
+    <string name="edit_head_narrow">ခေါင်းအရွယ်</string>
+    <string name="edit_jaw">အောက်မေး</string>
+    <string name="edit_nose_tip">နှာဖျား</string>
+    <string name="edit_temple">နားထင်</string>
+    <string name="edit_touch_up">မိတ်ကပ်</string>
+    <string name="magic_video_sky_effect_type_1">晴天</string>
+    <string name="magic_video_sky_effect_type_2">晴空</string>
+    <string name="magic_video_sky_effect_type_3">多云</string>
+    <string name="magic_video_sky_effect_type_4">夕阳</string>
+    <string name="magic_video_sky_effect_type_5">晚霞</string>
+    <string name="magic_video_sky_fragment_tab_name">AI换天</string>
+    <string name="pref_beauty_me_mp_switch_desc">အုပ်စုပုံများတွင် အမျိုးသားများအတွက် မိတ်ကပ်အထူးပြုလုပ်ချက်များ ညှိရန်</string>
+    <string name="pref_beauty_me_mp_switch_title">အမျိုးသားများအတွက် မိတ်ကပ်အထူးပြုလုပ်ချက်များ ညှိရန်</string>
+    <string name="pref_beauty_nvs_wp_desc">အသားချောအထူးပြုလုပ်ချက်များသုံးစဉ် မှည့်များဖြုတ်ရန်</string>
+    <string name="pref_beauty_nvs_wp_title">မှည့်များဖြုတ်ရန်</string>
+    <string name="pref_true_colour_video_mode_description">သင့်ဗီဒီယိုများကို အသက်ဝင်သောအသေးစိတ်အချက်များ၊ ရင်သပ်ရှုမောဖွယ်အရောင်များ၊ ထင်ရှားသော အလင်းရောင်များနှင့် အားဖြည့်ပါ</string>
+    <string name="pref_true_colour_video_mode_title">Dolby Vision</string>
+</resources>
