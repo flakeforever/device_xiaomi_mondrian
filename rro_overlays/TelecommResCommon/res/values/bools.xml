@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Flag indicating if the tty is enabled -->
     <bool name="tty_enabled">true</bool>
 </resources>
