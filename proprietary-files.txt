@@ -1,3 +1,7 @@
+# libvolumelistener - from taro
+vendor/lib/soundfx/libvolumelistener.so|e98e11f69afb8969b1d11e4f6e077d420d5dbeb0
+vendor/lib64/soundfx/libvolumelistener.so|679e1432d75e1b31c17658cd10fa68a3a188b73c
+
 # vendor
 -vendor/etc/vintf/compatibility_matrix.xml
 #-vendor/etc/vintf/manifest/AHBF@2.1-service.xml
@@ -2487,7 +2491,6 @@ vendor/lib/soundfx/libswdap.so
 vendor/lib/soundfx/libswgamedap.so
 vendor/lib/soundfx/libswvqe.so
 vendor/lib/soundfx/libvisualizer.so
-vendor/lib/soundfx/libvolumelistener.so
 vendor/lib/vendor.display.color@1.0.so
 vendor/lib/vendor.display.color@1.1.so
 vendor/lib/vendor.display.color@1.2.so
@@ -3856,7 +3859,6 @@ vendor/lib64/soundfx/libswdap.so
 vendor/lib64/soundfx/libswgamedap.so
 vendor/lib64/soundfx/libswvqe.so
 vendor/lib64/soundfx/libvisualizer.so
-vendor/lib64/soundfx/libvolumelistener.so
 vendor/lib64/vendor.display.color@1.0.so
 vendor/lib64/vendor.display.color@1.1.so
 vendor/lib64/vendor.display.color@1.2.so
