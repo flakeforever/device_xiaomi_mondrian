@@ -218,4 +218,4 @@ ifndef BOARD_VENDOR_KERNEL_MODULES_LOAD
 $(error vendor_dlkm.modules.load not found or empty)
 endif
 BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(COMMON_PATH)/vendor_dlkm.blocklist
-BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor/*.ko)
+BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_dlkm/*.ko)
