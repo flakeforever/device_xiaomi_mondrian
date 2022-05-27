@@ -200,25 +200,23 @@ BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.KERNEL_MODULE_DIRS := top
 
 # Kernel modules
 KERNEL_MODULE_DIR := device/xiaomi/cupid-kernel
-KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/*.ko)
 
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/vendor_boot.modules.load))
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/dlkm/vendor_dlkm.modules.load))
+ifndef BOARD_VENDOR_KERNEL_MODULES_LOAD
+$(error vendor_dlkm.modules.load not found or empty)
+endif
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(COMMON_PATH)/dlkm/vendor_dlkm.blocklist
+BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_dlkm/*.ko)
+
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/dlkm/vendor_boot.modules.load))
 ifndef BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD
 $(error vendor_boot.modules.load not found or empty)
 endif
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(COMMON_PATH)/vendor_boot.blocklist
-#BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/vendor_boot/, $(notdir $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD)))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(COMMON_PATH)/dlkm/vendor_boot.blocklist
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_boot/*.ko)
 
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/vendor_boot.modules.load.recovery))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/dlkm/vendor_boot.modules.load.recovery))
 ifndef BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD
 $(error vendor_boot.modules.load.recovery not found or empty)
 endif
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_boot/*.ko)
-
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/vendor_dlkm.modules.load))
-ifndef BOARD_VENDOR_KERNEL_MODULES_LOAD
-$(error vendor_dlkm.modules.load not found or empty)
-endif
-BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(COMMON_PATH)/vendor_dlkm.blocklist
-BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_dlkm/*.ko)
