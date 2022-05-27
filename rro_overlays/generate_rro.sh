@@ -64,7 +64,7 @@ fi
 # Experimental logic: Check if there are values starting with 0 and assume that the leading 0s
 # are critical and should be kept
 if [[ ! -z $(find ./rro_overlays/${name}/res -type f | xargs -I 'file' sed -n "/\(=\"0[0-9]\+\)/p" file) ]]; then
-    printf "\n    aaptflags: ["--keep-raw-values"]," >> ./rro_overlays/${name}/Android.bp
+    printf "\n    aaptflags: [\"--keep-raw-values\"]," >> ./rro_overlays/${name}/Android.bp
 fi
 
 # Finish the Android.bp
