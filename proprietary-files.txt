@@ -1,6 +1,6 @@
 # vendor
 -vendor/etc/vintf/compatibility_matrix.xml
--vendor/etc/vintf/manifest/AHBF@2.1-service.xml
+#-vendor/etc/vintf/manifest/AHBF@2.1-service.xml
 -vendor/etc/vintf/manifest/android.hardware.atrace@1.0-service.xml
 -vendor/etc/vintf/manifest/android.hardware.boot@1.2.xml
 -vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml
@@ -63,7 +63,7 @@
 -vendor/etc/vintf/manifest/vendor.xiaomi.sensor.communicate@1.0_manifest.xml
 vendor/app/CACertService/CACertService.apk
 vendor/app/CneApp/CneApp.apk
-vendor/app/IFAAService/IFAAService.apk
+#vendor/app/IFAAService/IFAAService.apk
 vendor/app/IWlanService/IWlanService.apk
 vendor/app/MipayService/MipayService.apk
 vendor/app/SoterService/SoterService.apk
@@ -173,7 +173,7 @@ vendor/bin/hw/android.hardware.wifi@1.0-service
 vendor/bin/hw/capabilityconfigstoretest
 vendor/bin/hw/dolbycodec2
 vendor/bin/hw/hostapd
-vendor/bin/hw/mfp-daemon
+#vendor/bin/hw/mfp-daemon
 vendor/bin/hw/qconfigservice
 vendor/bin/hw/qcrilNrd
 vendor/bin/hw/qfp-daemon
@@ -1857,7 +1857,7 @@ vendor/lib/hw/audio.usb.default.so
 vendor/lib/hw/com.dsi.ant@1.0-impl.so
 vendor/lib/hw/consumerir.taro.so
 vendor/lib/hw/displayfeature.default.so
-vendor/lib/hw/fingerprint.goodix_fod.so
+vendor/lib/hw/fingerprint.goodix_fod.so:vendor/lib/hw/fingerprint.goodix_fod.default.so
 vendor/lib/hw/gralloc.default.so
 vendor/lib/hw/lights.mixed.so
 vendor/lib/hw/local_time.default.so

@@ -69,6 +69,9 @@ TARGET_NO_BOOTLOADER := true
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
 
+# Fingerprint
+TARGET_SURFACEFLINGER_UDFPS_LIB := //$(COMMON_PATH):libudfps_extension.xiaomi_sm8450
+
 # HIDL
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/hidl/compatibility_matrix.xml
 
@@ -176,7 +179,6 @@ TARGET_BOARD_PLATFORM := taro
 #TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
 #TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/properties/vendor.prop
-
 
 # Recovery
 #namespace definition for librecovery_updater
