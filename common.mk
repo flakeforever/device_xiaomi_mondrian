@@ -48,6 +48,7 @@ PRODUCT_PACKAGES += \
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 31
+#BOARD_API_LEVEL := 32
 BOARD_SHIPPING_API_LEVEL := 31
 
 # Boot control
@@ -109,6 +110,7 @@ PRODUCT_PACKAGES += \
     init.qcom.sh \
     init.qcom.ssr.sh \
     init.target.rc \
+    ueventd-odm.rc \
     ueventd.qcom.rc
 
 # Recovery
