@@ -108,7 +108,6 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     init.qcom.rc \
     init.qcom.sh \
-    init.qcom.ssr.sh \
     init.target.rc \
     ueventd-odm.rc \
     ueventd.qcom.rc
