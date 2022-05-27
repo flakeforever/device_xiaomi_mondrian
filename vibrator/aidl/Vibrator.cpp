@@ -143,7 +143,7 @@ InputFFDevice::InputFFDevice()
                 fscanf(fp, "%u", &soc);
                 fclose(fp);
             }
-            switch (soc.msm_cpu) {
+            switch (soc) {
             case MSM_CPU_LAHAINA:
             case APQ_CPU_LAHAINA:
             case MSM_CPU_SHIMA:
