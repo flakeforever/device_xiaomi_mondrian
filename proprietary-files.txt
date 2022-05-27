@@ -61,7 +61,6 @@ vendor/lib64/soundfx/libvolumelistener.so|679e1432d75e1b31c17658cd10fa68a3a188b7
 -vendor/etc/vintf/manifest/vendor.xiaomi.hardware.misys@1.0.xml
 -vendor/etc/vintf/manifest/vendor.xiaomi.hardware.misys@2.0.xml
 -vendor/etc/vintf/manifest/vendor.xiaomi.hardware.misys@3.0.xml
--vendor/etc/vintf/manifest/vendor.xiaomi.hardware.vibratorfeature.service.xml
 -vendor/etc/vintf/manifest/vendor.xiaomi.hw.touchfeature@1.0-service.xml
 -vendor/etc/vintf/manifest/vendor.xiaomi.sensor.citsensorservice@1.1-service.xml
 -vendor/etc/vintf/manifest/vendor.xiaomi.sensor.communicate@1.0_manifest.xml
@@ -223,7 +222,6 @@ vendor/bin/hw/vendor.xiaomi.hardware.mimd@1.0-service
 vendor/bin/hw/vendor.xiaomi.hardware.misys@1.0-service
 vendor/bin/hw/vendor.xiaomi.hardware.misys@2.0-service
 vendor/bin/hw/vendor.xiaomi.hardware.misys@3.0-service
-vendor/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service
 vendor/bin/hw/vendor.xiaomi.hw.touchfeature@1.0-service
 vendor/bin/hw/vendor.xiaomi.sensor.citsensorservice@1.1-service
 vendor/bin/hw/vendor.xiaomi.sensor.communicate@1.0-service
@@ -955,8 +953,6 @@ vendor/etc/init/vendor.xiaomi.hardware.misys@3.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mtdservice@1.3-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.tidaservice@1.2-service.rc
-vendor/etc/init/vendor.xiaomi.hardware.vibratorfeature.service.rc
-vendor/etc/init/vendor.xiaomi.hardware.vibratorfeature@1.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.vsimapp@1.0-service.rc
 vendor/etc/init/vendor.xiaomi.hw.touchfeature@1.0-service.rc
 vendor/etc/init/vendor.xiaomi.sensor.citsensorservice@1.1-service.rc
@@ -1892,7 +1888,6 @@ vendor/lib/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib/hw/vendor.xiaomi.hardware.misys@3.0-impl.so
 vendor/lib/hw/vendor.xiaomi.hw.touchfeature@1.0-impl.so
 vendor/lib/hw/vendor.xiaomi.sensor.citsensorservice@1.1-impl.so
-vendor/lib/hw/vibrator.default.so
 vendor/lib/hw/vulkan.adreno.so
 vendor/lib/lib-imsSDP.so
 vendor/lib/lib-imscommon.so
@@ -2369,7 +2364,6 @@ vendor/lib/libtruetone.so
 vendor/lib/libtrustedapploader.so
 vendor/lib/libtzdrmgenprov.so
 vendor/lib/libultrasound_notify.so
-vendor/lib/libvibrator.so
 vendor/lib/libvideomode.so
 vendor/lib/libvideooptfeature.so
 vendor/lib/libvideotxr.so
@@ -2830,7 +2824,6 @@ vendor/lib64/android.hardware.thermal@2.0.so
 vendor/lib64/android.hardware.usb@1.0.so
 vendor/lib64/android.hardware.usb@1.1.so
 vendor/lib64/android.hardware.usb@1.2.so
-vendor/lib64/android.hardware.vibrator-V1-ndk_platform.so
 vendor/lib64/android.hardware.wifi.hostapd@1.0.so
 vendor/lib64/android.hardware.wifi.hostapd@1.1.so
 vendor/lib64/android.hardware.wifi.hostapd@1.2.so
@@ -3139,7 +3132,6 @@ vendor/lib64/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.misys@3.0-impl.so
 vendor/lib64/hw/vendor.xiaomi.hw.touchfeature@1.0-impl.so
 vendor/lib64/hw/vendor.xiaomi.sensor.citsensorservice@1.1-impl.so
-vendor/lib64/hw/vibrator.default.so
 vendor/lib64/hw/vulkan.adreno.so
 vendor/lib64/jcos_nq_client-v1.so
 vendor/lib64/lib-imsSDP.so
@@ -3760,7 +3752,6 @@ vendor/lib64/libtzdrmgenprov.so
 vendor/lib64/libubifocus.so
 vendor/lib64/libultrasound_notify.so
 vendor/lib64/libvendorscenariopoweroptfeature.so
-vendor/lib64/libvibrator.so
 vendor/lib64/libvideoBokeh.so
 vendor/lib64/libvideofilter_only.so
 vendor/lib64/libvideomode.so
@@ -3883,7 +3874,6 @@ vendor/lib64/vendor.display.config@2.0.so
 vendor/lib64/vendor.display.postproc@1.0.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0-impl.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0.so
-vendor/lib64/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk_platform.so
 vendor/lib64/vendor.libdpmctmgr.so
 vendor/lib64/vendor.libdpmfdmgr.so
 vendor/lib64/vendor.libdpmframework.so
