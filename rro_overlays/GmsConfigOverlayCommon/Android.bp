@@ -1,4 +1,0 @@
-runtime_resource_overlay {
-    name: "GmsConfigOverlayCommon",
-    product_specific: true,
-}

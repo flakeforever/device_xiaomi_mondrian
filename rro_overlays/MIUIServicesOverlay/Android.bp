@@ -1,4 +1,0 @@
-runtime_resource_overlay {
-    name: "MIUIServicesOverlay",
-    product_specific: true,
-}

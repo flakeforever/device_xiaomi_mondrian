@@ -1,5 +1,0 @@
-runtime_resource_overlay {
-    name: "DisplayCutoutEmulationDoubleOverlay",
-    theme: "DisplayCutoutEmulationDouble",
-    product_specific: true,
-}

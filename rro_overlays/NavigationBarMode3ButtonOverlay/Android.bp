@@ -1,5 +1,0 @@
-runtime_resource_overlay {
-    name: "NavigationBarMode3ButtonOverlay",
-    theme: "NavigationBarMode3Button",
-    product_specific: true,
-}

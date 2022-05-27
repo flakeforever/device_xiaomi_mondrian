@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Height of area above QQS where battery/time go.
-         Do not read this dimen directly. Use {@link SystemBarUtils#getQuickQsOffsetHeight} instead.
-         -->
-    <dimen name="quick_qs_offset_height">48.0dip</dimen>
-    <dimen name="quick_qs_total_height">176.0dip</dimen>
-</resources>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Class names of device specific services inheriting com.android.server.SystemService. The
-         classes are instantiated in the order of the array. -->
-    <string-array name="config_deviceSpecificSystemServices">
-        <item>com.miui.me.server.auto_install.InstallService</item>
-    </string-array>
-</resources>
