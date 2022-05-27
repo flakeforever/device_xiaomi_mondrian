@@ -74,7 +74,6 @@ PRODUCT_PACKAGES += \
     CarrierConfigResCommon \
     CellBroadcastReceiverResCommon \
     DeviceAndroidConfig \
-    DevicesAndroidOverlay \
     FrameworksResCommon \
     FrameworksResTarget_Vendor \
     MccMncOverlay \

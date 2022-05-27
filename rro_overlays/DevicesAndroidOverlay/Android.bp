@@ -1,4 +1,0 @@
-runtime_resource_overlay {
-    name: "DevicesAndroidOverlay",
-    product_specific: true,
-}
