@@ -1,5 +1,0 @@
-runtime_resource_overlay {
-    name: "NavigationBarModeGesturalOverlayNarrowBack",
-    theme: "NavigationBarModeGesturalNarrowBack",
-    product_specific: true,
-}

@@ -1,6 +1,0 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="">
-    <overlay android:targetPackage="com.android.thememanager"
-                   android:isStatic="true"
-                   android:priority="1000"/>
-</manifest>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Component name that should be granted Notification Assistant access -->
-    <string name="config_defaultAssistantAccessComponent">com.google.android.ext.services/android.ext.services.notification.Assistant</string>
-
-    <!-- Package name of the required service extension package. -->
-    <string name="config_servicesExtensionPackage">com.google.android.ext.services</string>
-</resources>

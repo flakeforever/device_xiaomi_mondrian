@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- The name of the package that will hold the assistant role by default. -->
-    <string name="config_defaultAssistant">com.google.android.googlequicksearchbox</string>
-</resources>
