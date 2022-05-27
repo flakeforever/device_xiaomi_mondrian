@@ -67,6 +67,24 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.qcom \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
 
+# Overlays
+PRODUCT_PACKAGES += \
+    AospFrameworkResOverlay \
+    AospWifiResOverlay \
+    CarrierConfigResCommon \
+    CellBroadcastReceiverResCommon \
+    DeviceAndroidConfig \
+    DevicesAndroidOverlay \
+    FrameworksResCommon \
+    FrameworksResTarget_Vendor \
+    MccMncOverlay \
+    SettingsResCommon \
+    SystemUIResCommon \
+    TelecommResCommon \
+    TelephonyResCommon \
+    WifiResCommon \
+    WifiResTarget
+
 # Partitions
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
