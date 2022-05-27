@@ -70,9 +70,12 @@ TARGET_NO_BOOTLOADER := true
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
 
 # HIDL
+DEVICE_MATRIX_FILE := $(COMMON_PATH)/hidl/compatibility_matrix.xml
+
 DEVICE_MANIFEST_SKUS := taro
-DEVICE_MANIFEST_TARO_FILES := $(COMMON_PATH)/hidl/manifest_taro.xml
-DEVICE_MANIFEST_TARO_FILES += $(COMMON_PATH)/hidl/manifest_cupid.xml
+DEVICE_MANIFEST_TARO_FILES := \
+    $(COMMON_PATH)/hidl/manifest_cupid.xml \
+    $(COMMON_PATH)/hidl/manifest_taro.xml
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(COMMON_PATH)/hidl/vendor_framework_compatibility_matrix.xml \
