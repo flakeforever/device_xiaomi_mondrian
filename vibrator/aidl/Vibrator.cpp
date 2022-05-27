@@ -62,10 +62,10 @@ namespace vibrator {
 #define MSM_CPU_SM8325          501
 #define APQ_CPU_SM8325P         502
 #define MSM_CPU_TARO            457
-#define MSM_CPU_TARO_LTE        -1
+#define MSM_CPU_TARO_LTE        81
 #define MSM_CPU_YUPIK           475
-#define MSM_CPU_CAPE            -1
-#define APQ_CPU_CAPE            -1
+#define MSM_CPU_CAPE            82
+#define APQ_CPU_CAPE            83
 
 #define test_bit(bit, array)    ((array)[(bit)/8] & (1<<((bit)%8)))
 
