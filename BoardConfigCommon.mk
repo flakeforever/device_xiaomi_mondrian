@@ -69,9 +69,6 @@ TARGET_NO_BOOTLOADER := true
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
 
-# Fingerprint
-TARGET_SURFACEFLINGER_UDFPS_LIB := //$(COMMON_PATH):libudfps_extension.xiaomi_sm8450
-
 # HIDL
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/hidl/compatibility_matrix.xml
 
