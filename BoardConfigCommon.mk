@@ -221,4 +221,3 @@ BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMO
 ifndef BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD
 $(error vendor_boot.modules.load.recovery not found or empty)
 endif
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_boot/*.ko)
