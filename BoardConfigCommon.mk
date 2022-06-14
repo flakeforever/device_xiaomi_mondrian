@@ -193,6 +193,8 @@ BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+
 # Vendor ramdisk
 BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
 BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.KERNEL_MODULE_DIRS := top
