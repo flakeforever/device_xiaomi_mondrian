@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- The component name of a special dock app that merely launches a dream.
-         We don't want to launch this app when docked because it causes an unnecessary
-         activity transition.  We just want to start the dream.. -->
-    <string name="config_screenshotServiceComponent">com.miui.screenshot/com.miui.screenshot.TakeScreenshotService</string>
-</resources>
