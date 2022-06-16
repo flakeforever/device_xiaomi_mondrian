@@ -26,6 +26,8 @@ name=$(basename ${SRC} | sed "s/.apk//g")
 
 if ! apktool d "${SRC}" -o "${TMPDIR}"/out &> "${log}"; then
     echo "Failed to dump ${name}"
+    # Clear the temporary working directory
+    rm -rf "${TMPDIR}"
     exit
 fi
 
