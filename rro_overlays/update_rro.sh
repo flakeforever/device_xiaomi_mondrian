@@ -26,6 +26,7 @@ product_rros=" \
 vendor_rros=" \
     FrameworksResTarget_Vendor \
     WifiResTarget \
+    WifiResTarget_spf \
 "
 
 function generate_rro () {
