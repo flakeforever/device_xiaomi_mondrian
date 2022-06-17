@@ -1,6 +1,0 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="android.deviceandroidconfig.config.overlay">
-    <overlay android:targetPackage="android"
-                   android:isStatic="true"
-                   android:priority="100"/>
-</manifest>
