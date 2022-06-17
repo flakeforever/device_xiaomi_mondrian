@@ -75,20 +75,16 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    AospFrameworkResOverlay \
-    AospWifiResOverlay \
-    CarrierConfigResCommon \
-    CellBroadcastReceiverResCommon \
-    DeviceAndroidConfig \
-    FrameworksResCommon \
+    CarrierConfigResCommon_Sys \
+    FrameworksResCommon_Sys \
     FrameworksResTarget_Vendor \
-    MccMncOverlay \
-    SettingsResCommon \
-    SystemUIResCommon \
-    TelecommResCommon \
-    TelephonyResCommon \
-    WifiResCommon \
-    WifiResTarget
+    SettingsResCommon_Sys \
+    SystemUIResCommon_Sys \
+    TelecommResCommon_Sys \
+    TelephonyResCommon_Sys \
+    WifiResCommon_Sys \
+    WifiResTarget \
+    WifiResTarget_spf
 
 # Partitions
 PRODUCT_BUILD_SUPER_PARTITION := false
