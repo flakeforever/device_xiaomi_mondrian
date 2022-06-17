@@ -13,17 +13,13 @@ dump_path=${1}
 
 # List of rros in product without a theme
 product_rros=" \
-    AospFrameworkResOverlay \
-    AospWifiResOverlay \
     CarrierConfigResCommon \
-    DeviceAndroidConfig \
     FrameworksResCommon \
-    MccMncOverlay \
     SettingsResCommon \
     SystemUIResCommon \
     TelecommResCommon \
     TelephonyResCommon \
-    WifiResCommon
+    WifiResCommon \
 "
 
 # List of rros in vendor without a theme
