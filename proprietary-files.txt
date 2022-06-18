@@ -271,7 +271,6 @@ vendor/bin/init.qcom.sensors.sh
 vendor/bin/init.qcom.usb.sh
 vendor/bin/init.qti.display_boot.sh
 vendor/bin/init.qti.kernel.sh
-vendor/bin/init.qti.media.sh
 vendor/bin/init.qti.qcv.sh
 vendor/bin/init.qti.write.sh
 vendor/bin/ipacm
@@ -894,7 +893,6 @@ vendor/etc/init/init.mfp-daemon.rc
 vendor/etc/init/init.qdmastats.rc
 vendor/etc/init/init.qti.display_boot.rc
 vendor/etc/init/init.qti.fm.rc
-vendor/etc/init/init.qti.media.rc
 vendor/etc/init/init.qti.qcv.rc
 vendor/etc/init/init.spuservice.rc
 vendor/etc/init/init.time_daemon.rc
