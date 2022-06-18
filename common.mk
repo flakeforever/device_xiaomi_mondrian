@@ -78,6 +78,7 @@ PRODUCT_PACKAGES += \
     CarrierConfigResCommon_Sys \
     FrameworksResCommon_Sys \
     FrameworksResTarget_Vendor \
+    FrameworksResXiaomi \
     SettingsResCommon_Sys \
     SystemUIResCommon_Sys \
     TelecommResCommon_Sys \
