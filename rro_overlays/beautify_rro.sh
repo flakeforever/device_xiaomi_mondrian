@@ -34,6 +34,9 @@ else
     "com.android.systemui")
         SRC_DIR=${ANDROID_ROOT}/frameworks/base/packages/SystemUI
         ;;
+    "com.android.providers.settings")
+        SRC_DIR=${ANDROID_ROOT}/frameworks/base/packages/SettingsProvider
+        ;;
     *)
         SRC_DIR=$(rg "package=\"${targetPackage}\"" ${ANDROID_ROOT}/packages/ | grep -v install-in-user-type | sed "s/://g" | awk '{print $1}' | sed "s/\(..\/..\/..\/[a-zA-Z0-9]\+\/[a-zA-Z0-9]\+\/[a-zA-Z0-9]\+\).*/\1/g" | head -1)
         ;;
