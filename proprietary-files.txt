@@ -50,7 +50,6 @@ vendor/lib64/soundfx/libvolumelistener.so|679e1432d75e1b31c17658cd10fa68a3a188b7
 -vendor/etc/vintf/manifest/android.hardware.health@2.1.xml
 -vendor/etc/vintf/manifest/android.hardware.neuralnetworks-shim-service-qti.xml
 -vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
--vendor/etc/vintf/manifest/android.hardware.sensors@2.1-multihal.xml
 -vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.qti.xml
 -vendor/etc/vintf/manifest/android.hardware.usb@1.2-service.xml
 -vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml
@@ -204,7 +203,6 @@ vendor/bin/hw/android.hardware.media.omx@1.0-service
 vendor/bin/hw/android.hardware.neuralnetworks-shim-service-qti
 vendor/bin/hw/android.hardware.power-service
 vendor/bin/hw/android.hardware.security.keymint-service-qti
-vendor/bin/hw/android.hardware.sensors@2.1-service.multihal
 vendor/bin/hw/android.hardware.thermal@2.0-service.qti-v2
 vendor/bin/hw/android.hardware.usb@1.2-service-qti
 vendor/bin/hw/android.hardware.wifi@1.0-service
@@ -865,7 +863,6 @@ vendor/etc/init/android.hardware.media.omx@1.0-service.rc
 vendor/etc/init/android.hardware.neuralnetworks-shim-service-qti.rc
 vendor/etc/init/android.hardware.power-service.rc
 vendor/etc/init/android.hardware.security.keymint-service-qti.rc
-vendor/etc/init/android.hardware.sensors@2.1-service-multihal.rc
 vendor/etc/init/android.hardware.thermal@2.0-service.qti-v2.rc
 vendor/etc/init/android.hardware.usb@1.2-service-qti.rc
 vendor/etc/init/android.hardware.wifi.supplicant-service.rc
@@ -1298,7 +1295,6 @@ vendor/etc/sensors/config/sx932x_0.json
 vendor/etc/sensors/config/sx933x_0.json
 vendor/etc/sensors/config/tcs3408.json
 vendor/etc/sensors/config/tmd3719.json
-vendor/etc/sensors/hals.conf
 vendor/etc/sensors/sensorDisplayMap.json
 vendor/etc/sensors/sns_reg_config
 vendor/etc/silent-3sec.wav
@@ -1792,10 +1788,6 @@ vendor/lib/android.hardware.secure_element@1.0-impl.so
 vendor/lib/android.hardware.secure_element@1.0.so
 vendor/lib/android.hardware.secure_element@1.1.so
 vendor/lib/android.hardware.secure_element@1.2.so
-vendor/lib/android.hardware.sensors@1.0.so
-vendor/lib/android.hardware.sensors@2.0-ScopedWakelock.so
-vendor/lib/android.hardware.sensors@2.0.so
-vendor/lib/android.hardware.sensors@2.1.so
 vendor/lib/android.hardware.soundtrigger@2.1.so
 vendor/lib/android.hardware.soundtrigger@2.2.so
 vendor/lib/android.hardware.soundtrigger@2.3.so
@@ -2842,10 +2834,6 @@ vendor/lib64/android.hardware.secure_element@1.0-impl.so
 vendor/lib64/android.hardware.secure_element@1.0.so
 vendor/lib64/android.hardware.secure_element@1.1.so
 vendor/lib64/android.hardware.secure_element@1.2.so
-vendor/lib64/android.hardware.sensors@1.0.so
-vendor/lib64/android.hardware.sensors@2.0-ScopedWakelock.so
-vendor/lib64/android.hardware.sensors@2.0.so
-vendor/lib64/android.hardware.sensors@2.1.so
 vendor/lib64/android.hardware.soundtrigger@2.1.so
 vendor/lib64/android.hardware.soundtrigger@2.2.so
 vendor/lib64/android.hardware.soundtrigger@2.3.so
