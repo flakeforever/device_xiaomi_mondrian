@@ -77,10 +77,6 @@ DEVICE_MANIFEST_SKUS := taro
 DEVICE_MANIFEST_TARO_FILES := \
     $(COMMON_PATH)/hidl/manifest_taro.xml
 
-ODM_MANIFEST_SKUS := cupid
-ODM_MANIFEST_CUPID_FILES := \
-    $(COMMON_PATH)/hidl/manifest_cupid.xml
-
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(COMMON_PATH)/hidl/vendor_framework_compatibility_matrix.xml \
     $(COMMON_PATH)/hidl/xiaomi_framework_compatibility_matrix.xml \
