@@ -75,7 +75,8 @@ DEVICE_MATRIX_FILE := $(COMMON_PATH)/hidl/compatibility_matrix.xml
 
 DEVICE_MANIFEST_SKUS := taro
 DEVICE_MANIFEST_TARO_FILES := \
-    $(COMMON_PATH)/hidl/manifest_taro.xml
+    $(COMMON_PATH)/hidl/manifest_taro.xml \
+    $(COMMON_PATH)/hidl/manifest_vendor.xml
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(COMMON_PATH)/hidl/vendor_framework_compatibility_matrix.xml \
