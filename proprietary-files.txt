@@ -1913,7 +1913,7 @@ vendor/lib/libGPQTEEC_vendor.so
 vendor/lib/libGPTEE_vendor.so
 vendor/lib/libGPreqcancel.so
 vendor/lib/libGPreqcancel_svc.so
-vendor/lib/libMegviiFacepp-0.5.2.so
+#vendor/lib/libMegviiFacepp-0.5.2.so
 vendor/lib/libMiDispDevManager.so
 vendor/lib/libOmxCore.so
 vendor/lib/libOpenCL.so
@@ -2113,7 +2113,7 @@ vendor/lib/liblx-osal.so
 vendor/lib/libmcs.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libmdsprpc.so
-vendor/lib/libmegface.so
+#vendor/lib/libmegface.so
 vendor/lib/libmemutils.so
 vendor/lib/libmfido.so
 vendor/lib/libmi-stc-HW-modulate.so
@@ -3157,7 +3157,7 @@ vendor/lib64/libGPTEE_vendor.so
 vendor/lib64/libGPreqcancel.so
 vendor/lib64/libGPreqcancel_svc.so
 vendor/lib64/libMapService.so
-vendor/lib64/libMegviiFacepp-0.5.2.so
+#vendor/lib64/libMegviiFacepp-0.5.2.so
 vendor/lib64/libMiDispDevManager.so
 vendor/lib64/libOmxCore.so
 vendor/lib64/libOpenCL.so
@@ -3442,7 +3442,7 @@ vendor/lib64/libmctfengine_stub.so
 vendor/lib64/libmdmdetect.so
 vendor/lib64/libmdmimgload.so
 vendor/lib64/libmdsprpc.so
-vendor/lib64/libmegface.so
+#vendor/lib64/libmegface.so
 vendor/lib64/libmemperfd.so
 vendor/lib64/libmemunreachable.so
 vendor/lib64/libmemutils.so
