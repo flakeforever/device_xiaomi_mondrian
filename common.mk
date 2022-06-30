@@ -128,6 +128,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power-service-qti
+
+PRODUCT_COPY_FILES += \
+    vendor/qcom/opensource/power/config/taro/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+
 # QTI
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml \
