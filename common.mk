@@ -117,14 +117,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     CarrierConfigResCommon_Sys \
     FrameworksResCommon_Sys \
-    FrameworksResTarget_Vendor \
-    FrameworksResXiaomi \
-    SettingsProviderResXiaomi \
     SettingsResCommon_Sys \
     SystemUIResCommon_Sys \
     TelecommResCommon_Sys \
     TelephonyResCommon_Sys \
-    WifiResCommon_Sys \
+    WifiResCommon_Sys
+
+PRODUCT_PACKAGES += \
+    FrameworksResTarget_Vendor \
+    FrameworksResXiaomi \
+    SettingsProviderResXiaomi \
     WifiResTarget \
     WifiResTarget_spf
 
