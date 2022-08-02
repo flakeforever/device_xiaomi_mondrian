@@ -6,7 +6,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Note: This setting is deprecated, please use
     config_screenBrightnessSettingMinimumFloat instead -->
-    <integer name="config_screenBrightnessSettingMinimum">16</integer>
+    <integer name="config_screenBrightnessSettingMinimum">1</integer>
 
     <!-- Note: This setting is deprecated, please use
     config_screenBrightnessSettingMaximumFloat instead -->
