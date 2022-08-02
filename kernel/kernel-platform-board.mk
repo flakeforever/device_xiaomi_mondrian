@@ -1,4 +1,3 @@
-ifeq ($(call is-board-platform-in-list,$(TARGET_BOARD_PLATFORM)),true)
 ifeq ($(TARGET_USES_KERNEL_PLATFORM),true)
 
 ifeq ($(wildcard $(KERNEL_PREBUILT_DIR)/),)
@@ -54,4 +53,3 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(wildcard $(KERNEL_PREBUI
 endif # ($(wildcard $(KERNEL_PREBUILT_DIR)/),)
 
 endif # ($(TARGET_USES_KERNEL_PLATFORM),true)
-endif # ($(call is-board-platform-in-list,$(TARGET_BOARD_PLATFORM)),true)
