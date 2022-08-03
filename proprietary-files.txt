@@ -360,8 +360,6 @@ vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/bin/btconfig
 vendor/bin/wdsdaemon
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
-vendor/etc/permissions/android.hardware.bluetooth.xml
-vendor/etc/permissions/android.hardware.bluetooth_le.xml
 vendor/lib/hw/android.hardware.bluetooth.audio@2.0-impl.so
 vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib/hw/audio.bluetooth_qti.default.so
@@ -762,10 +760,6 @@ vendor/etc/camera/st_license.lic
 vendor/etc/camera/superiq_model
 vendor/etc/camera/vidhance_calibration
 vendor/etc/init/vendor.qti.camera.provider@2.7-service_64.rc
-vendor/etc/permissions/android.hardware.camera.flash-autofocus.xml
-vendor/etc/permissions/android.hardware.camera.front.xml
-vendor/etc/permissions/android.hardware.camera.full.xml
-vendor/etc/permissions/android.hardware.camera.raw.xml
 vendor/lib/camera/com.qti.sensormodule.cupid_ofilm_ov32b40_front.bin
 vendor/lib/camera/com.qti.sensormodule.cupid_semco_imx700_wide.bin
 vendor/lib/camera/com.qti.sensormodule.cupid_semco_imx707_wide.bin
@@ -1933,7 +1927,6 @@ vendor/etc/init/ffu.rc
 # Fingerprint
 vendor/app/goodix_sz/goodix_sz.apk
 vendor/etc/init/init.mfp-daemon.rc
-vendor/etc/permissions/android.hardware.fingerprint.xml
 vendor/etc/permissions/qti_fingerprint_interface.xml
 -vendor/etc/vintf/manifest/fod.xml
 vendor/lib/hw/fingerprint.goodix_fod.so:vendor/lib/hw/fingerprint.goodix_fod.default.so
@@ -1989,7 +1982,6 @@ vendor/bin/xtwifi-inet-agent
 vendor/etc/init/android.hardware.gnss-aidl-service-qti.rc
 vendor/etc/init/init.qdmastats.rc
 vendor/etc/init/loc-launcher.rc
-vendor/etc/permissions/android.hardware.location.gps.xml
 vendor/etc/seccomp_policy/gnss@2.0-base.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtra-daemon.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtwifi-client.policy
@@ -2118,8 +2110,6 @@ vendor/lib64/vendor.qti.gnss@4.0.so
 
 # Graphics (Adreno)
 vendor/app/com.qualcomm.qti.gpudrivers.taro.api31/com.qualcomm.qti.gpudrivers.taro.api31.apk
-vendor/etc/permissions/android.hardware.opengles.aep.xml
-vendor/etc/permissions/android.software.opengles.deqp.level.xml
 vendor/gpu/kbc/sequence_manifest.bin
 vendor/gpu/kbc/unified_kbcs_32.bin
 vendor/gpu/kbc/unified_kbcs_64.bin
@@ -2192,10 +2182,6 @@ vendor/lib/hw/android.hardware.renderscript@1.0-impl.so
 vendor/lib64/hw/android.hardware.renderscript@1.0-impl.so
 
 # Graphics (Vulkan)
-vendor/etc/permissions/android.hardware.vulkan.compute-0.xml
-vendor/etc/permissions/android.hardware.vulkan.level-1.xml
-vendor/etc/permissions/android.hardware.vulkan.version-1_1.xml
-vendor/etc/permissions/android.software.vulkan.deqp.level.xml
 vendor/lib/hw/vulkan.adreno.so
 vendor/lib64/hw/vulkan.adreno.so
 
@@ -2350,7 +2336,6 @@ vendor/etc/init/ipa_fws.rc
 # IR
 vendor/bin/hw/android.hardware.ir@1.0-service
 vendor/etc/init/android.hardware.ir@1.0-service.rc
-vendor/etc/permissions/android.hardware.consumerir.xml
 vendor/lib/hw/android.hardware.ir@1.0-impl.so
 vendor/lib/hw/consumerir.taro.so
 vendor/lib/android.hardware.ir@1.0.so
@@ -2708,7 +2693,6 @@ vendor/lib64/vendor.qti.mstatservice@1.0.so
 vendor/etc/public.libraries.txt
 
 # Network
-vendor/etc/permissions/android.software.ipsec_tunnels.xml
 vendor/lib/android.system.net.netd@1.0.so
 vendor/lib/android.system.net.netd@1.1.so
 vendor/lib64/android.system.net.netd@1.0.so
@@ -2756,13 +2740,6 @@ vendor/bin/pnscr
 vendor/bin/pnscr-mi
 vendor/bin/pnscr-rf
 vendor/etc/init/vendor.nxp.hardware.nfc@2.0-service.rc
-vendor/etc/permissions/android.hardware.nfc.ese.xml
-vendor/etc/permissions/android.hardware.nfc.hce.xml
-vendor/etc/permissions/android.hardware.nfc.hcef.xml
-vendor/etc/permissions/android.hardware.nfc.uicc.xml
-vendor/etc/permissions/android.hardware.nfc.xml
-vendor/etc/permissions/com.android.nfc_extras.xml
-vendor/etc/permissions/com.nxp.mifare.xml
 vendor/etc/libnfc-SN220.conf
 vendor/etc/libnfc-mtp-SN100.conf
 vendor/etc/libnfc-mtp-SN100_38_4MHZ.conf
@@ -3376,8 +3353,6 @@ vendor/etc/device_sar_config.xml
 # Secure element
 vendor/bin/hw/vendor.qti.secure_element@1.2-service
 vendor/etc/init/vendor.qti.secure_element@1.2-service.rc
-vendor/etc/permissions/android.hardware.se.omapi.ese.xml
-vendor/etc/permissions/android.hardware.se.omapi.uicc.xml
 vendor/lib/android.hardware.secure_element@1.0-impl.so
 vendor/lib/android.hardware.secure_element@1.0.so
 vendor/lib/android.hardware.secure_element@1.1.so
@@ -3416,24 +3391,6 @@ vendor/etc/init/init.vendor.sensors.rc
 vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
 vendor/etc/init/vendor.sensors.qti.rc
 vendor/etc/init/vendor.sensors.sscrpcd.rc
-vendor/etc/permissions/sku_cape/android.hardware.sensor.accelerometer.xml
-vendor/etc/permissions/sku_cape/android.hardware.sensor.ambient_temperature.xml
-vendor/etc/permissions/sku_cape/android.hardware.sensor.barometer.xml
-vendor/etc/permissions/sku_cape/android.hardware.sensor.compass.xml
-vendor/etc/permissions/sku_cape/android.hardware.sensor.gyroscope.xml
-vendor/etc/permissions/sku_cape/android.hardware.sensor.hifi_sensors.xml
-vendor/etc/permissions/sku_cape/android.hardware.sensor.light.xml
-vendor/etc/permissions/sku_cape/android.hardware.sensor.proximity.xml
-vendor/etc/permissions/sku_cape/android.hardware.sensor.relative_humidity.xml
-vendor/etc/permissions/sku_cape/android.hardware.sensor.stepcounter.xml
-vendor/etc/permissions/sku_cape/android.hardware.sensor.stepdetector.xml
-vendor/etc/permissions/sku_taro/android.hardware.sensor.accelerometer.xml
-vendor/etc/permissions/sku_taro/android.hardware.sensor.compass.xml
-vendor/etc/permissions/sku_taro/android.hardware.sensor.gyroscope.xml
-vendor/etc/permissions/sku_taro/android.hardware.sensor.light.xml
-vendor/etc/permissions/sku_taro/android.hardware.sensor.proximity.xml
-vendor/etc/permissions/sku_taro/android.hardware.sensor.stepcounter.xml
-vendor/etc/permissions/sku_taro/android.hardware.sensor.stepdetector.xml
 vendor/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml
 vendor/etc/sensors/config/ak991x_dri_0.json
 vendor/etc/sensors/config/bmp285_0.json
@@ -3642,10 +3599,6 @@ system_ext/lib64/libimscamera_jni.so
 system_ext/lib64/libimsmedia_jni.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so
 system_ext/priv-app/ims/ims.apk
-vendor/etc/permissions/android.hardware.telephony.cdma.xml
-vendor/etc/permissions/android.hardware.telephony.gsm.xml
-vendor/etc/permissions/android.hardware.telephony.ims.xml
-vendor/etc/permissions/android.software.sip.voip.xml
 
 # Thermal
 vendor/bin/hw/android.hardware.thermal@2.0-service.qti-v2
@@ -3720,7 +3673,6 @@ vendor/lib64/hw/vendor.xiaomi.hw.touchfeature@1.0-impl.so
 vendor/lib64/vendor.xiaomi.hw.touchfeature@1.0.so
 
 # Touchscreen
-vendor/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
 vendor/firmware/st_fts_l3.ftb
 vendor/firmware/st_fts_l3_thp.ftb
 vendor/firmware/stm_fts_production_limits.csv
@@ -3782,15 +3734,10 @@ vendor/bin/hw/android.hardware.usb@1.2-service-qti
 vendor/bin/init.qcom.usb.sh
 vendor/etc/init/hw/init.qcom.usb.rc
 vendor/etc/init/android.hardware.usb@1.2-service-qti.rc
-vendor/etc/permissions/android.hardware.usb.accessory.xml
-vendor/etc/permissions/android.hardware.usb.host.xml
 -vendor/etc/vintf/manifest/android.hardware.usb@1.2-service.xml
 vendor/lib64/android.hardware.usb@1.0.so
 vendor/lib64/android.hardware.usb@1.1.so
 vendor/lib64/android.hardware.usb@1.2.so
-
-# Verified boot
-vendor/etc/permissions/android.software.verified_boot.xml
 
 # Vibrator
 vendor/bin/vib_cal
@@ -4104,11 +4051,6 @@ vendor/etc/init/ipacm.rc
 vendor/etc/init/vendor.qti.hardware.wifi.wificfr@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.wifi.wifilearner@1.0-service.rc
 vendor/etc/init/vendor.wlan.lowirpcd.rc
-vendor/etc/permissions/android.hardware.wifi.aware.xml
-vendor/etc/permissions/android.hardware.wifi.direct.xml
-vendor/etc/permissions/android.hardware.wifi.passpoint.xml
-vendor/etc/permissions/android.hardware.wifi.rtt.xml
-vendor/etc/permissions/android.hardware.wifi.xml
 -vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml
 -vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml
 -vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml
