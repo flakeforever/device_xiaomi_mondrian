@@ -5,7 +5,7 @@ $(warning $(KERNEL_PREBUILT_DIR) does not exist and TARGET_USES_KERNEL_PLATFORM=
 else
 ################################################################################
 # UAPI headers
-TARGET_BOARD_KERNEL_HEADERS := $(KERNEL_PREBUILT_DIR)/kernel-headers
+#TARGET_BOARD_KERNEL_HEADERS := $(KERNEL_PREBUILT_DIR)/kernel-headers
 
 ################################################################################
 # Path to unsigned abl image
