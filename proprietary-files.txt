@@ -243,10 +243,6 @@ vendor/etc/kvh2xml.xml
 vendor/etc/top_spk.wav
 vendor/etc/top_spk_hp.wav
 
-# authsecret
-vendor/lib/android.hardware.authsecret@1.0.so
-vendor/lib64/android.hardware.authsecret@1.0.so
-
 # automotive
 vendor/lib/vendor.qti.hardware.automotive.vehicle@1.0.so
 vendor/lib64/vendor.qti.hardware.automotive.vehicle@1.0.so
