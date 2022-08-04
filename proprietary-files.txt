@@ -145,10 +145,7 @@ vendor/etc/audio_policy_engine_default_stream_volumes.xml
 vendor/etc/audio_policy_engine_product_strategies.xml
 vendor/etc/audio_policy_engine_stream_volumes.xml
 vendor/etc/silent-3sec.wav
-vendor/lib/hw/audio.bluetooth.default.so
 vendor/lib/hw/audio.primary.taro.so
-vendor/lib/hw/audio.r_submix.default.so
-vendor/lib/hw/audio.usb.default.so
 vendor/lib/soundfx/libasphere.so
 vendor/lib/soundfx/libmisoundfx.so
 vendor/lib/soundfx/libqcompostprocbundle.so
@@ -160,7 +157,6 @@ vendor/lib/soundfx/libswgamedap.so
 vendor/lib/soundfx/libswvqe.so
 vendor/lib/libadm.so
 vendor/lib/libadsprpc.so
-vendor/lib/libalsautils.so
 vendor/lib/libar-acdb.so
 vendor/lib/libar-gpr.so
 vendor/lib/libar-gsl.so
@@ -187,10 +183,7 @@ vendor/lib/libsndcardparser.so
 vendor/lib/libtinycompress.so
 vendor/lib/vendor.qti.hardware.pal@1.0-impl.so
 vendor/lib/vendor.qti.hardware.pal@1.0.so
-vendor/lib64/hw/audio.bluetooth.default.so
 vendor/lib64/hw/audio.primary.taro.so
-vendor/lib64/hw/audio.r_submix.default.so
-vendor/lib64/hw/audio.usb.default.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libmisoundfx.so
 vendor/lib64/soundfx/libqcompostprocbundle.so
@@ -202,7 +195,6 @@ vendor/lib64/soundfx/libswgamedap.so
 vendor/lib64/soundfx/libswvqe.so
 vendor/lib64/libadm.so
 vendor/lib64/libadsprpc.so
-vendor/lib64/libalsautils.so
 vendor/lib64/libar-acdb.so
 vendor/lib64/libar-gpr.so
 vendor/lib64/libar-gsl.so
@@ -2188,13 +2180,9 @@ vendor/etc/media_profiles.xml
 vendor/etc/media_profiles_V1_0.xml
 vendor/etc/media_profiles_cape.xml
 vendor/etc/media_profiles_taro.xml
-vendor/lib/android.hardware.media.c2@1.0.so
 vendor/lib/libEvrcSwCodec.so
 vendor/lib/libOmxCore.so
 vendor/lib/libQcelp13SwCodec.so
-vendor/lib/libcodec2_hidl@1.0.so
-vendor/lib/libcodec2_hidl_plugin.so
-vendor/lib/libcodec2_vndk.so
 vendor/lib/libdeccfg.so
 vendor/lib/libmm-omxcore.so
 vendor/lib/libplatformconfig.so
@@ -2225,16 +2213,11 @@ vendor/lib/libstagefright_soft_ddpdec.so
 vendor/lib/libstagefrighthw.so
 vendor/lib/libvideotxr.so
 vendor/lib/qti.video.utils.videobufferlayout.so
-vendor/lib64/android.hardware.media.c2@1.0.so
 vendor/lib64/libEvrcSwCodec.so
 vendor/lib64/libOmxCore.so
 vendor/lib64/libQcelp13SwCodec.so
 vendor/lib64/libavservices_minijail.so
 vendor/lib64/libavservices_minijail_vendor.so
-vendor/lib64/libcodec2_hidl@1.0.so
-vendor/lib64/libcodec2_hidl_plugin.so
-vendor/lib64/libcodec2_soft_common.so
-vendor/lib64/libcodec2_vndk.so
 vendor/lib64/libdeccfg.so
 vendor/lib64/libmm-omxcore.so
 vendor/lib64/libplatformconfig.so
@@ -2393,12 +2376,6 @@ vendor/lib64/vendor.qti.mstatservice@1.0.so
 
 # Native public libraries
 vendor/etc/public.libraries.txt
-
-# Network
-vendor/lib/android.system.net.netd@1.0.so
-vendor/lib/android.system.net.netd@1.1.so
-vendor/lib64/android.system.net.netd@1.0.so
-vendor/lib64/android.system.net.netd@1.1.so
 
 # Neural networks
 vendor/bin/hw/android.hardware.neuralnetworks-shim-service-qti
