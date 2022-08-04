@@ -217,7 +217,8 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_PACKAGES += \
-    libcodec2_hidl@1.0.vendor
+    libcodec2_hidl@1.0.vendor \
+    libcodec2_soft_common.vendor
 
 PRODUCT_PACKAGES += \
     init.qti.media.rc \
