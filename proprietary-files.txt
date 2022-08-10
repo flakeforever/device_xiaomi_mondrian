@@ -2578,8 +2578,6 @@ vendor/lib64/libpowercore.so
 # Psiclient
 vendor/bin/hw/vendor.qti.psiclient@1.0-service
 vendor/etc/init/vendor.qti.psiclient@1.0-service.rc
-vendor/lib/libpsi.so
-vendor/lib64/libpsi.so
 
 # QCC
 vendor/lib/vendor.qti.hardware.qccsyshal@1.0.so
