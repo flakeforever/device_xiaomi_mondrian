@@ -3222,7 +3222,6 @@ vendor/lib/libTrustedUITZ.so
 vendor/lib/libTrustedUIVM.so
 vendor/lib/libminksocket_vendor.so
 vendor/lib/libsi.so
-vendor/lib/vendor.qti.hardware.systemhelper@1.0.so
 vendor/lib/vendor.qti.hardware.trustedui@1.0.so
 vendor/lib/vendor.qti.hardware.trustedui@1.1.so
 vendor/lib/vendor.qti.hardware.trustedui@1.2.so
@@ -3235,7 +3234,6 @@ vendor/lib64/libTrustedUITZ.so
 vendor/lib64/libTrustedUIVM.so
 vendor/lib64/libminksocket_vendor.so
 vendor/lib64/libsi.so
-vendor/lib64/vendor.qti.hardware.systemhelper@1.0.so
 vendor/lib64/vendor.qti.hardware.trustedui@1.0.so
 vendor/lib64/vendor.qti.hardware.trustedui@1.1.so
 vendor/lib64/vendor.qti.hardware.trustedui@1.2.so
