@@ -187,12 +187,10 @@ PRODUCT_COPY_FILES += \
 # Graphics
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4.vendor \
-    libdisplayconfig.qti \
     libgralloc.qti \
     libgui_vendor \
     libqdMetaData \
     vendor.display.config@1.11.vendor \
-    vendor.display.config@2.0.vendor \
     vendor.qti.hardware.display.allocator@1.0.vendor \
     vendor.qti.hardware.display.allocator@3.0.vendor \
     vendor.qti.hardware.display.allocator@4.0.vendor \
@@ -261,10 +259,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qti.media.rc \
     init.qti.media.sh
-
-# Minijail
-PRODUCT_PACKAGES += \
-    libavservices_minijail.vendor
 
 # Network
 PRODUCT_PACKAGES += \
