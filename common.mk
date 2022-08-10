@@ -280,6 +280,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/power/config/taro/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
+# QTI
+PRODUCT_PACKAGES += \
+    libvndfwk_detect_jni.qti_vendor
+
 # Recovery
 PRODUCT_PACKAGES += \
     fastbootd
