@@ -1294,14 +1294,6 @@ vendor/lib/libsre.so
 vendor/lib/libtruetone.so
 vendor/lib/libvideomode.so
 vendor/lib/vendor.display.postproc@1.0.so
-vendor/lib/vendor.qti.hardware.display.mapper@1.0.so
-vendor/lib/vendor.qti.hardware.display.mapper@1.1.so
-vendor/lib/vendor.qti.hardware.display.mapper@2.0.so
-vendor/lib/vendor.qti.hardware.display.mapper@3.0.so
-vendor/lib/vendor.qti.hardware.display.mapper@4.0.so
-vendor/lib/vendor.qti.hardware.display.mapperextensions@1.0.so
-vendor/lib/vendor.qti.hardware.display.mapperextensions@1.1.so
-vendor/lib/vendor.qti.hardware.display.mapperextensions@1.2.so
 vendor/lib/vendor.xiaomi.hardware.displayfeature@1.0.so
 vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so
 vendor/lib64/hw/displayfeature.default.so
@@ -1324,14 +1316,6 @@ vendor/lib64/libtruetone.so
 vendor/lib64/libvideomode.so
 vendor/lib64/libwfddisplayconfig_vendor.so
 vendor/lib64/vendor.qti.hardware.display.demura@2.0.so
-vendor/lib64/vendor.qti.hardware.display.mapper@1.0.so
-vendor/lib64/vendor.qti.hardware.display.mapper@1.1.so
-vendor/lib64/vendor.qti.hardware.display.mapper@2.0.so
-vendor/lib64/vendor.qti.hardware.display.mapper@3.0.so
-vendor/lib64/vendor.qti.hardware.display.mapper@4.0.so
-vendor/lib64/vendor.qti.hardware.display.mapperextensions@1.0.so
-vendor/lib64/vendor.qti.hardware.display.mapperextensions@1.1.so
-vendor/lib64/vendor.qti.hardware.display.mapperextensions@1.2.so
 vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
 
 # Display (HDR)
