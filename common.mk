@@ -181,7 +181,10 @@ PRODUCT_PACKAGES += \
     libdisplayconfig.qti.vendor \
     libgralloc.qti.vendor \
     libgui_vendor \
-    libqdMetaData.vendor
+    libqdMetaData.vendor \
+    vendor.display.config@1.11.vendor \
+    vendor.display.config@2.0.vendor \
+
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
