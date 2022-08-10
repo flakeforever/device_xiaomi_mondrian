@@ -1315,7 +1315,6 @@ vendor/lib64/libsre.so
 vendor/lib64/libtruetone.so
 vendor/lib64/libvideomode.so
 vendor/lib64/libwfddisplayconfig_vendor.so
-vendor/lib64/vendor.qti.hardware.display.demura@2.0.so
 vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
 
 # Display (HDR)
