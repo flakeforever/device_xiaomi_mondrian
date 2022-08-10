@@ -3741,7 +3741,6 @@ vendor/lib/libcalculator.so
 vendor/lib/libcalculator_htp.so
 vendor/lib/libesesbprovision.so
 vendor/lib/libgame_enhance.so
-vendor/lib/libgrpc++_unsecure.so
 vendor/lib/libhdr_hbm.so
 vendor/lib/libhdrdynamic.so
 vendor/lib/libhdrdynamicootf.so
@@ -3771,7 +3770,6 @@ vendor/lib64/libcalculator.so
 vendor/lib64/libcalculator_htp.so
 vendor/lib64/libesesbprovision.so
 vendor/lib64/libgame_enhance.so
-vendor/lib64/libgrpc++_unsecure.so
 vendor/lib64/libhdr_hbm.so
 vendor/lib64/libhdrdynamic.so
 vendor/lib64/libhdrdynamicootf.so
