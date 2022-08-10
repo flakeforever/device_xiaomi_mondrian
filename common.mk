@@ -180,6 +180,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4.vendor \
     libdisplayconfig.qti.vendor \
     libgralloc.qti.vendor \
+    libgui_vendor \
     libqdMetaData.vendor
 
 PRODUCT_COPY_FILES += \
