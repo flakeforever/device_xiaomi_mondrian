@@ -2161,7 +2161,6 @@ vendor/lib64/c2.dolby.hevc.sec.dec.so
 vendor/lib64/c2.dolby.store.so
 vendor/lib64/libdolbyottcameracontrol.so
 vendor/lib64/libdovi.so
-vendor/lib64/libsfplugin_ccodec_utils.so
 vendor/lib64/libstagefrightdolby.so
 
 # Micharge (wireless charging)
