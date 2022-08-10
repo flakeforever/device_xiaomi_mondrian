@@ -114,6 +114,7 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0-impl \
     com.qualcomm.qti.bluetooth_audio@1.0.vendor \
     vendor.qti.hardware.bluetooth_audio@2.1.vendor \
+    vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor
 
 PRODUCT_COPY_FILES += \
@@ -155,7 +156,8 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.4-service.clearkey
+    android.hardware.drm@1.4-service.clearkey \
+    libdrm.vendor
 
 # Dumpstate
 PRODUCT_PACKAGES += \
@@ -176,7 +178,8 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1.vendor \
-    android.hardware.power@1.2.vendor
+    android.hardware.power@1.2.vendor \
+    libgrpc++_unsecure.vendor
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml
@@ -184,10 +187,10 @@ PRODUCT_COPY_FILES += \
 # Graphics
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4.vendor \
-    libdisplayconfig.qti.vendor \
-    libgralloc.qti.vendor \
+    libdisplayconfig.qti \
+    libgralloc.qti \
     libgui_vendor \
-    libqdMetaData.vendor \
+    libqdMetaData \
     vendor.display.config@1.11.vendor \
     vendor.display.config@2.0.vendor \
     vendor.qti.hardware.display.allocator@1.0.vendor \
@@ -258,6 +261,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qti.media.rc \
     init.qti.media.sh
+
+# Minijail
+PRODUCT_PACKAGES += \
+    libavservices_minijail.vendor
 
 # Network
 PRODUCT_PACKAGES += \
