@@ -2291,7 +2291,6 @@ vendor/lib/libQnnHtpNetRunExtensions.so
 vendor/lib/libQnnHtpProfilingReader.so
 vendor/lib/libQnnHtpStub.so
 vendor/lib/libQnnHtpV69CalculatorStub.so
-vendor/lib64/android.hardware.neuralnetworks-V1-ndk_platform.so
 vendor/lib64/libQnnDspNetRunExtensions.so
 vendor/lib64/libQnnGpu.so
 vendor/lib64/libQnnGpuNetRunExtensions.so
