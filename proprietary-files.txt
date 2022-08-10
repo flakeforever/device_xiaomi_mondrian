@@ -1296,12 +1296,6 @@ vendor/lib/libsre.so
 vendor/lib/libtruetone.so
 vendor/lib/libvideomode.so
 vendor/lib/vendor.display.postproc@1.0.so
-vendor/lib/vendor.qti.hardware.display.allocator@1.0.so
-vendor/lib/vendor.qti.hardware.display.allocator@3.0.so
-vendor/lib/vendor.qti.hardware.display.allocator@4.0.so
-vendor/lib/vendor.qti.hardware.display.composer@1.0.so
-vendor/lib/vendor.qti.hardware.display.composer@2.0.so
-vendor/lib/vendor.qti.hardware.display.composer@3.0.so
 vendor/lib/vendor.qti.hardware.display.config-V1-ndk_platform.so
 vendor/lib/vendor.qti.hardware.display.config-V2-ndk_platform.so
 vendor/lib/vendor.qti.hardware.display.config-V3-ndk_platform.so
@@ -1336,13 +1330,6 @@ vendor/lib64/libsre.so
 vendor/lib64/libtruetone.so
 vendor/lib64/libvideomode.so
 vendor/lib64/libwfddisplayconfig_vendor.so
-vendor/lib64/vendor.qti.hardware.display.allocator@1.0.so
-vendor/lib64/vendor.qti.hardware.display.allocator@3.0.so
-vendor/lib64/vendor.qti.hardware.display.allocator@4.0.so
-vendor/lib64/vendor.qti.hardware.display.composer@1.0.so
-vendor/lib64/vendor.qti.hardware.display.composer@2.0.so
-vendor/lib64/vendor.qti.hardware.display.composer@3.0.so
-vendor/lib64/vendor.qti.hardware.display.composer@3.1.so
 vendor/lib64/vendor.qti.hardware.display.config-V1-ndk_platform.so
 vendor/lib64/vendor.qti.hardware.display.config-V2-ndk_platform.so
 vendor/lib64/vendor.qti.hardware.display.config-V3-ndk_platform.so
