@@ -1290,7 +1290,6 @@ vendor/lib/libdisplayfeatureservice.so
 vendor/lib/libdither.so
 vendor/lib/libfpsmonitor.so
 vendor/lib/libgpu_tonemapper.so
-vendor/lib/libgralloc.qti.so
 vendor/lib/libgralloccore.so
 vendor/lib/libgrallocutils.so
 vendor/lib/libmiBrightness.so
@@ -1345,7 +1344,6 @@ vendor/lib64/libdisplayfeatureservice.so
 vendor/lib64/libdither.so
 vendor/lib64/libfpsmonitor.so
 vendor/lib64/libgpu_tonemapper.so
-vendor/lib64/libgralloc.qti.so
 vendor/lib64/libgralloccore.so
 vendor/lib64/libgrallocutils.so
 vendor/lib64/libmiBrightness.so
