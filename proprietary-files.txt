@@ -177,7 +177,6 @@ vendor/lib/libpalclient.so
 vendor/lib/libqtigefar.so
 vendor/lib/libresampler.so
 vendor/lib/libsndcardparser.so
-vendor/lib/libtinycompress.so
 vendor/lib/vendor.qti.hardware.pal@1.0-impl.so
 vendor/lib/vendor.qti.hardware.pal@1.0.so
 vendor/lib64/hw/audio.primary.taro.so
@@ -215,7 +214,6 @@ vendor/lib64/libpalclient.so
 vendor/lib64/libqtigefar.so
 vendor/lib64/libresampler.so
 vendor/lib64/libsndcardparser.so
-vendor/lib64/libtinycompress.so
 vendor/lib64/vendor.qti.hardware.pal@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.pal@1.0.so
 
