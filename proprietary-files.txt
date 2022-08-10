@@ -172,7 +172,6 @@ vendor/lib/libkaraokepal.so
 vendor/lib/liblx-ar_util.so
 vendor/lib/liblx-osal.so
 vendor/lib/libmcs.so
-vendor/lib/libnbaio_mono.so
 vendor/lib/libpal_net_if.so
 vendor/lib/libpalclient.so
 vendor/lib/libqtigefar.so
@@ -211,7 +210,6 @@ vendor/lib64/libkaraokepal.so
 vendor/lib64/liblx-ar_util.so
 vendor/lib64/liblx-osal.so
 vendor/lib64/libmcs.so
-vendor/lib64/libnbaio_mono.so
 vendor/lib64/libpal_net_if.so
 vendor/lib64/libpalclient.so
 vendor/lib64/libqtigefar.so
