@@ -3574,11 +3574,6 @@ vendor/bin/vmmgr
 vendor/etc/init/vmmgr.rc
 vendor/etc/vmmgr.conf
 
-# vndservice
-vendor/bin/vndservice
-vendor/bin/vndservicemanager
-vendor/etc/init/vndservicemanager.rc
-
 # VPP
 vendor/bin/hw/qconfigservice
 vendor/bin/qconfigfunctest
