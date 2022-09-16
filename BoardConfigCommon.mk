@@ -84,11 +84,20 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     vendor/lineage/config/device_framework_matrix.xml
 
 # Kernel
-include $(COMMON_PATH)/kernel/kernel-platform-board.mk
+# is-board-platform-in-list is used in split files below
+# from https://git.codelinaro.org/clo/la/platform/vendor/qcom-opensource/core-utils/-/blob/LA.QSSI.12.0.r1-08700.03-qssi.0/build/utils.mk
+include $(COMMON_PATH)/build/utils.mk
 
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_FILTER := $(KERNEL_PREBUILT_DIR)/vendor_dlkm/qca6490.ko
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := \
-    $(filter-out $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_FILTER),$(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
+include $(COMMON_PATH)/kernel/kernel-platform-board.mk
+include vendor/qcom/opensource/audio-kernel/audio_kernel_vendor_board.mk
+include vendor/qcom/opensource/camera-kernel/board.mk
+include vendor/qcom/opensource/dataipa/dataipa_dlkm_vendor_board.mk
+include vendor/qcom/opensource/datarmnet-ext/datarmnet_ext_dlkm_vendor_board.mk
+include vendor/qcom/opensource/datarmnet/datarmnet_dlkm_vendor_board.mk
+include vendor/qcom/opensource/display-drivers/display_driver_board.mk
+include vendor/qcom/opensource/eva-kernel/eva_kernel_board.mk
+include vendor/qcom/opensource/mmrm-driver/mmrm_kernel_board.mk
+include vendor/qcom/opensource/video-driver/video_kernel_board.mk
 
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_RAMDISK_USE_LZ4 := true
@@ -113,12 +122,6 @@ BOARD_BOOTCONFIG := \
     androidboot.memcg=1 \
     androidboot.usbcontroller=a600000.dwc3 \
     androidboot.selinux=permissive
-
-TARGET_PREBUILT_KERNEL := $(KERNEL_PREBUILT_DIR)/Image
-TARGET_FORCE_PREBUILT_KERNEL := true
-
-TARGET_KERNEL_SOURCE := kernel/xiaomi/sm8450
-TARGET_KERNEL_CONFIG := vendor/cupid_defconfig
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
@@ -151,7 +154,6 @@ TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
-TARGET_BOARD_PLATFORM := taro
 
 # Power
 TARGET_POWERHAL_MODE_EXT := $(COMMON_PATH)/power/power-mode.cpp
@@ -185,6 +187,7 @@ include device/qcom/sepolicy_vndr/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 # WiFi
+BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
@@ -200,3 +203,14 @@ WIFI_DRIVER_STATE_ON := "ON"
 WIFI_HIDL_FEATURE_AWARE := true
 WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+
+PRODUCT_VENDOR_MOVE_ENABLED := true
+WIFI_DRIVER_INSTALL_TO_KERNEL_OUT := true
+ifneq ($(TARGET_WLAN_CHIP),)
+	BOARD_VENDOR_KERNEL_MODULES += $(foreach chip, $(TARGET_WLAN_CHIP), $(KERNEL_MODULES_OUT)/$(WLAN_CHIPSET)_$(chip).ko)
+else
+	BOARD_VENDOR_KERNEL_MODULES += $(KERNEL_MODULES_OUT)/qca_cld3_wlan.ko
+endif
+
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB_EVENT := "ON"
+BOARD_HOSTAPD_PRIVATE_LIB_EVENT := "ON"

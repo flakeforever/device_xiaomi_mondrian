@@ -4,6 +4,8 @@ KERNEL_DEBUG_FILES := $(if $(wildcard $(LOCAL_PATH)/),$(call find-subdir-files,-
 
 kernel-debug-src-to-module = $(foreach f,$1,kernel-debug-$(subst /,-,$f))
 
+$(warning KERNEL_MODULES_OUT: $(KERNEL_MODULES_OUT) proper: $(PRODUCT_OUT)/$(KERNEL_MODULES_INSTALL)/lib/modules)
+
 define add-kernel-debug-file
 include $(CLEAR_VARS)
 LOCAL_MODULE := $(call kernel-debug-src-to-module,$1)
