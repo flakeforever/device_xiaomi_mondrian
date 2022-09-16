@@ -29,8 +29,8 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Inherit from the proprietary version
 $(call inherit-product, vendor/xiaomi/sm8450-common/sm8450-common-vendor.mk)
 
-# Kernel
-$(call inherit-product, $(LOCAL_PATH)/kernel/kernel-platform-product.mk)
+# Platform
+TARGET_BOARD_PLATFORM := taro
 
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -244,6 +244,19 @@ PRODUCT_COPY_FILES += \
 # JSON
 PRODUCT_PACKAGES += \
     libjson
+
+# Kernel
+$(call inherit-product, $(LOCAL_PATH)/kernel/kernel-platform-product.mk)
+$(call inherit-product, vendor/qcom/opensource/audio-kernel/audio_kernel_product_board.mk)
+$(call inherit-product, vendor/qcom/opensource/camera-kernel/config/waipio.mk)
+$(call inherit-product, vendor/qcom/opensource/camera-kernel/product.mk)
+$(call inherit-product, vendor/qcom/opensource/dataipa/dataipa_dlkm_vendor_product.mk)
+$(call inherit-product, vendor/qcom/opensource/datarmnet-ext/datarmnet_ext_dlkm_vendor_product.mk)
+$(call inherit-product, vendor/qcom/opensource/datarmnet/datarmnet_dlkm_vendor_product.mk)
+$(call inherit-product, vendor/qcom/opensource/display-drivers/display_driver_product.mk)
+$(call inherit-product, vendor/qcom/opensource/eva-kernel/eva_kernel_product.mk)
+$(call inherit-product, vendor/qcom/opensource/mmrm-driver/mmrm_kernel_board.mk)
+$(call inherit-product, vendor/qcom/opensource/video-driver/video_kernel_board.mk)
 
 # Keymaster
 PRODUCT_PACKAGES += \
@@ -487,6 +500,23 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml \
     frameworks/native/data/etc/android.hardware.wifi.rtt.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.rtt.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
+
+TARGET_WLAN_CHIP := qca6490 qca6750
+
+WLAN_CHIPSET := qca_cld3
+
+# Force chip-specific DLKM name
+TARGET_MULTI_WLAN := true
+
+#WPA
+WPA := wpa_cli
+
+# Package chip specific ko files if TARGET_WLAN_CHIP is defined.
+ifneq ($(TARGET_WLAN_CHIP),)
+	PRODUCT_PACKAGES += $(foreach chip, $(TARGET_WLAN_CHIP), $(WLAN_CHIPSET)_$(chip).ko)
+else
+	PRODUCT_PACKAGES += $(WLAN_CHIPSET)_wlan.ko
+endif
 
 # WiFi Display
 PRODUCT_PACKAGES += \
