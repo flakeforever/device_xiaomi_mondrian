@@ -37,6 +37,14 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.qti.sla.service</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISlaService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.xiaomi.cit.bluetooth</name>
         <version>1.0</version>
         <interface>
@@ -89,6 +97,14 @@
         <version>1.0</version>
         <interface>
             <name>IDtool</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="false">
+        <name>vendor.xiaomi.hardware.fbo</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFbo</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -181,6 +197,14 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.quickcamera</name>
+        <version>1.0</version>
+        <interface>
+            <name>IQuickCameraService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.xiaomi.hardware.tidaservice</name>
         <version>1.0-2</version>
         <interface>
@@ -215,6 +239,7 @@
     <hal format="hidl" optional="true">
         <name>vendor.xiaomi.sensor.citsensorservice</name>
         <version>1.1</version>
+        <version>2.0</version>
         <interface>
             <name>ICitSensorService</name>
             <instance>default</instance>
