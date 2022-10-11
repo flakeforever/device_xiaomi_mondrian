@@ -3052,12 +3052,10 @@ vendor/etc/init/vendor.sensors.qti.rc
 vendor/etc/init/vendor.sensors.sscrpcd.rc
 vendor/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml
 vendor/etc/sensors/config/ak991x_dri_0.json
-vendor/etc/sensors/config/bmp285_0.json
 vendor/etc/sensors/config/bu27030_0_back.json
 vendor/etc/sensors/config/lsm6dso_0.json
 vendor/etc/sensors/config/qsh_camera.json
 vendor/etc/sensors/config/sm8450_ak991x_0.json
-vendor/etc/sensors/config/sm8450_bmp285_0.json
 vendor/etc/sensors/config/sm8450_bu27030_0_back.json
 vendor/etc/sensors/config/sm8450_dynamic_sensors.json
 vendor/etc/sensors/config/sm8450_irq.json
