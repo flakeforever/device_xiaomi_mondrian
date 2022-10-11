@@ -139,6 +139,7 @@ vendor/etc/models/acd/music.eai
 vendor/etc/models/acd/speech.eai
 vendor/etc/a2dp_audio_policy_configuration.xml
 vendor/etc/audio-test-config
+vendor/etc/audio_cloud_control_white_list.xml
 vendor/etc/audio_diag.cfg
 vendor/etc/audio_policy_engine_configuration_mi.xml
 vendor/etc/audio_policy_engine_default_stream_volumes.xml
@@ -165,6 +166,7 @@ vendor/lib/libar-gsl.so
 vendor/lib/libar-pal.so
 vendor/lib/libats.so
 vendor/lib/libaudio_log_utils.so
+vendor/lib/libaudiocloudctrl.so
 vendor/lib/libaudioroute_ext.so
 vendor/lib/libbatterylistener.so
 vendor/lib/libcapiv2svacnnvendor.so
@@ -203,6 +205,7 @@ vendor/lib64/libar-gsl.so
 vendor/lib64/libar-pal.so
 vendor/lib64/libats.so
 vendor/lib64/libaudio_log_utils.so
+vendor/lib64/libaudiocloudctrl.so
 vendor/lib64/libaudioroute_ext.so
 vendor/lib64/libbatterylistener.so
 vendor/lib64/libcapiv2svacnnvendor.so
