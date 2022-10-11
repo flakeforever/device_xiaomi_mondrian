@@ -68,6 +68,7 @@ else
     log -t DRM_BOOT -p w "file: '$vbfile' or perms doesn't exist"
 fi
 
+
 function set_density_by_fb() {
     #put default density based on width
     if [ -z $fb_width ]; then
@@ -80,6 +81,15 @@ function set_density_by_fb() {
             setprop vendor.display.lcd_density 560
             ;;
             "zizhan")
+            setprop vendor.display.lcd_density 440
+            ;;
+            "unicorn")
+            setprop vendor.display.lcd_density 560
+            ;;
+            "mayfly")
+            setprop vendor.display.lcd_density 440
+            ;;
+            "ziyi")
             setprop vendor.display.lcd_density 440
             ;;
             *)
@@ -103,12 +113,26 @@ function set_density_by_fb() {
         project=`getprop ro.build.product`
         case "$project" in
             "ingres")
-            setprop vendor.display.lcd_density 440
+            factorybuild=`getprop ro.boot.factorybuild`
+            if [ $factorybuild -ge 1 ]; then
+                setprop vendor.display.lcd_density 480
+            else
+                setprop vendor.display.lcd_density 440
+            fi
             ;;
             "zizhan")
             setprop vendor.display.lcd_density 440
             ;;
             "cupid")
+            setprop vendor.display.lcd_density 440
+            ;;
+            "diting")
+            setprop vendor.display.lcd_density 480
+            ;;
+            "mayfly")
+            setprop vendor.display.lcd_density 440
+            ;;
+            "ziyi")
             setprop vendor.display.lcd_density 440
             ;;
         esac
