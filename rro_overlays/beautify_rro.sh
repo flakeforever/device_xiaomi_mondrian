@@ -173,16 +173,14 @@ function trim_file () {
 for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
     # Prepare files
     for file in $(find ${folder} -maxdepth 1 -mindepth 1 -type f -name "*.xml"); do
+        # Merge arrays into one line
+        xml_pp -s record_c ${file} | sponge ${file}
         trim_file $(basename ${file})
         open_resource_file $(basename ${file})
     done
 
     # Move the resources into files matching the aosp location
     for file in $(find ${folder} -maxdepth 1 -mindepth 1 -type f -name "*.xml"); do
-        if [[ ! -z $(sed -n "/.*<[-a-Z]*array.*/p" ${file}) ]]; then
-            echo "$file contains arrays, don't move it's content" > ${log}
-            continue
-        fi
         for name in $(grep -r "name=" ${file} | sed "s/[<>]/ /g" | sed "s/\"/\\\\\"/g" | awk '{print $2}'); do
             if ! grep -qr ${name} ${SRC_DIR}; then
                 echo "[$(basename ${RRO_DIR})] Resource $(echo ${name} | sed "s/.*\"\([a-Z0-9_.]\+\)\\\.*/\1/g") not found in $(echo ${SRC_DIR} | sed "s/$(echo ${ANDROID_ROOT}/ | sed "s/\//\\\\\//g")//g")"
@@ -226,13 +224,7 @@ for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
             continue
         fi
 
-        if [[ ! -z $(sed -n "/.*<[-a-Z]*array.*/p" ${file}) ]]; then
-            echo "$file contains arrays, don't sort it" > ${log}
-            add_aosp_comments ${file}
-            continue
-        fi
-
-        for name in $(grep -r "name=" ${file} | sed "s/[<>]/ /g" | sed "s/\"/\\\\\"/g" | awk '{print $2}'); do
+        for name in $(grep -r "name=" ${file} | sed "s/[<>]/ /g" | sed "s/\///g" | sed "s/\"/\\\\\"/g" | awk '{print $2}'); do
             get_src_path
             if [[ ! -f ${src_path} ]]; then
                 line=0
@@ -249,7 +241,10 @@ for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
         (head -n $(expr ${first_real_line} - 1) ${file} && (tail -n+${first_real_line} ${file} | head -n -1) | LC_ALL=c sort -n && tail -n 1 ${file}) | sponge ${file}
 
         # Drop the line number prefix again
-        sed -i "s/[0-9]\+\(    .*\)/\1/g" ${file}
+        sed -i "s/[0-9]\+\(  .*\)/\1/g" ${file}
+
+        # Expand arrays again
+        XMLLINT_INDENT="    " xmllint --format ${file} | sponge ${file}
 
         add_aosp_comments ${file}
     done
