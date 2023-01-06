@@ -58,10 +58,10 @@ TMPDIR=$(mktemp -d)
 function get_src_path () {
     # Allow space between "name" and "="
     # Ignore symbols.xml and overlayable.xml files since these don't contain the actual values
-    # Only print the first occurance
+    # Also ignore values-mcc as these folders include carrier specific things
 
     name_search="$(echo ${name} | sed "s/name=/name[ ]*=/g")"
-    src_path=$(grep -rG "${name_search}" ${SRC_DIR} | grep -v symbols.xml | grep -v overlayable.xml | sed "s/://g" | awk '{print $1}' | head -1)
+    src_path=$(grep -rG "${name_search}" ${SRC_DIR} | grep -v symbols.xml | grep -v overlayable.xml | sed "s/://g" | awk '{print $1}' | grep -v "\-mcc" | LC_ALL=c sort | head -1)
 }
 
 function add_aosp_comments () {
