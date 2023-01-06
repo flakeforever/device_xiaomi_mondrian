@@ -5,6 +5,6 @@
 //
 
 runtime_resource_overlay {
-    name: "FrameworksResCommon_Sys",
+    name: "TelecommResCommon",
     product_specific: true,
 }

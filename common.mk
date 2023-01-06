@@ -310,13 +310,13 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    CarrierConfigResCommon_Sys \
-    FrameworksResCommon_Sys \
-    SettingsResCommon_Sys \
-    SystemUIResCommon_Sys \
-    TelecommResCommon_Sys \
-    TelephonyResCommon_Sys \
-    WifiResCommon_Sys
+    CarrierConfigResCommon \
+    FrameworksResCommon \
+    SettingsResCommon \
+    SystemUIResCommon \
+    TelecommResCommon \
+    TelephonyResCommon \
+    WifiResCommon
 
 PRODUCT_PACKAGES += \
     FrameworksResTarget_Vendor \
