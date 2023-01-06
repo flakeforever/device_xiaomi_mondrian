@@ -246,7 +246,7 @@ for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
 
         # Sort the resources according to their line numbers in aosp
         first_real_line=$(grep -Pn -m 1 "<[-A-Za-z]+ name=" ${file} | grep -Po "^[0-9]+")
-        (head -n $(expr ${first_real_line} - 1) ${file} && (tail -n+${first_real_line} ${file} | head -n -1) | LC_ALL=c sort && tail -n 1 ${file}) | sponge ${file}
+        (head -n $(expr ${first_real_line} - 1) ${file} && (tail -n+${first_real_line} ${file} | head -n -1) | LC_ALL=c sort -n && tail -n 1 ${file}) | sponge ${file}
 
         # Drop the line number prefix again
         sed -i "s/[0-9]\+\(    .*\)/\1/g" ${file}
