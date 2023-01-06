@@ -70,7 +70,7 @@ function add_aosp_comments () {
     # Create a backup
     cp ${file} ${TMPDIR}/$(basename ${file}).bak
 
-    for name in $(grep -r "name=" ${file} | sed "s/translatable=\"false\"/ /g" | sed "s/[<>]/ /g" | sed "s/\"/\\\\\"/g" | awk '{print $2}'); do
+    for name in $(grep -r "name=" ${file} | sed "s/translatable=\"false\"/ /g" | sed "s/[<>]/ /g" | sed "s/.*\(name=\"[-._a-Z0-9]\+\"\).*/\1/g" | sed "s/\"/\\\\\"/g"); do
         if ! grep -qr ${name} ${SRC_DIR}; then
             echo "[$(basename ${RRO_DIR})] Resource $(echo ${name} | sed "s/.*\"\([a-Z0-9_.]\+\)\\\.*/\1/g") not found in $(echo ${SRC_DIR} | sed "s/$(echo ${ANDROID_ROOT}/ | sed "s/\//\\\\\//g")//g")"
             continue
@@ -186,7 +186,7 @@ for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
             continue
         fi
 
-        for name in $(grep -r "name=" ${file} | sed "s/[<>]/ /g" | sed "s/\"/\\\\\"/g" | awk '{print $2}'); do
+        for name in $(grep -r "name=" ${file} | sed "s/[<>]/ /g" | sed "s/.*\(name=\"[-._a-Z0-9]\+\"\).*/\1/g" | sed "s/\"/\\\\\"/g"); do
             if ! grep -qr ${name} ${SRC_DIR}; then
                 echo "[$(basename ${RRO_DIR})] Resource $(echo ${name} | sed "s/.*\"\([a-Z0-9_.]\+\)\\\.*/\1/g") not found in $(echo ${SRC_DIR} | sed "s/$(echo ${ANDROID_ROOT}/ | sed "s/\//\\\\\//g")//g")"
                 continue
@@ -231,7 +231,7 @@ for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
 
         # Don't sort files that don't contain resources
         if [[ ! -z $(sed -n "/^<resources/p" ${file}) ]]; then
-            for name in $(grep -r "name=" ${file} | sed "s/[<>]/ /g" | sed "s/\///g" | sed "s/\"/\\\\\"/g" | awk '{print $2}'); do
+            for name in $(grep -r "name=" ${file} | sed "s/[<>]/ /g" | sed "s/\///g" | sed "s/.*\(name=\"[-._a-Z0-9]\+\"\).*/\1/g" | sed "s/\"/\\\\\"/g"); do
                 get_src_path
                 if [[ ! -f ${src_path} ]]; then
                     line=0
