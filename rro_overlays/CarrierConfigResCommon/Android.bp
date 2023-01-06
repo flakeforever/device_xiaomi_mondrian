@@ -5,6 +5,7 @@
 //
 
 runtime_resource_overlay {
-    name: "WifiResCommon_Sys",
+    name: "CarrierConfigResCommon",
     product_specific: true,
+    aaptflags: ["--keep-raw-values"],
 }
