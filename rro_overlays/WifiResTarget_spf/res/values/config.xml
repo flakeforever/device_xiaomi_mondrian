@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2022 The LineageOS Project
+     Copyright (C) 2023 The LineageOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -12,6 +12,12 @@
 
     <!-- boolean indicating whether the WiFi chipset has 6GHz band support -->
     <bool name="config_wifi6ghzSupport" translatable="false">true</bool>
+
+    <!-- Boolean indicating whether the wifi chipset supports background scanning mechanism.
+         This mechanism allows the host to remain in suspend state and the dongle to actively
+         scan and wake the host when a configured SSID is detected by the dongle. This chipset
+         capability can provide power savings when wifi needs to be always kept on. -->
+    <bool name="config_wifi_background_scan_support" translatable="false">true</bool>
 
     <!-- Boolean indicating performing a partial initial scan is enabled -->
     <bool name="config_wifiEnablePartialInitialScan" translatable="false">true</bool>
@@ -34,12 +40,6 @@
     <!-- Configure wifi tcp buffersizes in the form:
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
     <string name="config_wifi_tcp_buffers" translatable="false">524288,1048576,2097152,524288,1048576,4194304</string>
-
-    <!-- Boolean indicating whether the wifi chipset supports background scanning mechanism.
-         This mechanism allows the host to remain in suspend state and the dongle to actively
-         scan and wake the host when a configured SSID is detected by the dongle. This chipset
-         capability can provide power savings when wifi needs to be always kept on. -->
-    <bool name="config_wifi_background_scan_support" translatable="false">true</bool>
 
     <!-- Indicates that SAE Hash-to-Element is supported on this device -->
     <bool name="config_wifiSaeH2eSupported" translatable="false">true</bool>
