@@ -181,6 +181,11 @@ for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
 
     # Move the resources into files matching the aosp location
     for file in $(find ${folder} -maxdepth 1 -mindepth 1 -type f -name "*.xml"); do
+        # Don't move elements in files that don't contain resources
+        if [[ -z $(sed -n "/^<resources/p" ${file}) ]]; then
+            continue
+        fi
+
         for name in $(grep -r "name=" ${file} | sed "s/[<>]/ /g" | sed "s/\"/\\\\\"/g" | awk '{print $2}'); do
             if ! grep -qr ${name} ${SRC_DIR}; then
                 echo "[$(basename ${RRO_DIR})] Resource $(echo ${name} | sed "s/.*\"\([a-Z0-9_.]\+\)\\\.*/\1/g") not found in $(echo ${SRC_DIR} | sed "s/$(echo ${ANDROID_ROOT}/ | sed "s/\//\\\\\//g")//g")"
@@ -224,24 +229,27 @@ for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
             continue
         fi
 
-        for name in $(grep -r "name=" ${file} | sed "s/[<>]/ /g" | sed "s/\///g" | sed "s/\"/\\\\\"/g" | awk '{print $2}'); do
-            get_src_path
-            if [[ ! -f ${src_path} ]]; then
-                line=0
-            else
-                line=$(grep -Pn -m 1 "${name}" ${src_path} | grep -Po "^[0-9]+")
-            fi
+        # Don't sort files that don't contain resources
+        if [[ ! -z $(sed -n "/^<resources/p" ${file}) ]]; then
+            for name in $(grep -r "name=" ${file} | sed "s/[<>]/ /g" | sed "s/\///g" | sed "s/\"/\\\\\"/g" | awk '{print $2}'); do
+                get_src_path
+                if [[ ! -f ${src_path} ]]; then
+                    line=0
+                else
+                    line=$(grep -Pn -m 1 "${name}" ${src_path} | grep -Po "^[0-9]+")
+                fi
 
-            # Temporary add line number as prefix to the line to sort it
-            sed -i "s/\(.*${name}.*\)/${line}\1/g" ${file}
-        done
+                # Temporary add line number as prefix to the line to sort it
+                sed -i "s/\(.*${name}.*\)/${line}\1/g" ${file}
+            done
 
-        # Sort the resources according to their line numbers in aosp
-        first_real_line=$(grep -Pn -m 1 "<[-A-Za-z]+ name=" ${file} | grep -Po "^[0-9]+")
-        (head -n $(expr ${first_real_line} - 1) ${file} && (tail -n+${first_real_line} ${file} | head -n -1) | LC_ALL=c sort -n && tail -n 1 ${file}) | sponge ${file}
+            # Sort the resources according to their line numbers in aosp
+            first_real_line=$(grep -Pn -m 1 "<[-A-Za-z]+ name=" ${file} | grep -Po "^[0-9]+")
+            (head -n $(expr ${first_real_line} - 1) ${file} && (tail -n+${first_real_line} ${file} | head -n -1) | LC_ALL=c sort -n && tail -n 1 ${file}) | sponge ${file}
 
-        # Drop the line number prefix again
-        sed -i "s/[0-9]\+\(  .*\)/\1/g" ${file}
+            # Drop the line number prefix again
+            sed -i "s/[0-9]\+\(  .*\)/\1/g" ${file}
+        fi
 
         # Expand arrays again
         XMLLINT_INDENT="    " xmllint --format ${file} | sponge ${file}
