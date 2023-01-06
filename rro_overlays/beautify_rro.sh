@@ -176,6 +176,8 @@ for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
         # Merge arrays into one line
         xml_pp -s record_c ${file} | sponge ${file}
         trim_file $(basename ${file})
+        # Merge strings into one line
+        sed -z "s/\\n/\\\n/g" ${file} | sed -z "s/>\\\n/>\n/g" | sponge ${file}
         open_resource_file $(basename ${file})
     done
 
