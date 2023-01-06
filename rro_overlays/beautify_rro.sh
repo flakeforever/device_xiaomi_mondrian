@@ -257,6 +257,9 @@ for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
         XMLLINT_INDENT="    " xmllint --format ${file} | sponge ${file}
 
         add_aosp_comments ${file}
+
+        # Replace "\> with " \> to follow the recommended style
+        sed -i "s/\"\/>/\" \/>/g" ${file}
     done
 done
 
