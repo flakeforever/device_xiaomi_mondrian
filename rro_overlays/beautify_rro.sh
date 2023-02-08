@@ -218,12 +218,6 @@ for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
     for file in $(find ${folder} -maxdepth 1 -mindepth 1 -type f -name "*.xml"); do
         close_resource_file $(basename ${file})
 
-        if [[ -z $(sed -n "/name=\"/p" ${file}) ]]; then
-            echo "${file} is empty after moving resources, remove it" > ${log}
-            rm ${file}
-            continue
-        fi
-
         update_header $(basename ${file})
 
         if ! xmllint --format ${file} &> /dev/null; then
@@ -233,6 +227,12 @@ for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
 
         # Don't sort files that don't contain resources
         if [[ ! -z $(sed -n "/^<resources/p" ${file}) ]]; then
+            if [[ -z $(sed -n "/name=\"/p" ${file}) ]]; then
+                echo "${file} is empty after moving resources, remove it" > ${log}
+                rm ${file}
+                continue
+            fi
+
             for name in $(grep -r "name=" ${file} | sed "s/[<>]/ /g" | sed "s/\///g" | sed "s/.*\(name=\"[-._a-Z0-9]\+\"\).*/\1/g" | sed "s/\"/\\\\\"/g"); do
                 get_src_path
                 if [[ ! -f ${src_path} ]]; then
