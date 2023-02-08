@@ -3271,6 +3271,8 @@ system_ext/lib64/vendor.qti.imsrtpservice@3.1.so
 # IMS - from cupid https://paste.myself5.de/fucecowiyu.diff
 system_ext/priv-app/ims/ims.apk|8e5a649f818ab5b692b716b24e73378ae6add832
 
+# IMS
+system_ext/framework/qti-telephony-common.jar
 system_ext/framework/vendor.qti.data.factory-V1.0-java.jar
 system_ext/framework/vendor.qti.data.factory-V2.0-java.jar
 system_ext/framework/vendor.qti.data.factory-V2.1-java.jar
