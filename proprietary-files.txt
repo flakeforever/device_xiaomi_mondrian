@@ -1739,7 +1739,7 @@ vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 
 # GMS
-#vendor/etc/permissions/com.google.android.feature.PREMIER_TIER.xml
+product/etc/permissions/com.google.android.feature.PREMIER_TIER.xml
 
 # GNSS
 vendor/app/CACertService/CACertService.apk
