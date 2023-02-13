@@ -2725,7 +2725,7 @@ product/framework/uimgbalibrary.jar
 product/framework/uimgbamanagerlibrary.jar
 product/framework/uimservicelibrary.jar
 system_ext/app/ImsRcsService/ImsRcsService.apk
-system_ext/app/QtiTelephony/QtiTelephony.apk|81ed2c97a17d4ffd31f6fa02bc71d8dd0ec73f56
+system_ext/app/QtiTelephony/QtiTelephony.apk|d686cf0d0f8cfe6bc527ea5d67dc6881d7338969
 system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
 system_ext/etc/permissions/qcrilhook.xml
 system_ext/etc/permissions/qti_permissions.xml
