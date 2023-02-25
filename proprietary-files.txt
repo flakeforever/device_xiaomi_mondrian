@@ -249,7 +249,6 @@ vendor/etc/top_spk.wav
 vendor/etc/top_spk_hp.wav
 
 # Audio vehicle
-vendor/etc/permissions/android.hardware.keystore.app_attest_key.xml
 vendor/etc/vehicle_display_audio_policy_configuration.xml
 vendor/lib/hw/audio.vehicle_display.default.so
 vendor/lib64/hw/audio.vehicle_display.default.so
