@@ -44,3 +44,6 @@ on post-fs-data
     mkdir /data/vendor/fingerprint 0770 system system
     mkdir /mnt/vendor/persist/goodix 0770 system system
     mkdir /mnt/vendor/persist/fpc 0770 system system
+
+on property:persist.sys.xtra-daemon.enabled=*
+    restart loc_launcher
