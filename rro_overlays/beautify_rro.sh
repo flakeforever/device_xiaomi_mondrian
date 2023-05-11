@@ -165,18 +165,18 @@ function close_resource_file () {
     printf "</resources>\n" >> ${folder}/${name}
 }
 
-function trim_file () {
-    local name=${1}
-    sed -ni "/[ ]*<[a-Z0-9/].*/p" ${folder}/${name}
-}
 
 for folder in $(find ${RRO_DIR}/res -maxdepth 1 -mindepth 1 -type d); do
     # Prepare files
     for file in $(find ${folder} -maxdepth 1 -mindepth 1 -type f -name "*.xml"); do
         # Merge arrays into one line
         xml_pp -s record_c ${file} | sponge ${file}
-        trim_file $(basename ${file})
+
+        # Remove comments
+        xmlstarlet c14n --without-comments ${file} | sponge ${file}
+
         # Merge strings into one line
+        sed -i "/^[[:space:]]*$/d" ${file}
         sed -z "s/\\n/\\\n/g" ${file} | sed -z "s/>\\\n/>\n/g" | sponge ${file}
         open_resource_file $(basename ${file})
     done
