@@ -155,6 +155,7 @@ vendor/lib/libpalclient.so
 vendor/lib/libqtigefar.so
 vendor/lib/libresampler.so
 vendor/lib/libsndcardparser.so
+vendor/lib/libxlog.so
 vendor/lib/vendor.qti.hardware.pal@1.0-impl.so
 vendor/lib/vendor.qti.hardware.pal@1.0.so
 vendor/lib64/hw/audio.primary.taro.so
@@ -642,6 +643,7 @@ vendor/lib/libsnpe_dsp_domains_v2.so
 vendor/lib/libsnpe_dsp_domains_v3.so
 vendor/lib/libsynx.so
 vendor/lib/libthreadutils.so
+vendor/lib/libxmi_slow_motion_mein.so
 vendor/lib/vendor.xiaomi.hardware.quickcamera@1.0.so
 vendor/lib64/camera/com.qti.tuned.default.bin
 vendor/lib64/camera/components/com.bots.node.vendortagwrite.so
@@ -1054,6 +1056,8 @@ vendor/lib64/libsdsprpc.so
 vendor/bin/hw/vendor.xiaomi.sensor.citsensorservice@2.0-service
 vendor/etc/init/vendor.xiaomi.sensor.citsensorservice@2.0-service.rc
 -vendor/etc/vintf/manifest/vendor.xiaomi.sensor.citsensorservice@2.0-service.xml
+vendor/lib/vendor.xiaomi.sensor.citsensorservice@1.1.so
+vendor/lib/vendor.xiaomi.sensor.citsensorservice@2.0.so
 vendor/lib64/hw/vendor.xiaomi.sensor.citsensorservice@2.0-impl.so
 vendor/lib64/vendor.xiaomi.sensor.citsensorservice@1.1.so
 vendor/lib64/vendor.xiaomi.sensor.citsensorservice@2.0.so
@@ -1320,6 +1324,7 @@ vendor/lib/vendor.display.color@1.4.so
 vendor/lib/vendor.display.color@1.5.so
 vendor/lib/vendor.display.color@1.6.so
 vendor/lib/vendor.display.color@1.7.so
+vendor/lib/vendor.display.postproc@1.0.so
 vendor/lib64/libdisp-aba.so
 vendor/lib64/vendor.display.color@1.0.so
 vendor/lib64/vendor.display.color@1.1.so
@@ -1947,6 +1952,7 @@ vendor/lib/libqcodec2_utils.so
 vendor/lib/libqcodec2_v4l2codec.so
 vendor/lib/libstagefright_soft_ac4dec.so
 vendor/lib/libstagefright_soft_ddpdec.so
+vendor/lib/libstagefright_softomx.so
 vendor/lib/libstagefrighthw.so
 vendor/lib/libvideotxr.so
 vendor/lib/qti.video.utils.videobufferlayout.so
@@ -2134,6 +2140,7 @@ vendor/etc/sn100u_pnx_sst.pnscr
 vendor/lib/libsn100u_fw.so
 vendor/lib/libsn220u_fw.so
 vendor/lib/nfc_nci.nqx.default.hw.v1.so
+vendor/lib/vendor.nxp.hardware.nfc@2.0.so
 vendor/lib64/libsn100u_fw.so
 vendor/lib64/libsn220u_fw.so
 vendor/lib64/nfc_nci.nqx.default.hw.v1.so
@@ -2285,6 +2292,7 @@ vendor/lib64/libpowercore.so
 # Psiclient
 vendor/bin/hw/vendor.qti.psiclient@1.0-service
 vendor/etc/init/vendor.qti.psiclient@1.0-service.rc
+vendor/lib/libpsi.so
 vendor/lib64/libpsi.so
 
 # QCC
@@ -3081,6 +3089,7 @@ vendor/etc/thermald-devices.conf
 vendor/app/TimeService/TimeService.apk
 vendor/bin/time_daemon
 vendor/etc/init/init.time_daemon.rc
+vendor/lib/libtime_genoff.so
 vendor/lib64/libtime_genoff.so
 
 # Touchscreen
