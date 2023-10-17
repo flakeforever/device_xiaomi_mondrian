@@ -1,0 +1,7 @@
+-keep class org.pixelexperience.settings.dirac.* {
+  *;
+}
+
+-keep class org.pixelexperience.settings.doze.* {
+  *;
+}
