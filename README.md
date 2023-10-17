@@ -15,8 +15,8 @@
 ### Vibrator (VibratorFeature support):
 - https://github.com/VoidUI-Andromeda/VoidUI-Andromeda/frameworks_native/commit/eec8dfbad3fe59b75845c9f137bf712bde6512f9
 
-## Prebuilt vendor.img (from V14.0.26.0 and I customized it.):
-- https://www.google.com
+## Prebuilt files (customized from V14.0.26.0):
+- https://drive.google.com/drive/folders/15Ihtjg5cZEeSgChfvwoYBC3Kv7HRyav4?usp=sharing
 
 
 Credits: 
