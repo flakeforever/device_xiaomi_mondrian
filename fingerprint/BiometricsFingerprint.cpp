@@ -58,6 +58,7 @@ BiometricsFingerprint::BiometricsFingerprint()
     if (!mDevice) {
         ALOGE("Can't open any HAL module");
         SetProperty("persist.vendor.sys.fp.vendor", "none");
+        return;
     }
 
     if (mIsUdfps) {
