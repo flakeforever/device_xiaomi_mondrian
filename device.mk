@@ -26,10 +26,8 @@ $(call inherit-product, hardware/qcom-caf/sm8450/audio/primary-hal/configs/audio
 
 DEVICE_PATH := device/xiaomi/mondrian
 
-# SHIPPING API
+# API
 PRODUCT_SHIPPING_API_LEVEL := 31
-
-# VNDK API
 PRODUCT_TARGET_VNDK_VERSION := 32
 PRODUCT_EXTRA_VNDK_VERSIONS := 30 31 32
 
@@ -114,9 +112,9 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/prebuilts/dtb:dtb.img
 
-# DT2W
-PRODUCT_PACKAGES += \
-    DT2W-Service-Mondrian
+## DT2W
+#PRODUCT_PACKAGES += \
+#    DT2W-Service-Mondrian
 
 # F2FS utilities
 PRODUCT_PACKAGES += \

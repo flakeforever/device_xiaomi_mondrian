@@ -1,0 +1,3 @@
+typeattribute init mlstrustedsubject;
+type sysfs_memory, fs_type, sysfs_type;
+allow init sysfs_memory:file rw_file_perms;

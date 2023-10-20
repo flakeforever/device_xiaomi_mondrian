@@ -9,7 +9,7 @@ ro.bluetooth.wipower=false
 ro.charger.enable_suspend=1
 
 # CNE
-persist.vendor.cne.feature=1
+persist.vendor.cne.feature=0
 
 # Dalvik
 pm.dexopt.ab-ota=speed-profile
