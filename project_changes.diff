@@ -1,0 +1,292 @@
+
+project device/qcom/sepolicy_vndr/
+diff --git a/generic/vendor/common/location.te b/generic/vendor/common/location.te
+index 1dff035c..b7aa5b1c 100644
+--- a/generic/vendor/common/location.te
++++ b/generic/vendor/common/location.te
+@@ -65,5 +65,5 @@ userdebug_or_eng(`
+ 
+ dontaudit vendor_location kernel:system module_request;
+ 
+-# xtra-daemon control
+-get_prop(vendor_location, xtra_control_prop)
++## xtra-daemon control
++#get_prop(vendor_location, xtra_control_prop)
+
+project external/avb/
+diff --git a/avbtool.py b/avbtool.py
+index 05dc72c..9f3370d 100755
+--- a/avbtool.py
++++ b/avbtool.py
+@@ -4058,7 +4058,7 @@ def calc_fec_data_size(image_size, num_roots):
+     ValueError: If output from the 'fec' tool is invalid.
+   """
+   p = subprocess.Popen(
+-      ['fec', '--print-fec-size', str(image_size), '--roots', str(num_roots)],
++      ['/home/develop/android/pe/out/host/linux-x86/bin/fec', '--print-fec-size', str(image_size), '--roots', str(num_roots)],
+       stdout=subprocess.PIPE,
+       stderr=subprocess.PIPE)
+   (pout, perr) = p.communicate()
+@@ -4084,7 +4084,7 @@ def generate_fec_data(image_filename, num_roots):
+   with tempfile.NamedTemporaryFile() as fec_tmpfile:
+     try:
+       subprocess.check_call(
+-          ['fec', '--encode', '--roots', str(num_roots), image_filename,
++          ['/home/develop/android/pe/out/host/linux-x86/bin/fec', '--encode', '--roots', str(num_roots), image_filename,
+            fec_tmpfile.name],
+           stderr=open(os.devnull, 'wb'))
+     except subprocess.CalledProcessError as e:
+
+project frameworks/base/
+diff --git a/core/java/android/hardware/fingerprint/FingerprintManager.java b/core/java/android/hardware/fingerprint/FingerprintManager.java
+index 5c1da1112e2a..300201eb835c 100644
+--- a/core/java/android/hardware/fingerprint/FingerprintManager.java
++++ b/core/java/android/hardware/fingerprint/FingerprintManager.java
+@@ -1324,6 +1324,25 @@ public class FingerprintManager implements BiometricAuthenticator, BiometricFing
+         if (mAuthenticationCallback != null) {
+             mAuthenticationCallback.onAuthenticationAcquired(acquireInfo);
+         }
++
++        if (acquireInfo == 6 && vendorCode == 22) {
++            final PowerManager powerManager = mContext.getSystemService(PowerManager.class);
++            
++            if (!powerManager.isScreenOn()) {
++                PowerManager.WakeLock wakeLock = powerManager.newWakeLock(
++                    PowerManager.SCREEN_DIM_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "udfpsWakeLock");
++
++                if (!wakeLock.isHeld()) {
++                    try {
++                        wakeLock.acquire();
++                        return;
++                    } catch (Exception e) {
++                        e.printStackTrace();
++                    }
++                }
++            }            
++        }
++
+         final String msg = getAcquiredString(mContext, acquireInfo, vendorCode);
+         if (msg == null) {
+             return;
+diff --git a/telecomm/java/android/telecom/Connection.java b/telecomm/java/android/telecom/Connection.java
+index 49ad58550db8..dec6def806c6 100644
+--- a/telecomm/java/android/telecom/Connection.java
++++ b/telecomm/java/android/telecom/Connection.java
+@@ -896,6 +896,17 @@ public abstract class Connection extends Conferenceable {
+      */
+     public static final String EVENT_CALL_MERGE_FAILED = "android.telecom.event.CALL_MERGE_FAILED";
+ 
++    /**
++     * Connection event used to inform Telecom when a resume operation on a call has failed.
++     * This event is only sent when concurrent calls (DSDA) are possible
++     * <p>
++     * Sent via {@link #sendConnectionEvent(String, Bundle)}.  The {@link Bundle} parameter is
++     * expected to be null when this connection event is used.
++     * @hide
++     */
++    public static final String EVENT_CALL_RESUME_FAILED =
++            "android.telecom.event.CALL_RESUME_FAILED";
++
+     /**
+      * Connection event used to inform Telecom when a hold operation on a call has failed.
+      * <p>
+diff --git a/telephony/java/android/telephony/TelephonyManager.java b/telephony/java/android/telephony/TelephonyManager.java
+index ecd8c7a3d917..6fa62413cdd6 100644
+--- a/telephony/java/android/telephony/TelephonyManager.java
++++ b/telephony/java/android/telephony/TelephonyManager.java
+@@ -561,6 +561,35 @@ public class TelephonyManager {
+         }
+     }
+ 
++    /**
++     * The allowed values for multi sim voice capability
++     *
++     * @hide
++     */
++    public interface MultiSimVoiceCapability {
++        /** default */
++        static final int UNKNOWN = 0;
++        /** Concurrent calls on both subscriptions are not possbile. */
++        static final int DSDS = 1;
++        /** Concurrent calls on both subscriptions are not possible but user will have option to
++         * accept MT call on one subscription when there is an ongoing call on another subscription.
++         */
++        static final int PSEUDO_DSDA = 2;
++        /** Concurrent calls on both subscriptions are possible */
++        static final int DSDA = 3;
++    }
++
++    /**
++     * Returns true if concurrent calls on both subscriptions are possible (ex: DSDA).
++     * Returns false for other cases.
++     */
++    /** {@hide} */
++    public static boolean isConcurrentCallsPossible() {
++        int mSimVoiceConfig = TelephonyProperties.multi_sim_voice_capability().orElse(
++                MultiSimVoiceCapability.UNKNOWN);
++        return mSimVoiceConfig == MultiSimVoiceCapability.DSDA;
++    }
++    
+     /**
+      * Returns the number of phones available.
+      * Returns 0 if none of voice, sms, data is not supported
+
+project frameworks/native/
+diff --git a/services/vibratorservice/VibratorHalController.cpp b/services/vibratorservice/VibratorHalController.cpp
+index c1795f5c32..b32c85270b 100644
+--- a/services/vibratorservice/VibratorHalController.cpp
++++ b/services/vibratorservice/VibratorHalController.cpp
+@@ -53,7 +53,8 @@ std::shared_ptr<HalWrapper> connectHal(std::shared_ptr<CallbackScheduler> schedu
+         return nullptr;
+     }
+ 
+-    sp<Aidl::IVibrator> aidlHal = waitForVintfService<Aidl::IVibrator>();
++    sp<Aidl::IVibrator> aidlHal = waitForVintfService<Aidl::IVibrator>(String16("vibratorfeature"));
++    //sp<Aidl::IVibrator> aidlHal = waitForVintfService<Aidl::IVibrator>();
+     if (aidlHal) {
+         ALOGV("Successfully connected to Vibrator HAL AIDL service.");
+         return std::make_shared<AidlHalWrapper>(std::move(scheduler), aidlHal);
+
+project packages/modules/Bluetooth/
+diff --git a/android/app/src/com/android/bluetooth/hfp/HeadsetService.java b/android/app/src/com/android/bluetooth/hfp/HeadsetService.java
+index 856f7dde04..90309cc39b 100644
+--- a/android/app/src/com/android/bluetooth/hfp/HeadsetService.java
++++ b/android/app/src/com/android/bluetooth/hfp/HeadsetService.java
+@@ -946,6 +946,16 @@ public class HeadsetService extends ProfileService {
+                 receiver.propagateException(e);
+             }
+         }
++
++        @Override
++        public void phoneStateChangedDsDa(int numActive, int numHeld, int callState, String number,
++                                          int type, String name, AttributionSource source) {
++        }
++
++        @Override
++        public void clccResponseDsDa(int index, int direction, int status, int mode, boolean mpty,
++                                     String number, int type, AttributionSource source) {
++        }
+     }
+ 
+     // API methods
+diff --git a/framework/java/android/bluetooth/BluetoothHeadset.java b/framework/java/android/bluetooth/BluetoothHeadset.java
+index 403a8a8ec1..0c63950361 100644
+--- a/framework/java/android/bluetooth/BluetoothHeadset.java
++++ b/framework/java/android/bluetooth/BluetoothHeadset.java
+@@ -1427,4 +1427,59 @@ public final class BluetoothHeadset implements BluetoothProfile {
+     private static void log(String msg) {
+         Log.d(TAG, msg);
+     }
++
++     /**
++     * Notify Headset of phone state change.
++     * This is a backdoor for phone app to call BluetoothHeadset since
++     * there is currently not a good way to get precise call state change outside
++     * of phone app.
++     *
++     * @hide
++     */
++    @RequiresBluetoothConnectPermission
++    @RequiresPermission(allOf = {
++            android.Manifest.permission.BLUETOOTH_CONNECT,
++            android.Manifest.permission.MODIFY_PHONE_STATE,
++    })
++    public void phoneStateChangedDsDa(int numActive, int numHeld, int callState, String number,
++            int type, String name) {
++        final IBluetoothHeadset service = getService();
++        if (service != null && isEnabled()) {
++            try {
++                service.phoneStateChangedDsDa(numActive, numHeld, callState, number, type, name,
++                        mAttributionSource);
++            } catch (RemoteException e) {
++                Log.e(TAG, e.toString());
++            }
++        } else {
++            Log.w(TAG, "Proxy not attached to service");
++            if (DBG) Log.d(TAG, Log.getStackTraceString(new Throwable()));
++        }
++    }
++
++    /**
++     * Send Headset of CLCC response
++     *
++     * @hide
++     */
++    @RequiresBluetoothConnectPermission
++    @RequiresPermission(allOf = {
++            android.Manifest.permission.BLUETOOTH_CONNECT,
++            android.Manifest.permission.MODIFY_PHONE_STATE,
++    })
++    public void clccResponseDsDa(int index, int direction, int status, int mode, boolean mpty,
++            String number, int type) {
++        final IBluetoothHeadset service = getService();
++        if (service != null && isEnabled()) {
++            try {
++                service.clccResponseDsDa(index, direction, status, mode, mpty, number, type,
++                        mAttributionSource);
++            } catch (RemoteException e) {
++                Log.e(TAG, e.toString());
++            }
++        } else {
++            Log.w(TAG, "Proxy not attached to service");
++            if (DBG) Log.d(TAG, Log.getStackTraceString(new Throwable()));
++        }
++    }
+ }
+diff --git a/system/audio_hal_interface/hidl/codec_status_hidl.cc b/system/audio_hal_interface/hidl/codec_status_hidl.cc
+index 3a1db42326..11f892d7b9 100644
+--- a/system/audio_hal_interface/hidl/codec_status_hidl.cc
++++ b/system/audio_hal_interface/hidl/codec_status_hidl.cc
+@@ -494,6 +494,16 @@ bool UpdateOffloadingCapabilities(
+       case BTAV_A2DP_CODEC_INDEX_SOURCE_LDAC:
+         codec_type_masks |= CodecType::LDAC;
+         break;
++      case BTAV_A2DP_CODEC_INDEX_SOURCE_LC3:
++        LOG(WARNING) << __func__
++                     << ": Ignore source codec_type=" << preference.codec_type
++                     << ", not supported on HIDL";
++        break;
++      case BTAV_A2DP_CODEC_INDEX_SOURCE_OPUS:
++        LOG(WARNING) << __func__
++                     << ": Ignore source codec_type=" << preference.codec_type
++                     << ", not supported on HIDL";
++        break;
+       case BTAV_A2DP_CODEC_INDEX_SINK_SBC:
+         [[fallthrough]];
+       case BTAV_A2DP_CODEC_INDEX_SINK_AAC:
+diff --git a/system/binder/android/bluetooth/IBluetoothHeadset.aidl b/system/binder/android/bluetooth/IBluetoothHeadset.aidl
+index 3e9474c99a..4b32456184 100644
+--- a/system/binder/android/bluetooth/IBluetoothHeadset.aidl
++++ b/system/binder/android/bluetooth/IBluetoothHeadset.aidl
+@@ -101,4 +101,8 @@ interface IBluetoothHeadset {
+     oneway void isNoiseReductionSupported(in BluetoothDevice device, in AttributionSource attributionSource, in SynchronousResultReceiver receiver);
+     @JavaPassthrough(annotation="@android.annotation.RequiresPermission(android.Manifest.permission.BLUETOOTH_CONNECT)")
+     oneway void isVoiceRecognitionSupported(in BluetoothDevice device, in AttributionSource attributionSource, in SynchronousResultReceiver receiver);
++    @JavaPassthrough(annotation="@android.annotation.RequiresPermission(allOf={android.Manifest.permission.BLUETOOTH_CONNECT,android.Manifest.permission.MODIFY_PHONE_STATE})")
++    oneway void phoneStateChangedDsDa(int numActive, int numHeld, int callState, String number, int type, String name, in AttributionSource attributionSource);
++    @JavaPassthrough(annotation="@android.annotation.RequiresPermission(allOf={android.Manifest.permission.BLUETOOTH_CONNECT,android.Manifest.permission.MODIFY_PHONE_STATE})")
++    void clccResponseDsDa(int index, int direction, int status, int mode, boolean mpty, String number, int type, in AttributionSource attributionSource);
+ }
+
+project system/libsysprop/
+diff --git a/srcs/android/sysprop/TelephonyProperties.sysprop b/srcs/android/sysprop/TelephonyProperties.sysprop
+index 15999e7..eb64ff5 100644
+--- a/srcs/android/sysprop/TelephonyProperties.sysprop
++++ b/srcs/android/sysprop/TelephonyProperties.sysprop
+@@ -468,3 +468,15 @@ prop {
+     access: Readonly
+     prop_name: "ro.telephony.sim_slots.count"
+ }
++
++#
++# System property which is used to store multi sim voice capability.
++# Possible values {@link TelephonyManager#MultiSimVoiceCapability}.
++#
++prop {
++    api_name: "multi_sim_voice_capability"
++    type: Integer
++    scope: Internal
++    access: ReadWrite
++    prop_name: "ril.multisim.voice_capability"
++}
+\ No newline at end of file
