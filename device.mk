@@ -90,9 +90,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
-# Display - Graphics
+# Camera
+$(call inherit-product-if-exists, vendor/xiaomi/camera/miuicamera.mk)
+
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.common-V1-ndk_platform
+    android.hardware.camera.provider@2.7.vendor \
+    vendor.qti.hardware.camera.aon@1.0.vendor \
+    vendor.qti.hardware.camera.postproc@1.0.vendor
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.miui.notch=1 \
+    ro.product.mod_device=marble_global
 
 # Dolby
 PRODUCT_COPY_FILES += \
@@ -153,10 +161,7 @@ PRODUCT_PACKAGES += \
     SecureElement \
     com.android.nfc_extras
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(DEVICE_PATH)/overlay-lineage
-    
+# Overlays  
 PRODUCT_PACKAGES += \
     AospWifiResOverlayMondrian \
     CarrierConfigResCommon \
@@ -178,6 +183,9 @@ PRODUCT_PACKAGES += \
     SettingsProviderOverlayChina \
     SettingsProviderOverlayGlobal
 
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-lineage
+	
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 #PRODUCT_BUILD_SUPER_PARTITION := true

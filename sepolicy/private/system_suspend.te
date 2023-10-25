@@ -1,0 +1,2 @@
+allow system_suspend sysfs:dir rw_dir_perms;
+allow system_suspend sysfs:file rw_file_perms;
