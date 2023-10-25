@@ -9,11 +9,7 @@
 
 ## Required system patches
 
-### Bluetooth (New codec support):
-- https://github.com/flakeforever/packages_modules_Bluetooth/commit/ad0825fcf314398abf0565188fdbb644445a6f6d
-
-### Vibrator (VibratorFeature support):
-- https://github.com/flakeforever/frameworks_native/commit/84babd26aaaf108c153036e9f6bf6eee0ac7ab1d
+### check [project_changes.diff](https://github.com/flakeforever/device_xiaomi_mondrian/blob/main/project_changes.diff)
 
 ## Prebuilt files (customized from V14.0.26.0):
 - https://drive.google.com/drive/folders/15Ihtjg5cZEeSgChfvwoYBC3Kv7HRyav4?usp=sharing
