@@ -70,17 +70,12 @@
             android:authorities="${applicationId}.androidx-startup"
             tools:replace="android:authorities"/>
 
-        <service android:name=".doze.DozeService"
-                 android:permission="XiaomiDozeService"
-                 android:exported="true">
-        </service>
-
         <activity
             android:name=".doze.DozeSettingsActivity"
             android:label="@string/ambient_display_title"
             android:exported="true">
             <intent-filter>
-                <action android:name="org.pixelexperience.settings.device.DOZE_SETTINGS" />
+                <action android:name="org.lineageos.settings.device.DOZE_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -154,11 +149,6 @@
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
-        </service>
-
-        <service
-            android:name=".doze.PocketService"
-            android:permission="PocketService">
         </service>
 
     </application>

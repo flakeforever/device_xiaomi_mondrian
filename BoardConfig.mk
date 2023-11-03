@@ -96,6 +96,7 @@ BOARD_KERNEL_CMDLINE := \
     bootinfo.fingerprint=$(XPE_VERSION) \
     mtdoops.fingerprint=$(XPE_VERSION)
 
+# androidboot.selinux=permissive
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
@@ -175,7 +176,7 @@ include device/qcom/sepolicy_vndr/SEPolicy.mk
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 SYSTEM_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/dolby
-#SELINUX_IGNORE_NEVERALLOWS := true
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Vendor boot
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/prebuilts/modules/ramdisk/*.ko)

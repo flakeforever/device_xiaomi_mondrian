@@ -130,15 +130,16 @@
     </string-array> 
 
     <!-- Pickup gesture -->
-    <string-array name="pick_up_gesture_entries" translatable="false">
+    <string-array name="press_udfps_gesture_entries" translatable="false">
         <item>@string/disabled</item>
-        <item>@string/pick_up_gesture_summary</item>
-        <item>@string/pick_up_wake_gesture_summary</item>
+        <item>@string/press_udfps_gesture_summary</item>
+        <item>@string/press_udfps_wake_gesture_summary</item>
     </string-array>
 
-    <string-array name="pick_up_gesture_values" translatable="false">
+    <string-array name="press_udfps_gesture_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
+
 </resources>

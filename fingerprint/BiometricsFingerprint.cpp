@@ -25,6 +25,10 @@ typedef struct fingerprint_hal {
     const bool is_udfps;
 } fingerprint_hal_t;
 
+static const fingerprint_hal_t kModules[] = {
+    {"fpc_fod", true}, {"goodix_fod", true},
+};
+
 }  // anonymous namespace
 
 namespace android {
@@ -50,15 +54,21 @@ BiometricsFingerprint::BiometricsFingerprint()
       mUdfpsHandlerFactory(nullptr),
       mUdfpsHandler(nullptr) {
     sInstance = this;  // keep track of the most recent instance
+    for (auto& [class_name, is_udfps] : kModules) {
+        mDevice = openHal(class_name);
+        if (!mDevice) {
+            ALOGE("Can't open HAL module, class %s", class_name);
+            continue;
+        }
 
-    SetProperty("ro.hardware.fingerprint", "goodix_fod");
-
-    mIsUdfps = true;
-    mDevice = openHal(nullptr);  
+        ALOGI("Opened fingerprint HAL, class %s", class_name);
+        mIsUdfps = is_udfps;
+        SetProperty("persist.vendor.sys.fp.vendor", class_name);
+        break;
+    }
     if (!mDevice) {
         ALOGE("Can't open any HAL module");
         SetProperty("persist.vendor.sys.fp.vendor", "none");
-        return;
     }
 
     if (mIsUdfps) {

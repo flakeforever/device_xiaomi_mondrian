@@ -105,4 +105,9 @@
     <string name="refresh_standard">60 Hz</string>
     <string name="refresh_high">90 Hz</string>
     <string name="refresh_extreme">120 Hz</string>
+
+    <!-- Press-Udfps gesture -->
+    <string name="press_udfps_gesture_title">Press fingerprint sensor</string>
+    <string name="press_udfps_gesture_summary">Pulse notifications on press fingerprint sensor</string>
+    <string name="press_udfps_wake_gesture_summary">Wake device on press fingerprint sensor</string>
 </resources>

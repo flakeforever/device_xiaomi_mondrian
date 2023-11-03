@@ -101,4 +101,9 @@
     <string name="refresh_title">刷新率设置</string>
     <string name="refresh_summary">设置特定应用的最大刷新率</string>
     <string name="refresh_default">默认</string>
+
+    <!-- Press-Udfps gesture -->
+    <string name="press_udfps_gesture_title">按下指纹传感器</string>
+    <string name="press_udfps_gesture_summary">按下指纹传感器时唤醒屏幕</string>
+    <string name="press_udfps_wake_gesture_summary">按下指纹传感器时唤醒设备</string>
 </resources>
