@@ -1,7 +1,7 @@
 # Device tree for Poco F5 Pro | Redmi K60
 
 ## Known issues
-- No option to change screen resolution from QHD+ to FHD+
+To be submitted
 
 ## Kernel (Baalam Kernel)
 - https://github.com/LowTension/android_kernel_xiaomi_sm8475
