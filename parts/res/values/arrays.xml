@@ -142,4 +142,20 @@
         <item>2</item>
     </string-array>
 
+    <!-- The option list for switch screen resolution -->
+    <string-array name="screen_resolution_entries" translatable="false">
+        <item>@string/screen_resolution_option_highest</item>
+        <item>@string/screen_resolution_option_high</item>
+    </string-array>
+
+    <string-array name="screen_resolution_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <!-- The option summary list for screen resolution -->
+    <string-array name="screen_resolution_summaries" translatable="false">
+        <item>@string/screen_resolution_summary_highest</item>
+        <item>@string/screen_resolution_summary_high</item> 
+    </string-array>
 </resources>
