@@ -39,7 +39,7 @@ index 05dc72c..9f3370d 100755
 
 project frameworks/base/
 diff --git a/core/java/android/hardware/fingerprint/FingerprintManager.java b/core/java/android/hardware/fingerprint/FingerprintManager.java
-index 5c1da1112e2a..021f2ea6143b 100644
+index 5c1da1112e2a..9b69d60a88c1 100644
 --- a/core/java/android/hardware/fingerprint/FingerprintManager.java
 +++ b/core/java/android/hardware/fingerprint/FingerprintManager.java
 @@ -40,7 +40,9 @@ import android.annotation.TestApi;
@@ -64,34 +64,43 @@ index 5c1da1112e2a..021f2ea6143b 100644
  import android.security.identity.IdentityCredential;
  import android.security.identity.PresentationSession;
  import android.util.Slog;
-@@ -1324,6 +1329,32 @@ public class FingerprintManager implements BiometricAuthenticator, BiometricFing
+@@ -1320,10 +1325,41 @@ public class FingerprintManager implements BiometricAuthenticator, BiometricFing
+         }
+     }
+ 
++    private void processUdfpsStatus() {
++        final PowerManager powerManager = mContext.getSystemService(PowerManager.class);   
++        if (!powerManager.isScreenOn()) {
++            int dozeEnable = Settings.Secure.getIntForUser(mContext.getContentResolver(),
++                Settings.Secure.DOZE_ENABLED, 0, UserHandle.USER_CURRENT);
++            int pressUdfpsMode = Settings.Secure.getIntForUser(mContext.getContentResolver(),
++                Settings.Secure.DOZE_PRESS_UDFPS_MODE, 0, UserHandle.USER_CURRENT);
++            Slog.w(TAG, "dozeEnable " + dozeEnable + " pressUdfpsType: " + pressUdfpsMode);
++            if (dozeEnable == 1) {
++                if (pressUdfpsMode == 1) {
++                    mContext.sendBroadcastAsUser(new Intent("com.android.systemui.doze.pulse"), 
++                    new UserHandle(UserHandle.USER_CURRENT)); 
++                }
++                else if (pressUdfpsMode == 2) {
++                    PowerManager.WakeLock wakeLock = powerManager.newWakeLock(
++                        PowerManager.PARTIAL_WAKE_LOCK,  "udfpsWakeLock");
++                    wakeLock.acquire(300);
++                    powerManager.wakeUp(SystemClock.uptimeMillis(),
++                            PowerManager.WAKE_REASON_GESTURE, TAG);
++                }
++            }
++        }       
++    }
++
+     private void sendAcquiredResult(int acquireInfo, int vendorCode) {
          if (mAuthenticationCallback != null) {
              mAuthenticationCallback.onAuthenticationAcquired(acquireInfo);
          }
-+        if (acquireInfo == 6 && vendorCode == 22) {
-+            final PowerManager powerManager = mContext.getSystemService(PowerManager.class);   
-+            if (!powerManager.isScreenOn()) {
-+                int dozeEnable = Settings.Secure.getIntForUser(mContext.getContentResolver(),
-+                    Settings.Secure.DOZE_ENABLED, 0, UserHandle.USER_CURRENT);
-+                int pressUdfpsMode = Settings.Secure.getIntForUser(mContext.getContentResolver(),
-+                    Settings.Secure.DOZE_PRESS_UDFPS_MODE, 0, UserHandle.USER_CURRENT);
-+                Slog.w(TAG, "dozeEnable " + dozeEnable + " pressUdfpsType: " + pressUdfpsMode);
-+                if (dozeEnable == 1) {
-+                    if (pressUdfpsMode == 1) {
-+                        mContext.sendBroadcastAsUser(new Intent("com.android.systemui.doze.pulse"), 
-+                        new UserHandle(UserHandle.USER_CURRENT)); 
-+                    }
-+                    else if (pressUdfpsMode == 2) {
-+                        PowerManager.WakeLock wakeLock = powerManager.newWakeLock(
-+                            PowerManager.PARTIAL_WAKE_LOCK,  "udfpsWakeLock");
-+                        wakeLock.acquire(300);
-+                        powerManager.wakeUp(SystemClock.uptimeMillis(),
-+                                PowerManager.WAKE_REASON_GESTURE, TAG);
-+                    }
-+                }
-+            }   
-+
-+            return;         
++        if (acquireInfo == 6 && (vendorCode == 60 || vendorCode == 22)) {
++            // fpc_fod: vendorCode 60
++            // goodix_fod: vendorCode 21
++            processUdfpsStatus();
++            return;
 +        }
 +
          final String msg = getAcquiredString(mContext, acquireInfo, vendorCode);
@@ -172,6 +181,52 @@ index b16a1088d5c1..38b7a8650138 100644
          VALIDATORS.put(System.ADAPTIVE_SLEEP, BOOLEAN_VALIDATOR);
          VALIDATORS.put(System.MODE_RINGER_STREAMS_AFFECTED, NON_NEGATIVE_INTEGER_VALIDATOR);
          VALIDATORS.put(System.MUTE_STREAMS_AFFECTED, NON_NEGATIVE_INTEGER_VALIDATOR);
+diff --git a/packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java b/packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java
+index 5399d8b2ab1a..485dc03ca012 100644
+--- a/packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java
++++ b/packages/SettingsProvider/src/com/android/providers/settings/SettingsProvider.java
+@@ -3944,9 +3944,9 @@ public class SettingsProvider extends ContentProvider {
+                         secureSettings.insertSettingOverrideableByRestoreLocked(
+                                 Settings.Secure.DOZE_PICK_UP_GESTURE, "0", null, true,
+                                 SettingsState.SYSTEM_PACKAGE_NAME);
+-                        secureSettings.insertSettingOverrideableByRestoreLocked(
+-                                Settings.Secure.DOZE_DOUBLE_TAP_GESTURE, "0", null, true,
+-                                SettingsState.SYSTEM_PACKAGE_NAME);
++                        // secureSettings.insertSettingOverrideableByRestoreLocked(
++                        //         Settings.Secure.DOZE_DOUBLE_TAP_GESTURE, "0", null, true,
++                        //         SettingsState.SYSTEM_PACKAGE_NAME);
+                     }
+                     currentVersion = 131;
+                 }
+diff --git a/packages/SystemUI/src/com/android/systemui/doze/DozeSensors.java b/packages/SystemUI/src/com/android/systemui/doze/DozeSensors.java
+index 4c8f854d8f7b..2af2f94a9ea1 100644
+--- a/packages/SystemUI/src/com/android/systemui/doze/DozeSensors.java
++++ b/packages/SystemUI/src/com/android/systemui/doze/DozeSensors.java
+@@ -200,15 +200,15 @@ public class DozeSensors {
+                         true /* immediatelyReRegister */,
+                         false /* requiresAod */
+                 ),
+-                new TriggerSensor(
+-                        findSensor(config.doubleTapSensorType()),
+-                        Settings.Secure.DOZE_DOUBLE_TAP_GESTURE,
+-                        true /* configured */,
+-                        DozeLog.REASON_SENSOR_DOUBLE_TAP,
+-                        dozeParameters.doubleTapReportsTouchCoordinates(),
+-                        true /* touchscreen */,
+-                        !dozeParameters.doubleTapNeedsProximityCheck() /* performsProxCheck */
+-                ),
++                // new TriggerSensor(
++                //         findSensor(config.doubleTapSensorType()),
++                //         Settings.Secure.DOZE_DOUBLE_TAP_GESTURE,
++                //         true /* configured */,
++                //         DozeLog.REASON_SENSOR_DOUBLE_TAP,
++                //         dozeParameters.doubleTapReportsTouchCoordinates(),
++                //         true /* touchscreen */,
++                //         !dozeParameters.doubleTapNeedsProximityCheck() /* performsProxCheck */
++                // ),
+                 new TriggerSensor(
+                         findSensors(config.tapSensorTypeMapping()),
+                         Settings.Secure.DOZE_TAP_SCREEN_GESTURE,
 diff --git a/services/core/java/com/android/server/display/DisplayManagerService.java b/services/core/java/com/android/server/display/DisplayManagerService.java
 index 909c531c5e92..470652fd6f0a 100644
 --- a/services/core/java/com/android/server/display/DisplayManagerService.java
@@ -281,6 +336,19 @@ index 000000000000..2a61c5eb2697
 +        }
 +    }
 +}
+diff --git a/services/core/java/com/android/server/dreams/DreamManagerService.java b/services/core/java/com/android/server/dreams/DreamManagerService.java
+index 5b375d70e436..86124051a418 100644
+--- a/services/core/java/com/android/server/dreams/DreamManagerService.java
++++ b/services/core/java/com/android/server/dreams/DreamManagerService.java
+@@ -774,7 +774,7 @@ public final class DreamManagerService extends SystemService {
+     private final ContentObserver mDozeEnabledObserver = new ContentObserver(null) {
+         @Override
+         public void onChange(boolean selfChange) {
+-            writePulseGestureEnabled();
++            //writePulseGestureEnabled();
+         }
+     };
+ 
 diff --git a/telecomm/java/android/telecom/Connection.java b/telecomm/java/android/telecom/Connection.java
 index 49ad58550db8..dec6def806c6 100644
 --- a/telecomm/java/android/telecom/Connection.java
