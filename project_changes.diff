@@ -145,6 +145,96 @@ index 909c531c5e92..470652fd6f0a 100644
  
          mBrightnessSynchronizer.startSynchronizing();
  
+diff --git a/services/core/java/com/android/server/display/ResolutionSettings.java b/services/core/java/com/android/server/display/ResolutionSettings.java
+new file mode 100644
+index 000000000000..a9e35fce83e8
+--- /dev/null
++++ b/services/core/java/com/android/server/display/ResolutionSettings.java
+@@ -0,0 +1,83 @@
++/*
++ * Copyright (C) 2021 The Android Open Source Project
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++package com.android.server.display;
++
++import android.content.Context;
++import android.content.ContentResolver;
++import android.database.ContentObserver;
++import android.net.Uri;
++import android.os.Handler;
++import android.os.RemoteException;
++import android.os.UserHandle;
++import android.provider.Settings;
++import android.util.Slog;
++
++import android.view.Display;
++import android.view.IWindowManager;
++import android.view.WindowManagerGlobal;
++
++public class ResolutionSettings {
++    private static final String TAG = "ResolutionSettings";
++    
++    private Context mContext;
++    private final Handler mHandler;
++    private SettingsObserver mSettingsObserver;
++
++    public ResolutionSettings(Context context, Handler handler) {
++        this.mContext = context;
++        this.mHandler = handler;
++
++        mSettingsObserver = new SettingsObserver();
++    }
++
++    private void updateScreenResolution() {
++        int resolutionMode = Settings.System.getIntForUser(mContext.getContentResolver(),
++            Settings.System.SCREEN_RESOLUTION_MODE, 0, UserHandle.USER_CURRENT);
++        try {
++            if (resolutionMode == 0) {
++                // mondrian
++                final IWindowManager wms = WindowManagerGlobal.getWindowManagerService();
++                int displayId = Display.DEFAULT_DISPLAY;
++                wms.clearForcedDisplaySize(displayId);
++                wms.clearForcedDisplayDensityForUser(displayId, UserHandle.USER_CURRENT);
++            } else if (resolutionMode == 1) {
++                // mondrian
++                final IWindowManager wms = WindowManagerGlobal.getWindowManagerService();
++                int displayId = Display.DEFAULT_DISPLAY;
++                wms.setForcedDisplaySize(displayId, 1080, 2400);
++                wms.setForcedDisplayDensityForUser(displayId, 420, UserHandle.USER_CURRENT);
++            }
++        } catch (RemoteException e) {
++            Slog.e(TAG, "Remote execution", e);
++        }
++    }
++
++    private class SettingsObserver extends ContentObserver {
++        SettingsObserver() {
++            super(mHandler);
++
++            mContext.getContentResolver().registerContentObserver(
++                    Settings.System.getUriFor(
++                        Settings.System.SCREEN_RESOLUTION_MODE), false, this);
++        }
++
++        @Override
++        public void onChange(boolean selfChange, Uri uri) {
++            updateScreenResolution();
++        }
++    }
++}
+\ No newline at end of file
 diff --git a/telecomm/java/android/telecom/Connection.java b/telecomm/java/android/telecom/Connection.java
 index 49ad58550db8..dec6def806c6 100644
 --- a/telecomm/java/android/telecom/Connection.java
