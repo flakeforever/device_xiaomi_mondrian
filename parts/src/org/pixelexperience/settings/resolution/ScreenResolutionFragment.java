@@ -50,6 +50,8 @@ public class ScreenResolutionFragment extends PreferenceFragment implements
         addPreferencesFromResource(R.xml.screen_resolution_settings);
 
         mChooseResolutionPref = (ListPreference) findPreference(PREF_SCREEN_RESOLUTION);
+        mChooseResolutionPref.setDefaultValue(
+            Integer.toString(ScreenResolutionUtils.getResolutionMode(getActivity())));
         mChooseResolutionPref.setOnPreferenceChangeListener(this);
     }
 
@@ -60,5 +62,12 @@ public class ScreenResolutionFragment extends PreferenceFragment implements
             return ScreenResolutionUtils.setResolutionMode(getActivity(), value);
         }
         return false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mChooseResolutionPref.setValue(
+            Integer.toString(ScreenResolutionUtils.getResolutionMode(getActivity())));
     }
 }

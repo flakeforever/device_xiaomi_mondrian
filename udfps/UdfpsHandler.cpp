@@ -138,24 +138,12 @@ class XiaomiSm8450UdfpsHander : public UdfpsHandler {
             setFingerUp();
             setFodStatus(FOD_STATUS_OFF);
         } else {
-            std::string halName = GetProperty("persist.vendor.sys.fp.vendor", "none");
-            if (halName == "fpc_fod") {
-                if (vendorCode == 20 || vendorCode == 22) {
-                    /*
-                    * vendorCode = 20 waiting for fingerprint authentication
-                    * vendorCode = 22 waiting for fingerprint enroll
-                    */
-                    setFodStatus(FOD_STATUS_ON);
-                }
-            }
-            else if (halName == "goodix_fod") {
-                if (vendorCode == 21 || vendorCode == 23) {
-                    /*
-                    * vendorCode = 21 waiting for fingerprint authentication
-                    * vendorCode = 23 waiting for fingerprint enroll
-                    */
-                    setFodStatus(FOD_STATUS_ON);
-                }        
+            if (vendorCode == 21 || vendorCode == 23) {
+                /*
+                * vendorCode = 21 waiting for fingerprint authentication
+                * vendorCode = 23 waiting for fingerprint enroll
+                */
+                setFodStatus(FOD_STATUS_ON);
             }
         }
     }

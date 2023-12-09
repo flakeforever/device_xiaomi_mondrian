@@ -36,26 +36,18 @@ TARGET_BOARD_PLATFORM := taro
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=erofs \
+    FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=erofs \
+    FILESYSTEM_TYPE_vendor=ext4 \
     POSTINSTALL_OPTIONAL_vendor=true
 
 # AIDL NDK backend
 PRODUCT_PACKAGES += \
-    android.hardware.common-V2-ndk_platform \
-    android.hardware.gnss-V1-ndk_platform \
-    android.hardware.identity-V3-ndk_platform \
-    android.hardware.keymaster-V3-ndk_platform \
-    android.hardware.light-V1-ndk_platform \
-    android.hardware.memtrack-V1-ndk_platform \
-    android.hardware.security.keymint-V1-ndk_platform \
-    android.hardware.security.secureclock-V1-ndk_platform \
-    android.hardware.security.sharedsecret-V1-ndk_platform
+    android.hardware.power-V3-ndk_platform
 
 # Atrace
 PRODUCT_PACKAGES += \
@@ -85,6 +77,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libvolumelistener
+
+PRODUCT_PACKAGES += \
+    audio-factory-test
 
 # Automotive
 PRODUCT_PACKAGES += \
@@ -321,7 +316,7 @@ PRODUCT_BOOT_JARS += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.xiaomi-libperfmgr
+    android.hardware.power-service-qti
 
 # Properties
 include $(DEVICE_PATH)/configs/properties/default.mk
@@ -335,7 +330,8 @@ PRODUCT_PACKAGES += \
 # Rootdir
 PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
-    init.qcom.rc
+    init.qcom.rc \
+    ueventd-odm.rc
 
 # Secure element
 PRODUCT_PACKAGES += \
@@ -411,3 +407,14 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0
 
+PRODUCT_ODM_PROPERTIES += \
+    ro.vendor.qti.va_odm.support=1 \
+    debug.config.media.video.dolby_vision_suports=true \
+    ro.vendor.nfc.wallet_fusion=1
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.vibrator.service
+
+PRODUCT_COPY_FILES += \
+    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml

@@ -39,7 +39,7 @@ index 05dc72c..9f3370d 100755
 
 project frameworks/av/
 diff --git a/media/codec2/sfplugin/CCodec.cpp b/media/codec2/sfplugin/CCodec.cpp
-index feb0876b18..93a07479a5 100644
+index feb0876b18..63dcedb44f 100644
 --- a/media/codec2/sfplugin/CCodec.cpp
 +++ b/media/codec2/sfplugin/CCodec.cpp
 @@ -18,6 +18,7 @@
@@ -68,7 +68,7 @@ index feb0876b18..93a07479a5 100644
  class CCodecWatchdog : public AHandler {
  private:
      enum {
-@@ -730,10 +742,19 @@ void CCodec::allocate(const sp<MediaCodecInfo> &codecInfo) {
+@@ -730,10 +742,20 @@ void CCodec::allocate(const sp<MediaCodecInfo> &codecInfo) {
          mCallback->onError(UNKNOWN_ERROR, ACTION_CODE_FATAL);
          return;
      }
@@ -80,7 +80,8 @@ index feb0876b18..93a07479a5 100644
      AString componentName = codecInfo->getCodecName();
 +
 +    // Fix issue for bilibili switch to background 
-+    if (processName == "com.bilibili.app.in:ijkservice") {
++    if (processName == "com.bilibili.app.in:ijkservice" || 
++        processName == "tv.danmaku.bili:ijkservice") {
 +        if (componentName == "c2.qti.hevc.decoder.low_latency") {
 +            componentName = "c2.qti.avc.decoder";
 +        }
@@ -94,10 +95,10 @@ index feb0876b18..93a07479a5 100644
 
 project frameworks/base/
 diff --git a/core/java/android/provider/Settings.java b/core/java/android/provider/Settings.java
-index c18f75c41787..18ff0e69cc52 100644
+index c18f75c41787..46f67c81bb29 100644
 --- a/core/java/android/provider/Settings.java
 +++ b/core/java/android/provider/Settings.java
-@@ -4597,6 +4597,15 @@ public final class Settings {
+@@ -4597,6 +4597,36 @@ public final class Settings {
           */
          public static final int SCREEN_BRIGHTNESS_MODE_AUTOMATIC = 1;
  
@@ -109,132 +110,160 @@ index c18f75c41787..18ff0e69cc52 100644
 +         */
 +        @Readable
 +        public static final String SCREEN_RESOLUTION_MODE = "screen_resolution_mode";
++
++        /**
++         * Override resolution width.
++         * @hide
++         */
++        @Readable
++        public static final String SCREEN_OVERRIDE_WIDTH = "screen_override_width";
++
++        /**
++         * Override resolution height.
++         * @hide
++         */
++        @Readable
++        public static final String SCREEN_OVERRIDE_HEIGHT = "screen_override_height";
++
++        /**
++         * Override resolution density.
++         * @hide
++         */
++        @Readable
++        public static final String SCREEN_OVERRIDE_DENSITY = "screen_override_density";
 +        
          /**
           * Control whether to enable adaptive sleep mode.
           * @deprecated Use {@link android.provider.Settings.Secure#ADAPTIVE_SLEEP} instead.
+diff --git a/packages/SettingsLib/src/com/android/settingslib/display/DisplayDensityUtils.java b/packages/SettingsLib/src/com/android/settingslib/display/DisplayDensityUtils.java
+index d4d2b48fcc04..300753f0d234 100644
+--- a/packages/SettingsLib/src/com/android/settingslib/display/DisplayDensityUtils.java
++++ b/packages/SettingsLib/src/com/android/settingslib/display/DisplayDensityUtils.java
+@@ -18,10 +18,12 @@ package com.android.settingslib.display;
+ 
+ import android.content.Context;
+ import android.content.res.Resources;
++import android.graphics.Point;
+ import android.hardware.display.DisplayManager;
+ import android.os.AsyncTask;
+ import android.os.RemoteException;
+ import android.os.UserHandle;
++import android.provider.Settings;
+ import android.util.DisplayMetrics;
+ import android.util.Log;
+ import android.util.MathUtils;
+@@ -98,6 +100,7 @@ public class DisplayDensityUtils {
+ 
+     private int mDefaultDensityForDefaultDisplay;
+     private int mCurrentIndex = -1;
++    
+ 
+     public DisplayDensityUtils(Context context) {
+         this(context, INTERNAL_ONLY);
+@@ -130,7 +133,7 @@ public class DisplayDensityUtils {
+             }
+ 
+             final int defaultDensity = DisplayDensityUtils.getDefaultDensityForDisplay(
+-                    display.getDisplayId());
++                    context, display.getDisplayId());
+             if (defaultDensity <= 0) {
+                 Log.w(LOG_TAG, "Cannot fetch default density for display "
+                         + display.getDisplayId());
+@@ -246,12 +249,24 @@ public class DisplayDensityUtils {
+      * @return the default density of the specified display, or {@code -1} if
+      *         the display does not exist or the density could not be obtained
+      */
+-    private static int getDefaultDensityForDisplay(int displayId) {
++    private static int getDefaultDensityForDisplay(Context context, int displayId) {
+        try {
+-           final IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
+-           return wm.getInitialDisplayDensity(displayId);
++            int overrideWidth = Settings.System.getIntForUser(context.getContentResolver(), 
++                Settings.System.SCREEN_OVERRIDE_WIDTH, 0, UserHandle.USER_CURRENT);
++            int overrideHeight = Settings.System.getIntForUser(context.getContentResolver(), 
++                Settings.System.SCREEN_OVERRIDE_HEIGHT, 0, UserHandle.USER_CURRENT);
++            int overrideDensity = Settings.System.getIntForUser(context.getContentResolver(), 
++                Settings.System.SCREEN_OVERRIDE_DENSITY, 0, UserHandle.USER_CURRENT);
++                
++            final IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
++            Point size = new Point();
++            wm.getBaseDisplaySize(displayId, size);
++            if (size.x == overrideWidth && size.y == overrideHeight && overrideDensity > 0) {
++                return overrideDensity;
++            }
++            return wm.getInitialDisplayDensity(displayId);
+        } catch (RemoteException exc) {
+-           return -1;
++            return -1;
+        }
+     }
+ 
 diff --git a/packages/SettingsProvider/src/android/provider/settings/validators/SystemSettingsValidators.java b/packages/SettingsProvider/src/android/provider/settings/validators/SystemSettingsValidators.java
-index b16a1088d5c1..38b7a8650138 100644
+index b16a1088d5c1..c79981b73c47 100644
 --- a/packages/SettingsProvider/src/android/provider/settings/validators/SystemSettingsValidators.java
 +++ b/packages/SettingsProvider/src/android/provider/settings/validators/SystemSettingsValidators.java
-@@ -113,6 +113,7 @@ public class SystemSettingsValidators {
+@@ -113,6 +113,10 @@ public class SystemSettingsValidators {
          VALIDATORS.put(System.SCREEN_OFF_TIMEOUT, NON_NEGATIVE_INTEGER_VALIDATOR);
          VALIDATORS.put(System.SCREEN_BRIGHTNESS_FOR_VR, new InclusiveIntegerRangeValidator(0, 255));
          VALIDATORS.put(System.SCREEN_BRIGHTNESS_MODE, BOOLEAN_VALIDATOR);
 +        VALIDATORS.put(System.SCREEN_RESOLUTION_MODE, NON_NEGATIVE_INTEGER_VALIDATOR);
++        VALIDATORS.put(System.SCREEN_OVERRIDE_WIDTH, NON_NEGATIVE_INTEGER_VALIDATOR);
++        VALIDATORS.put(System.SCREEN_OVERRIDE_HEIGHT, NON_NEGATIVE_INTEGER_VALIDATOR);
++        VALIDATORS.put(System.SCREEN_OVERRIDE_DENSITY, NON_NEGATIVE_INTEGER_VALIDATOR);
          VALIDATORS.put(System.ADAPTIVE_SLEEP, BOOLEAN_VALIDATOR);
          VALIDATORS.put(System.MODE_RINGER_STREAMS_AFFECTED, NON_NEGATIVE_INTEGER_VALIDATOR);
          VALIDATORS.put(System.MUTE_STREAMS_AFFECTED, NON_NEGATIVE_INTEGER_VALIDATOR);
-diff --git a/services/core/java/com/android/server/display/DisplayManagerService.java b/services/core/java/com/android/server/display/DisplayManagerService.java
-index 909c531c5e92..470652fd6f0a 100644
---- a/services/core/java/com/android/server/display/DisplayManagerService.java
-+++ b/services/core/java/com/android/server/display/DisplayManagerService.java
-@@ -421,6 +421,7 @@ public final class DisplayManagerService extends SystemService {
+diff --git a/services/core/java/com/android/server/wm/WindowManagerService.java b/services/core/java/com/android/server/wm/WindowManagerService.java
+index 368da684f9f8..5c30a83e40d7 100644
+--- a/services/core/java/com/android/server/wm/WindowManagerService.java
++++ b/services/core/java/com/android/server/wm/WindowManagerService.java
+@@ -361,6 +361,7 @@ public class WindowManagerService extends IWindowManager.Stub
+     private static final int TRACE_MAX_SECTION_NAME_LENGTH = 127;
  
-     private SensorManager mSensorManager;
-     private BrightnessTracker mBrightnessTracker;
-+    private ResolutionSettings mResolutionSettings;
+     static final int LAYOUT_REPEAT_THRESHOLD = 4;
++    static final int OVERRIDE_DEFAULT_DENSITY = 420;
  
+     static final boolean PROFILE_ORIENTATION = false;
+     static WindowState mFocusingWindow;
+@@ -3658,6 +3659,11 @@ public class WindowManagerService extends IWindowManager.Stub
+         }
+     }
  
-     // Whether minimal post processing is allowed by the user.
-@@ -656,6 +657,7 @@ public final class DisplayManagerService extends SystemService {
-         mHandler.sendEmptyMessage(MSG_REGISTER_ADDITIONAL_DISPLAY_ADAPTERS);
- 
-         mSettingsObserver = new SettingsObserver();
-+        mResolutionSettings = new ResolutionSettings(mContext, mHandler);
- 
-         mBrightnessSynchronizer.startSynchronizing();
- 
-diff --git a/services/core/java/com/android/server/display/ResolutionSettings.java b/services/core/java/com/android/server/display/ResolutionSettings.java
-new file mode 100644
-index 000000000000..a9e35fce83e8
---- /dev/null
-+++ b/services/core/java/com/android/server/display/ResolutionSettings.java
-@@ -0,0 +1,83 @@
-+/*
-+ * Copyright (C) 2021 The Android Open Source Project
-+ *
-+ * Licensed under the Apache License, Version 2.0 (the "License");
-+ * you may not use this file except in compliance with the License.
-+ * You may obtain a copy of the License at
-+ *
-+ *      http://www.apache.org/licenses/LICENSE-2.0
-+ *
-+ * Unless required by applicable law or agreed to in writing, software
-+ * distributed under the License is distributed on an "AS IS" BASIS,
-+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-+ * See the License for the specific language governing permissions and
-+ * limitations under the License.
-+ */
-+
-+package com.android.server.display;
-+
-+import android.content.Context;
-+import android.content.ContentResolver;
-+import android.database.ContentObserver;
-+import android.net.Uri;
-+import android.os.Handler;
-+import android.os.RemoteException;
-+import android.os.UserHandle;
-+import android.provider.Settings;
-+import android.util.Slog;
-+
-+import android.view.Display;
-+import android.view.IWindowManager;
-+import android.view.WindowManagerGlobal;
-+
-+public class ResolutionSettings {
-+    private static final String TAG = "ResolutionSettings";
-+    
-+    private Context mContext;
-+    private final Handler mHandler;
-+    private SettingsObserver mSettingsObserver;
-+
-+    public ResolutionSettings(Context context, Handler handler) {
-+        this.mContext = context;
-+        this.mHandler = handler;
-+
-+        mSettingsObserver = new SettingsObserver();
++    private boolean isOverrideSize(DisplayContent displayContent) {
++        return (displayContent.mBaseDisplayWidth != displayContent.mInitialDisplayWidth || 
++            displayContent.mBaseDisplayHeight != displayContent.mInitialDisplayHeight);
 +    }
 +
-+    private void updateScreenResolution() {
-+        int resolutionMode = Settings.System.getIntForUser(mContext.getContentResolver(),
-+            Settings.System.SCREEN_RESOLUTION_MODE, 0, UserHandle.USER_CURRENT);
-+        try {
-+            if (resolutionMode == 0) {
-+                // mondrian
-+                final IWindowManager wms = WindowManagerGlobal.getWindowManagerService();
-+                int displayId = Display.DEFAULT_DISPLAY;
-+                wms.clearForcedDisplaySize(displayId);
-+                wms.clearForcedDisplayDensityForUser(displayId, UserHandle.USER_CURRENT);
-+            } else if (resolutionMode == 1) {
-+                // mondrian
-+                final IWindowManager wms = WindowManagerGlobal.getWindowManagerService();
-+                int displayId = Display.DEFAULT_DISPLAY;
-+                wms.setForcedDisplaySize(displayId, 1080, 2400);
-+                wms.setForcedDisplayDensityForUser(displayId, 420, UserHandle.USER_CURRENT);
-+            }
-+        } catch (RemoteException e) {
-+            Slog.e(TAG, "Remote execution", e);
-+        }
-+    }
+     public void setCurrentUser(final int newUserId, final int[] currentProfileIds) {
+         synchronized (mGlobalLock) {
+             mCurrentUserId = newUserId;
+@@ -3675,10 +3681,24 @@ public class WindowManagerService extends IWindowManager.Stub
+             // If the display is already prepared, update the density.
+             // Otherwise, we'll update it when it's prepared.
+             if (mDisplayReady) {
++                int currentResolutionMode = isOverrideSize(displayContent) ? 1 : 0;
++                int resolutionMode = Settings.System.getIntForUser(mContext.getContentResolver(),
++                    Settings.System.SCREEN_RESOLUTION_MODE, 0, newUserId);
++                
++                final int initialDisplayDensity = isOverrideSize(displayContent) ? 
++                        OVERRIDE_DEFAULT_DENSITY : displayContent.mInitialDisplayDensity;
+                 final int forcedDensity = getForcedDisplayDensityForUserLocked(newUserId);
+                 final int targetDensity = forcedDensity != 0 ? forcedDensity
+-                        : displayContent.mInitialDisplayDensity;
+-                displayContent.setForcedDensity(targetDensity, UserHandle.USER_CURRENT);
++                        : initialDisplayDensity;
 +
-+    private class SettingsObserver extends ContentObserver {
-+        SettingsObserver() {
-+            super(mHandler);
-+
-+            mContext.getContentResolver().registerContentObserver(
-+                    Settings.System.getUriFor(
-+                        Settings.System.SCREEN_RESOLUTION_MODE), false, this);
-+        }
-+
-+        @Override
-+        public void onChange(boolean selfChange, Uri uri) {
-+            updateScreenResolution();
-+        }
-+    }
-+}
-\ No newline at end of file
++                if (currentResolutionMode != resolutionMode) {
++                    Settings.System.putIntForUser(mContext.getContentResolver(),
++                            Settings.System.SCREEN_RESOLUTION_MODE, 
++                            currentResolutionMode, newUserId);
++                    displayContent.setForcedDensity(initialDisplayDensity, UserHandle.USER_CURRENT);
++                } else {
++                    displayContent.setForcedDensity(targetDensity, UserHandle.USER_CURRENT);
++                }                
+             }
+         }
+     }
 diff --git a/telecomm/java/android/telecom/Connection.java b/telecomm/java/android/telecom/Connection.java
 index 49ad58550db8..dec6def806c6 100644
 --- a/telecomm/java/android/telecom/Connection.java
@@ -313,6 +342,49 @@ index c1795f5c32..b32c85270b 100644
      if (aidlHal) {
          ALOGV("Successfully connected to Vibrator HAL AIDL service.");
          return std::make_shared<AidlHalWrapper>(std::move(scheduler), aidlHal);
+
+project hardware/custom/compat/
+diff --git a/Android.bp b/Android.bp
+index a13f929..81e5886 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -137,6 +137,13 @@ cc_library_shared {
+     vendor_available: true,
+ }
+ 
++cc_library_shared {
++    name: "android.hardware.power-V3-ndk_platform",
++    shared_libs: ["android.hardware.power-V3-ndk"],
++    system_ext_specific: true,
++    vendor_available: true,
++}
++
+ cc_library_shared {
+     name: "android.hardware.power.stats-V1-ndk_platform",
+     shared_libs: ["android.hardware.power.stats-V1-ndk"],
+
+project packages/apps/Settings/
+diff --git a/src/com/android/settings/accessibility/DisplaySizeData.java b/src/com/android/settings/accessibility/DisplaySizeData.java
+index 77ae897708..5d75bba0b7 100644
+--- a/src/com/android/settings/accessibility/DisplaySizeData.java
++++ b/src/com/android/settings/accessibility/DisplaySizeData.java
+@@ -56,10 +56,11 @@ class DisplaySizeData extends PreviewSizeData<Integer> {
+     @Override
+     void commit(int currentProgress) {
+         final int densityDpi = getValues().get(currentProgress);
+-        if (densityDpi == getDefaultValue()) {
+-            mDensity.clearForcedDisplayDensity();
+-        } else {
+-            mDensity.setForcedDisplayDensity(currentProgress);
+-        }
++        mDensity.setForcedDisplayDensity(currentProgress);
++        // if (densityDpi == getDefaultValue()) {
++        //     mDensity.clearForcedDisplayDensity();
++        // } else {
++        //     mDensity.setForcedDisplayDensity(currentProgress);
++        // }
+     }
+ }
 
 project packages/modules/Bluetooth/
 diff --git a/android/app/src/com/android/bluetooth/hfp/HeadsetService.java b/android/app/src/com/android/bluetooth/hfp/HeadsetService.java

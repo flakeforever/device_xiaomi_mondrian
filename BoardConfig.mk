@@ -69,6 +69,9 @@ SOONG_CONFIG_NAMESPACES += dolby_vision
 SOONG_CONFIG_dolby_vision += enabled
 SOONG_CONFIG_dolby_vision_enabled := true
 
+# # Filesystem
+# TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config.fs
+
 # Fingerprint
 TARGET_HAS_UDFPS := true
 TARGET_SURFACEFLINGER_UDFPS_LIB := //hardware/xiaomi:libudfps_extension.xiaomi
@@ -135,10 +138,10 @@ BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext ven
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9122611200
 
 BOARD_PARTITION_LIST := $(call to-upper, $(BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST))
-$(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := erofs))
+$(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := ext4))
 $(foreach p, $(BOARD_PARTITION_LIST), $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
 
-BOARD_PREBUILT_ODMIMAGE := device/xiaomi/mondrian/prebuilts/odm.img
+# BOARD_PREBUILT_ODMIMAGE := device/xiaomi/mondrian/prebuilts/odm.img
 BOARD_PREBUILT_VENDORIMAGE := device/xiaomi/mondrian/prebuilts/vendor.img
 
 TARGET_USERIMAGES_USE_F2FS := true
@@ -178,6 +181,7 @@ SOONG_CONFIG_SENSORS_XIAOMI_USES_UDFPS_SENSOR := true
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 
+PRODUCT_PRECOMPILED_SEPOLICY := false
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 SYSTEM_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/dolby
@@ -218,6 +222,7 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 
 # VINTF
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/framework_compatibility_matrix.xml
+ODM_MANIFEST_FILES += $(DEVICE_PATH)/configs/vintf/odm/manifest_mondrian.xml
 
 # VNDK
 BOARD_VNDK_VERSION := current

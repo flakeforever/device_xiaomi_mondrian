@@ -9,6 +9,8 @@
 #include <android-base/logging.h>
 #include <sys/ioctl.h>
 
+#define LOG_TAG "PowerHAL-ext"
+
 #define SET_CUR_VALUE 0
 #define TOUCH_DOUBLETAP_MODE 14
 #define TOUCH_MAGIC 't'
@@ -28,6 +30,7 @@ bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return) {
     switch (type) {
         case Mode::DOUBLE_TAP_TO_WAKE:
             *_aidl_return = true;
+            LOG(INFO) << __func__ << " DOUBLE_TAP_TO_WAKE is true";
             return true;
         default:
             return false;
@@ -35,6 +38,7 @@ bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return) {
 }
 
 bool setDeviceSpecificMode(Mode type, bool enabled) {
+    LOG(INFO) << __func__ << " type: " << static_cast<int>(type) << " enabled: " << enabled;
     switch (type) {
         case Mode::DOUBLE_TAP_TO_WAKE: {
             int fd = open(TOUCH_DEV_PATH, O_RDWR);
