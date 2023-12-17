@@ -6,9 +6,8 @@
 ## Required system patches
 - Check [project_changes.diff](https://github.com/flakeforever/device_xiaomi_mondrian/blob/main/project_changes.diff)
 
-## Prebuilt files (customized from V14.0.26.0):
-- https://drive.google.com/drive/folders/15Ihtjg5cZEeSgChfvwoYBC3Kv7HRyav4?usp=sharing
-
+## Prebuilt files (customized from Global V14.0.6.0):
+- Download [vendor.img](https://drive.google.com/drive/folders/15Ihtjg5cZEeSgChfvwoYBC3Kv7HRyav4?usp=sharing)
 
 Credits: 
     [affggh](https://github.com/affggh)

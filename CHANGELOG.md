@@ -1,3 +1,6 @@
+- 17/12/2003
+Repack vendor.img SHA256|e6f226244ae4dc06eb1be9ff7e36ff98481cad6e377e449366ca6a23c950b13b
+
 - 21/10/2023
 Repack vendor.img SHA256|dced1c05e58cedb30f054839d93efcb67005adeed73b091dd24b147e643bc526
 

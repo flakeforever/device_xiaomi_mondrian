@@ -165,12 +165,8 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.3-service.mondrian \
+    android.hardware.biometrics.fingerprint@2.3-service.sm8475 \
     libudfpshandler
-
-PRODUCT_SYSTEM_PROPERTIES += \
-    ro.hardware.fingerprint.fpc_fod=default \
-    ro.hardware.fingerprint.goodix_fod=default
 
 # Gatekeeper
 PRODUCT_PACKAGES += \

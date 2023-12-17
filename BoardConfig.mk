@@ -76,6 +76,19 @@ SOONG_CONFIG_dolby_vision_enabled := true
 TARGET_HAS_UDFPS := true
 TARGET_SURFACEFLINGER_UDFPS_LIB := //hardware/xiaomi:libudfps_extension.xiaomi
 
+# # HIDL
+# DEVICE_MATRIX_FILE := $(DEVICE_PATH)/hidl/compatibility_matrix.xml
+
+# DEVICE_MANIFEST_SKUS := taro
+# DEVICE_MANIFEST_TARO_FILES := \
+#     $(DEVICE_PATH)/hidl/manifest_cape.xml \
+#     $(DEVICE_PATH)/hidl/manifest_xiaomi.xml
+
+# DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+#     $(DEVICE_PATH)/hidl/vendor_framework_compatibility_matrix.xml \
+#     $(DEVICE_PATH)/hidl/xiaomi_framework_compatibility_matrix.xml \
+#     vendor/aosp/config/device_framework_matrix.xml
+
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_xiaomi_mondrian
 TARGET_RECOVERY_DEVICE_MODULES ?= init_xiaomi_mondrian
