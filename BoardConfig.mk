@@ -55,7 +55,7 @@ SOONG_CONFIG_ufsbsg += ufsframework
 SOONG_CONFIG_ufsbsg_ufsframework := bsg
 
 # Bootloader
-PRODUCT_PLATFORM := taro
+PRODUCT_PLATFORM := cape
 TARGET_BOOTLOADER_BOARD_NAME := mondrian
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
