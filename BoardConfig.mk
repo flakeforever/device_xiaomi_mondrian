@@ -55,7 +55,7 @@ SOONG_CONFIG_ufsbsg += ufsframework
 SOONG_CONFIG_ufsbsg_ufsframework := bsg
 
 # Bootloader
-PRODUCT_PLATFORM := cape
+PRODUCT_PLATFORM := taro
 TARGET_BOOTLOADER_BOARD_NAME := mondrian
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
@@ -69,25 +69,9 @@ SOONG_CONFIG_NAMESPACES += dolby_vision
 SOONG_CONFIG_dolby_vision += enabled
 SOONG_CONFIG_dolby_vision_enabled := true
 
-# # Filesystem
-# TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config.fs
-
 # Fingerprint
 TARGET_HAS_UDFPS := true
 TARGET_SURFACEFLINGER_UDFPS_LIB := //hardware/xiaomi:libudfps_extension.xiaomi
-
-# # HIDL
-# DEVICE_MATRIX_FILE := $(DEVICE_PATH)/hidl/compatibility_matrix.xml
-
-# DEVICE_MANIFEST_SKUS := taro
-# DEVICE_MANIFEST_TARO_FILES := \
-#     $(DEVICE_PATH)/hidl/manifest_cape.xml \
-#     $(DEVICE_PATH)/hidl/manifest_xiaomi.xml
-
-# DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
-#     $(DEVICE_PATH)/hidl/vendor_framework_compatibility_matrix.xml \
-#     $(DEVICE_PATH)/hidl/xiaomi_framework_compatibility_matrix.xml \
-#     vendor/aosp/config/device_framework_matrix.xml
 
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_xiaomi_mondrian
@@ -106,6 +90,7 @@ BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_RAMDISK_OFFSET := 0x01000000
 
 BOARD_KERNEL_CMDLINE := \
+    #console=ttyUSB0,115200 androidboot.console=ttyUSB0 printk.devkmsg=on
     video=vfb:640x400,bpp=32,memsize=3072000 \
     disable_dma32=on \
     winfo.fingerprint=$(XPE_VERSION) \
@@ -151,7 +136,7 @@ BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext ven
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9122611200
 
 BOARD_PARTITION_LIST := $(call to-upper, $(BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST))
-$(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := ext4))
+$(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := erofs))
 $(foreach p, $(BOARD_PARTITION_LIST), $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
 
 # BOARD_PREBUILT_ODMIMAGE := device/xiaomi/mondrian/prebuilts/odm.img
@@ -162,9 +147,9 @@ BOARD_USES_VENDOR_DLKMIMAGE := true
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 
 # Platform
-TARGET_BOARD_PLATFORM := sm8475
+TARGET_BOARD_PLATFORM := taro
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno730
-QCOM_BOARD_PLATFORMS += sm8475
+QCOM_BOARD_PLATFORMS += sm8450
 BOARD_USES_QCOM_HARDWARE := true
 
 # Power

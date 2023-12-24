@@ -54,6 +54,29 @@ if [ -z "${SRC}" ]; then
     SRC="adb"
 fi
 
+function blob_fixup() {
+    case "${1}" in
+        vendor/etc/camera/mondrian_enhance_motiontuning.xml)
+            sed -i "s|xml=version|xml version|g" "${2}"
+            ;;
+        vendor/etc/camera/mondrian_motiontuning.xml)
+            sed -i "s|xml=version|xml version|g" "${2}"
+            ;;
+        vendor/etc/camera/pureView_parameter.xml)
+            sed -i "s|iso=100|iso=\"100\"|g" "${2}"
+            sed -i "s|iso=200|iso=\"200\"|g" "${2}"
+            sed -i "s|iso=400|iso=\"400\"|g" "${2}"
+            sed -i "s|iso=800|iso=\"800\"|g" "${2}"
+            sed -i "s|iso=1600|iso=\"1600\"|g" "${2}"
+            sed -i "s|iso=3200|iso=\"3200\"|g" "${2}"
+            sed -i "s|iso=6400|iso=\"6400\"|g" "${2}"
+            sed -i "s|iso=12800|iso=\"12800\"|g" "${2}"
+            sed -i "s|ynrParam groupId=0|ynrParam groupId=\"0\"|g" "${2}"
+            sed -i "s|ynrParam groupId=1|ynrParam groupId=\"1\"|g" "${2}"
+            ;;
+    esac
+}
+
 # Initialize the helper
 setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
 

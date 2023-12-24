@@ -32,7 +32,7 @@ TARGET_USES_BLUR := true
 TARGET_SUPPORTS_QUICK_TAP := true
 
 ## Device identifier
-PRODUCT_BRAND := Redmi
+PRODUCT_BRAND := POCO
 PRODUCT_DEVICE := mondrian
 PRODUCT_NAME := aosp_mondrian
 PRODUCT_MANUFACTURER := Xiaomi
@@ -42,7 +42,7 @@ PRODUCT_MANUFACTURER := Xiaomi
 #     TARGET_DEVICE=$(PRODUCT_SYSTEM_DEVICE) \
 #     TARGET_PRODUCT=$(PRODUCT_SYSTEM_NAME)
 
-BUILD_FINGERPRINT := Redmi/mondrian/mondrian:13/SKQ1.220303.001/V14.0.26.0.TMNCNXM:user/release-keys
+BUILD_FINGERPRINT := POCO/mondrian_global/mondrian:13/SKQ1.220303.001/V14.0.6.0.TMNMIXM:user/release-keys
 
 # GMS
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi

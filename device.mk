@@ -30,24 +30,20 @@ PRODUCT_TARGET_VNDK_VERSION := 32
 PRODUCT_EXTRA_VNDK_VERSIONS := 30 31 32
 
 # Platform
-TARGET_BOARD_PLATFORM := cape
+TARGET_BOARD_PLATFORM := taro
 
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
+    FILESYSTEM_TYPE_system=erofs \
     POSTINSTALL_OPTIONAL_system=true
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=ext4 \
+    FILESYSTEM_TYPE_vendor=erofs \
     POSTINSTALL_OPTIONAL_vendor=true
-
-# AIDL NDK backend
-PRODUCT_PACKAGES += \
-    android.hardware.power-V3-ndk_platform
 
 # Atrace
 PRODUCT_PACKAGES += \
@@ -60,14 +56,14 @@ SOONG_CONFIG_android_hardware_audio += \
 SOONG_CONFIG_android_hardware_audio_run_64bit := true
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio.service.rc \
+    android.hardware.audio.service_64.rc \
     audio.primary.$(TARGET_BOARD_PLATFORM) \
     audio.usb.$(TARGET_BOARD_PLATFORM)
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@7.0-impl \
     android.hardware.audio.effect@7.0-impl \
-    android.hardware.audio.service \
+    android.hardware.audio.service_64 \
     android.hardware.soundtrigger@2.3-impl
 
 PRODUCT_PACKAGES += \
@@ -77,9 +73,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libvolumelistener
-
-PRODUCT_PACKAGES += \
-    audio-factory-test
 
 # Automotive
 PRODUCT_PACKAGES += \
@@ -312,7 +305,8 @@ PRODUCT_BOOT_JARS += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service-qti
+    android.hardware.power-service-qti \
+    android.hardware.power-V3-ndk
 
 # Properties
 include $(DEVICE_PATH)/configs/properties/default.mk
@@ -335,9 +329,11 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@2.1-service.xiaomi-multihal \
     libsensorndkbridge \
     sensors.xiaomi
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # Servicetracker
 PRODUCT_PACKAGES += \
@@ -408,9 +404,3 @@ PRODUCT_ODM_PROPERTIES += \
     debug.config.media.video.dolby_vision_suports=true \
     ro.vendor.nfc.wallet_fusion=1
 
-# Vibrator
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service
-
-PRODUCT_COPY_FILES += \
-    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml

@@ -1,1 +1,1 @@
-require board=cape|mondrian
+require board=taro|mondrian
