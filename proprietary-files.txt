@@ -4,9 +4,11 @@
 -vendor/lib/libagm.so
 -vendor/lib/libar-pal.so
 -vendor/lib/vendor.qti.hardware.AGMIPC@1.0-impl.so
+-vendor/lib/libdisplayconfig.qti.so
 -vendor/lib64/libagm.so
 -vendor/lib64/libar-pal.so
 -vendor/lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so
+-vendor/lib64/libdisplayconfig.qti.so
 
 # Bluetooth
 

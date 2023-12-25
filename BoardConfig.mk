@@ -136,11 +136,12 @@ BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext ven
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9122611200
 
 BOARD_PARTITION_LIST := $(call to-upper, $(BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST))
-$(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := erofs))
+$(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := ext4))
 $(foreach p, $(BOARD_PARTITION_LIST), $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
 
 # BOARD_PREBUILT_ODMIMAGE := device/xiaomi/mondrian/prebuilts/odm.img
 BOARD_PREBUILT_VENDORIMAGE := device/xiaomi/mondrian/prebuilts/vendor.img
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_USES_VENDOR_DLKMIMAGE := true
