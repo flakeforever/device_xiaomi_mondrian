@@ -317,7 +317,7 @@ include $(DEVICE_PATH)/configs/properties/default.mk
 
 # RIL
 PRODUCT_PACKAGES += \
-    Ims \
+    ims \
     QtiTelephony \
     qti-telephony-common
 
