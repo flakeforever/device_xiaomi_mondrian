@@ -1,3 +1,6 @@
+- 27/12/2003
+Repack vendor.img SHA256|be7a8e338c732674257c80e27e7337bdc4ad19f6c3b7df3cff0d1534bc7a79b7
+
 - 17/12/2003
 Repack vendor.img SHA256|e6f226244ae4dc06eb1be9ff7e36ff98481cad6e377e449366ca6a23c950b13b
 
