@@ -1,0 +1,21 @@
+diff --git a/src/com/android/settings/accessibility/DisplaySizeData.java b/src/com/android/settings/accessibility/DisplaySizeData.java
+index 77ae897708..5d75bba0b7 100644
+--- a/src/com/android/settings/accessibility/DisplaySizeData.java
++++ b/src/com/android/settings/accessibility/DisplaySizeData.java
+@@ -56,10 +56,11 @@ class DisplaySizeData extends PreviewSizeData<Integer> {
+     @Override
+     void commit(int currentProgress) {
+         final int densityDpi = getValues().get(currentProgress);
+-        if (densityDpi == getDefaultValue()) {
+-            mDensity.clearForcedDisplayDensity();
+-        } else {
+-            mDensity.setForcedDisplayDensity(currentProgress);
+-        }
++        mDensity.setForcedDisplayDensity(currentProgress);
++        // if (densityDpi == getDefaultValue()) {
++        //     mDensity.clearForcedDisplayDensity();
++        // } else {
++        //     mDensity.setForcedDisplayDensity(currentProgress);
++        // }
+     }
+ }

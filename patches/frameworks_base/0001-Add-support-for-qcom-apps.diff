@@ -1,0 +1,62 @@
+diff --git a/telecomm/java/android/telecom/Connection.java b/telecomm/java/android/telecom/Connection.java
+index 49ad58550db8..dec6def806c6 100644
+--- a/telecomm/java/android/telecom/Connection.java
++++ b/telecomm/java/android/telecom/Connection.java
+@@ -896,6 +896,17 @@ public abstract class Connection extends Conferenceable {
+      */
+     public static final String EVENT_CALL_MERGE_FAILED = "android.telecom.event.CALL_MERGE_FAILED";
+ 
++    /**
++     * Connection event used to inform Telecom when a resume operation on a call has failed.
++     * This event is only sent when concurrent calls (DSDA) are possible
++     * <p>
++     * Sent via {@link #sendConnectionEvent(String, Bundle)}.  The {@link Bundle} parameter is
++     * expected to be null when this connection event is used.
++     * @hide
++     */
++    public static final String EVENT_CALL_RESUME_FAILED =
++            "android.telecom.event.CALL_RESUME_FAILED";
++
+     /**
+      * Connection event used to inform Telecom when a hold operation on a call has failed.
+      * <p>
+diff --git a/telephony/java/android/telephony/TelephonyManager.java b/telephony/java/android/telephony/TelephonyManager.java
+index ecd8c7a3d917..2a7fffe70db8 100644
+--- a/telephony/java/android/telephony/TelephonyManager.java
++++ b/telephony/java/android/telephony/TelephonyManager.java
+@@ -560,6 +560,35 @@ public class TelephonyManager {
+             return MultiSimVariants.UNKNOWN;
+         }
+     }
++    
++    /**
++     * The allowed values for multi sim voice capability
++     *
++     * @hide
++     */
++    public interface MultiSimVoiceCapability {
++        /** default */
++        static final int UNKNOWN = 0;
++        /** Concurrent calls on both subscriptions are not possbile. */
++        static final int DSDS = 1;
++        /** Concurrent calls on both subscriptions are not possible but user will have option to
++         * accept MT call on one subscription when there is an ongoing call on another subscription.
++         */
++        static final int PSEUDO_DSDA = 2;
++        /** Concurrent calls on both subscriptions are possible */
++        static final int DSDA = 3;
++    }
++
++    /**
++     * Returns true if concurrent calls on both subscriptions are possible (ex: DSDA).
++     * Returns false for other cases.
++     */
++    /** {@hide} */
++    public static boolean isConcurrentCallsPossible() {
++        int mSimVoiceConfig = TelephonyProperties.multi_sim_voice_capability().orElse(
++                MultiSimVoiceCapability.UNKNOWN);
++        return mSimVoiceConfig == MultiSimVoiceCapability.DSDA;
++    }    
+ 
+     /**
+      * Returns the number of phones available.

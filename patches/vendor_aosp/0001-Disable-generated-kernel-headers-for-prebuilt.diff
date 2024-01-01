@@ -1,0 +1,15 @@
+diff --git a/build/soong/Android.bp b/build/soong/Android.bp
+index 122e5a97..2b726784 100644
+--- a/build/soong/Android.bp
++++ b/build/soong/Android.bp
+@@ -44,8 +44,8 @@ custom_generator {
+ 
+ cc_library_headers {
+     name: "generated_kernel_headers",
+-    generated_headers: ["generated_kernel_includes"],
+-    export_generated_headers: ["generated_kernel_includes"],
++    // generated_headers: ["generated_kernel_includes"],
++    // export_generated_headers: ["generated_kernel_includes"],
+     vendor_available: true,
+     recovery_available: true,
+ }

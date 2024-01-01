@@ -1,0 +1,52 @@
+diff --git a/media/codec2/sfplugin/CCodec.cpp b/media/codec2/sfplugin/CCodec.cpp
+index feb0876b18..d0895f69d3 100644
+--- a/media/codec2/sfplugin/CCodec.cpp
++++ b/media/codec2/sfplugin/CCodec.cpp
+@@ -18,6 +18,7 @@
+ #define LOG_TAG "CCodec"
+ #include <utils/Log.h>
+ 
++#include <fstream>
+ #include <sstream>
+ #include <thread>
+ 
+@@ -68,6 +69,17 @@ typedef CCodecConfig Config;
+ 
+ namespace {
+ 
++std::string getCurrentProcessName() {
++    std::ifstream file("/proc/self/cmdline");
++    if (file) {
++        std::string processName;
++        std::getline(file, processName, '\0');
++        file.close();
++        return processName;
++    }
++    return "";
++}
++
+ class CCodecWatchdog : public AHandler {
+ private:
+     enum {
+@@ -730,10 +742,19 @@ void CCodec::allocate(const sp<MediaCodecInfo> &codecInfo) {
+         mCallback->onError(UNKNOWN_ERROR, ACTION_CODE_FATAL);
+         return;
+     }
+-    ALOGD("allocate(%s)", codecInfo->getCodecName());
+-    mClientListener.reset(new ClientListener(this));
+ 
++    std::string processName = getCurrentProcessName();
+     AString componentName = codecInfo->getCodecName();
++    // Fix issue for bilibili switch to background 
++    if (processName == "com.bilibili.app.in:ijkservice" || 
++        processName == "tv.danmaku.bili:ijkservice") {
++        if (componentName == "c2.qti.hevc.decoder.low_latency") {
++            componentName = "c2.qti.avc.decoder";
++        }
++    }
++
++    ALOGD("allocate(%s) %s", componentName.c_str(), processName.c_str());
++    mClientListener.reset(new ClientListener(this));
+     std::shared_ptr<Codec2Client> client;
+ 
+     // set up preferred component store to access vendor store parameters

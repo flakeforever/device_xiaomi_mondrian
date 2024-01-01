@@ -4,7 +4,10 @@
 - https://github.com/LowTension/android_kernel_xiaomi_sm8475
 
 ## Required system patches
-- Check [project_changes.diff](https://github.com/flakeforever/device_xiaomi_mondrian/blob/main/project_changes.diff)
+    ```
+    cd peplus
+    device/xiaomi/mondrian/apply-patches.sh
+    ```
 
 ## Prebuilt files (customized from Global V14.0.6.0):
 - Download [vendor.img](https://drive.google.com/drive/folders/15Ihtjg5cZEeSgChfvwoYBC3Kv7HRyav4?usp=sharing)
