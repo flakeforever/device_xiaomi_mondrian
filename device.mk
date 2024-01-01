@@ -23,6 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 DEVICE_PATH := device/xiaomi/mondrian
+KERNEL_PREBUILT_DIR := $(DEVICE_PATH)/kernel
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 31
@@ -138,7 +139,7 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 
 # Dtb
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/prebuilts/dtb:dtb.img
+    $(KERNEL_PREBUILT_DIR)/dtbs/dtb:dtb.img
 
 # DRM
 PRODUCT_PACKAGES += \
