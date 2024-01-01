@@ -43,6 +43,8 @@ public final class ScreenResolutionUtils {
     private static final int OVERRIDE_DEFAULT_WIDTH = 1080;
     private static final int OVERRIDE_DEFAULT_HEIGHT = 2400;
     private static final int OVERRIDE_DEFAULT_DENSITY = 420;
+    
+    private static boolean userPresent = false;
 
     private static void updateScreenSize(Context context) {
         int resolutionMode = Settings.System.getIntForUser(context.getContentResolver(),
@@ -101,8 +103,16 @@ public final class ScreenResolutionUtils {
         Settings.System.putIntForUser(context.getContentResolver(),
                 SCREEN_RESOLUTION_MODE, mode, UserHandle.USER_CURRENT);
 
+        if (userPresent) {
+            updateScreenSize(context);
+            updateScreenDensity(context);
+        }
+        return true;
+    }
+
+    public static void onUserPresent(Context context) {
+        userPresent = true;
         updateScreenSize(context);
         updateScreenDensity(context);
-        return true;
     }
 }
