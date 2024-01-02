@@ -398,7 +398,7 @@ index 000000000000..384649d8a6e0
 \ No newline at end of file
 diff --git a/packages/SystemUI/res/layout/status_bar_ims_group.xml b/packages/SystemUI/res/layout/status_bar_ims_group.xml
 new file mode 100644
-index 000000000000..3560c823a17a
+index 000000000000..fb8f24100ca3
 --- /dev/null
 +++ b/packages/SystemUI/res/layout/status_bar_ims_group.xml
 @@ -0,0 +1,45 @@
@@ -433,14 +433,14 @@ index 000000000000..3560c823a17a
 +        android:gravity="center_vertical">
 +
 +        <ImageView
-+            android:id="@+id/volte_icon"
++            android:id="@+id/ims_slot1_icon"
 +            android:layout_width="wrap_content"
 +            android:layout_height="wrap_content"
 +            android:layout_gravity="center_vertical"
 +            android:visibility="gone" />
 +
 +        <ImageView
-+            android:id="@+id/vowifi_icon"
++            android:id="@+id/ims_slot2_icon"
 +            android:layout_width="wrap_content"
 +            android:layout_height="wrap_content"
 +            android:layout_gravity="center_vertical"
@@ -478,7 +478,7 @@ index d542d132c7d5..abfa6e5fc30e 100644
          android:key="wifi"
 diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/StatusBarImsView.java b/packages/SystemUI/src/com/android/systemui/statusbar/StatusBarImsView.java
 new file mode 100644
-index 000000000000..a15876bb6137
+index 000000000000..553cdf862d03
 --- /dev/null
 +++ b/packages/SystemUI/src/com/android/systemui/statusbar/StatusBarImsView.java
 @@ -0,0 +1,217 @@
@@ -534,8 +534,8 @@ index 000000000000..a15876bb6137
 +
 +    private ImsIconState mState;
 +    private LinearLayout mImsGroup;
-+    private ImageView mVowifiIcon;
-+    private ImageView mVolteIcon;
++    private ImageView mSlot1Icon;
++    private ImageView mSlot2Icon;
 +    private String mSlot;
 +    private int mVisibleState = -1;
 +
@@ -567,8 +567,8 @@ index 000000000000..a15876bb6137
 +
 +    public void init() {
 +        mImsGroup = findViewById(R.id.ims_group);
-+        mVowifiIcon = findViewById(R.id.vowifi_icon);
-+        mVolteIcon = findViewById(R.id.volte_icon);
++        mSlot1Icon = findViewById(R.id.ims_slot1_icon);
++        mSlot2Icon = findViewById(R.id.ims_slot2_icon);
 +
 +        initDotView();
 +    }
@@ -650,8 +650,8 @@ index 000000000000..a15876bb6137
 +        boolean needsLayout = false;
 +
 +        if (mState.visible != state.visible
-+                || mState.vowifiVisible != state.vowifiVisible
-+                || mState.volteVisible != state.volteVisible) {
++                || mState.slot1Icon != state.slot1Icon
++                || mState.slot2Icon != state.slot2Icon) {
 +            initViewState(state);
 +            needsLayout = true;
 +        }
@@ -662,16 +662,16 @@ index 000000000000..a15876bb6137
 +
 +    private void initViewState(ImsIconState state) {
 +        setContentDescription(state.contentDescription);
-+        mVolteIcon.setVisibility(View.GONE);
-+        mVowifiIcon.setVisibility(View.GONE);
++        mSlot1Icon.setVisibility(View.GONE);
++        mSlot2Icon.setVisibility(View.GONE);
 +
-+        if (state.vowifiVisible) {
-+            mVowifiIcon.setImageDrawable(mContext.getDrawable(state.vowifiIcon));
-+            mVowifiIcon.setVisibility(View.VISIBLE);
++        if (state.slot1Icon > 0) {
++            mSlot1Icon.setImageDrawable(mContext.getDrawable(state.slot1Icon));
++            mSlot1Icon.setVisibility(View.VISIBLE);
 +        }
-+        if (state.volteVisible) {
-+            mVolteIcon.setImageDrawable(mContext.getDrawable(state.volteIcon));
-+            mVolteIcon.setVisibility(View.VISIBLE);
++        if (state.slot2Icon > 0) {
++            mSlot2Icon.setImageDrawable(mContext.getDrawable(state.slot2Icon));
++            mSlot2Icon.setVisibility(View.VISIBLE);
 +        }
 +        setVisibility(state.visible ? View.VISIBLE : View.GONE);
 +    }
@@ -684,8 +684,8 @@ index 000000000000..a15876bb6137
 +    @Override
 +    public void setStaticDrawableColor(int color) {
 +        ColorStateList list = ColorStateList.valueOf(color);
-+        mVolteIcon.setImageTintList(list);
-+        mVowifiIcon.setImageTintList(list);
++        mSlot1Icon.setImageTintList(list);
++        mSlot2Icon.setImageTintList(list);
 +        mDotView.setDecorColor(color);
 +    }
 +
@@ -693,8 +693,8 @@ index 000000000000..a15876bb6137
 +    public void onDarkChanged(ArrayList<Rect> areas, float darkIntensity, int tint) {
 +        int areaTint = getTint(areas, this, tint);
 +        ColorStateList color = ColorStateList.valueOf(areaTint);
-+        mVolteIcon.setImageTintList(color);
-+        mVowifiIcon.setImageTintList(color);
++        mSlot1Icon.setImageTintList(color);
++        mSlot2Icon.setImageTintList(color);
 +        mDotView.setDecorColor(areaTint);
 +        mDotView.setIconColor(areaTint, false);
 +    }
@@ -737,7 +737,7 @@ index 163878004177..41b9c0db81d9 100644
          obtainMessage(MSG_ADD_REMOVE_EMERGENCY, listening ? 1 : 0, 0, listener).sendToTarget();
      }
 diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/MobileSignalController.java b/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/MobileSignalController.java
-index 03f75a7b7204..f57a7324aa9e 100644
+index 03f75a7b7204..05bb6b8820e9 100644
 --- a/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/MobileSignalController.java
 +++ b/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/MobileSignalController.java
 @@ -17,8 +17,10 @@ package com.android.systemui.statusbar.connectivity;
@@ -930,7 +930,7 @@ index 03f75a7b7204..f57a7324aa9e 100644
      @Override
      protected MobileState cleanState() {
          return new MobileState();
-@@ -553,6 +664,22 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
+@@ -553,6 +664,26 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
          mMobileStatusHistoryIndex = (mMobileStatusHistoryIndex + 1) % STATUS_HISTORY_SIZE;
      }
  
@@ -950,10 +950,14 @@ index 03f75a7b7204..f57a7324aa9e 100644
 +                || mIsVowifiAvailable);
 +    }
 +
++    public int getVowifiModeSetting() {
++        return mImsMmTelManager.getVoWiFiModeSetting();
++    }
++
      @Override
      public void dump(PrintWriter pw) {
          super.dump(pw);
-@@ -578,6 +705,45 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
+@@ -578,6 +709,45 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
  
          dumpTableData(pw);
      }
@@ -1055,7 +1059,7 @@ index 1fb6a982fdf3..3b1bb8b5f600 100644
          if (serviceState != other.serviceState) return false
          if (signalStrength != other.signalStrength) return false
 diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/NetworkControllerImpl.java b/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/NetworkControllerImpl.java
-index 6e74542691a5..6e1f2f106493 100644
+index 6e74542691a5..4f19ab20a2f1 100644
 --- a/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/NetworkControllerImpl.java
 +++ b/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/NetworkControllerImpl.java
 @@ -403,6 +403,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
@@ -1090,33 +1094,30 @@ index 6e74542691a5..6e1f2f106493 100644
      };
  
      boolean isInGroupDataSwitch(int subId1, int subId2) {
-@@ -744,9 +748,96 @@ public class NetworkControllerImpl extends BroadcastReceiver
+@@ -744,9 +748,97 @@ public class NetworkControllerImpl extends BroadcastReceiver
              MobileSignalController mobileSignalController = mMobileSignalControllers.valueAt(i);
              mobileSignalController.notifyListeners(cb);
          }
 +        if (mMobileSignalControllers.size() == 2) {
 +            boolean volte1 = mMobileSignalControllers.valueAt(0).isVolteAvailable();
-+            boolean volte2 = mMobileSignalControllers.valueAt(1).isVolteAvailable();
 +            boolean vowifi1 = mMobileSignalControllers.valueAt(0).isVowifiAvailable();
++            boolean volte2 = mMobileSignalControllers.valueAt(1).isVolteAvailable();            
 +            boolean vowifi2 = mMobileSignalControllers.valueAt(1).isVowifiAvailable();
-+            cb.setImsIcon(new ImsIconState((volte1 || volte2),
-+                    (vowifi1 || vowifi2),
-+                    getVolteResId(volte1, volte2),
-+                    getVowifiResId(vowifi1, vowifi2),
++            cb.setImsIcon(new ImsIconState(
++                    getImsResId(1, volte1, vowifi1),
++                    getImsResId(2, volte2, vowifi2),
 +                    mContext.getString(com.android.internal.R.string.status_bar_ims)
 +            ));
 +        } else if (mMobileSignalControllers.size() == 1) {
 +            boolean volte = mMobileSignalControllers.valueAt(0).isVolteAvailable();
 +            boolean vowifi = mMobileSignalControllers.valueAt(0).isVowifiAvailable();
-+            cb.setImsIcon(new ImsIconState(volte,
-+                    vowifi,
-+                    volte ? R.drawable.stat_sys_volte : 0,
-+                    vowifi ? R.drawable.stat_sys_vowifi : 0,
++            cb.setImsIcon(new ImsIconState(
++                    getImsResId(0, volte, vowifi),
++                    0,
 +                    mContext.getString(com.android.internal.R.string.status_bar_ims)
 +            ));
 +        } else {
-+            cb.setImsIcon(new ImsIconState(false,
-+                    false,
++            cb.setImsIcon(new ImsIconState(
 +                    0,
 +                    0,
 +                    mContext.getString(com.android.internal.R.string.status_bar_ims)
@@ -1128,33 +1129,24 @@ index 6e74542691a5..6e1f2f106493 100644
 +    public void updateImsIcon() {
 +        if (mMobileSignalControllers.size() == 2) {
 +            boolean volte1 = mMobileSignalControllers.valueAt(0).isVolteAvailable();
-+            boolean volte2 = mMobileSignalControllers.valueAt(1).isVolteAvailable();
 +            boolean vowifi1 = mMobileSignalControllers.valueAt(0).isVowifiAvailable();
++            boolean volte2 = mMobileSignalControllers.valueAt(1).isVolteAvailable();
 +            boolean vowifi2 = mMobileSignalControllers.valueAt(1).isVowifiAvailable();
-+
-+            if (vowifi1)
-+                volte1 = false;
-+            if (vowifi2)
-+                volte2 = false;
-+
-+            mCallbackHandler.setImsIcon(new ImsIconState((volte1 || volte2),
-+                    (vowifi1 || vowifi2),
-+                    getVolteResId(volte1, volte2),
-+                    getVowifiResId(vowifi1, vowifi2),
++            mCallbackHandler.setImsIcon(new ImsIconState(
++                    getImsResId(1, volte1, vowifi1),
++                    getImsResId(2, volte2, vowifi2),
 +                    mContext.getString(com.android.internal.R.string.status_bar_ims)
 +            ));
 +        } else if (mMobileSignalControllers.size() == 1) {
 +            boolean volte = mMobileSignalControllers.valueAt(0).isVolteAvailable();
 +            boolean vowifi = mMobileSignalControllers.valueAt(0).isVowifiAvailable();
-+            mCallbackHandler.setImsIcon(new ImsIconState(volte,
-+                    vowifi,
-+                    volte ? R.drawable.stat_sys_volte : 0,
-+                    vowifi ? R.drawable.stat_sys_vowifi : 0,
++            mCallbackHandler.setImsIcon(new ImsIconState(
++                    getImsResId(0, volte, vowifi),
++                    0,
 +                    mContext.getString(com.android.internal.R.string.status_bar_ims)
 +            ));
 +        } else {
-+            mCallbackHandler.setImsIcon(new ImsIconState(false,
-+                    false,
++            mCallbackHandler.setImsIcon(new ImsIconState(
 +                    0,
 +                    0,
 +                    mContext.getString(com.android.internal.R.string.status_bar_ims)
@@ -1162,32 +1154,45 @@ index 6e74542691a5..6e1f2f106493 100644
 +        }
 +    }
 +
-+    private int getVolteResId(boolean volte1, boolean volte2) {
-+        if (volte1 && volte2) {
-+            return R.drawable.stat_sys_volte_slot12;
-+        } else if (volte1) {
-+           return R.drawable.stat_sys_volte_slot1;
-+        } else if (volte2) {
-+            return R.drawable.stat_sys_volte_slot2;
++    private int getVolteResId(int index) {
++        switch (index) {
++            case 0:
++                return R.drawable.stat_sys_volte;
++            case 1:
++                return R.drawable.stat_sys_volte_slot1;
++            case 2:
++                return R.drawable.stat_sys_volte_slot2;
 +        }
 +        return 0;
 +    }
 +
-+    private int getVowifiResId(boolean vowifi1, boolean vowifi2) {
-+        if (vowifi1 && vowifi2) {
-+            return R.drawable.stat_sys_vowifi_slot12;
-+        } else if (vowifi1) {
-+            return R.drawable.stat_sys_vowifi_slot1;
-+        } else if (vowifi2) {
-+            return R.drawable.stat_sys_vowifi_slot2;
++    private int getVowifiResId(int index) {
++        switch (index) {
++            case 0:
++                return R.drawable.stat_sys_vowifi;
++            case 1:
++                return R.drawable.stat_sys_vowifi_slot1;
++            case 2:
++                return R.drawable.stat_sys_vowifi_slot2;
 +        }
 +        return 0;
++    }
++
++    private int getImsResId(int index, boolean volte, boolean vowifi) {
++        int result = 0;
++        if (volte) {
++            result = getVolteResId(index);
++        }
++        if (vowifi) {
++            result = getVowifiResId(index);
++        }
++        return result;
 +    }
 +
      @Override
      public void removeCallback(@NonNull SignalCallback cb) {
          mCallbackHandler.setListening(cb, false);
-@@ -767,6 +858,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
+@@ -767,6 +859,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
          mCurrentUserId = newUserId;
          mAccessPoints.onUserSwitched(newUserId);
          updateConnectivity();
@@ -1195,7 +1200,7 @@ index 6e74542691a5..6e1f2f106493 100644
      }
  
      @Override
-@@ -789,6 +881,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
+@@ -789,6 +882,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
          switch (action) {
              case ConnectivityManager.CONNECTIVITY_ACTION:
                  updateConnectivity();
@@ -1203,7 +1208,7 @@ index 6e74542691a5..6e1f2f106493 100644
                  break;
              case Intent.ACTION_AIRPLANE_MODE_CHANGED:
                  refreshLocale();
-@@ -880,6 +973,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
+@@ -880,6 +974,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
              return;
          }
          doUpdateMobileControllers();
@@ -1211,7 +1216,7 @@ index 6e74542691a5..6e1f2f106493 100644
      }
  
      private void filterMobileSubscriptionInSameGroup(List<SubscriptionInfo> subscriptions) {
-@@ -1093,6 +1187,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
+@@ -1093,6 +1188,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
          }
          mWifiSignalController.notifyListeners();
          mEthernetSignalController.notifyListeners();
@@ -1220,7 +1225,7 @@ index 6e74542691a5..6e1f2f106493 100644
  
      /**
 diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/SignalCallback.kt b/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/SignalCallback.kt
-index 501f69440456..b92ec57b3033 100644
+index 501f69440456..8d345187779c 100644
 --- a/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/SignalCallback.kt
 +++ b/packages/SystemUI/src/com/android/systemui/statusbar/connectivity/SignalCallback.kt
 @@ -91,6 +91,9 @@ interface SignalCallback {
@@ -1233,40 +1238,32 @@ index 501f69440456..b92ec57b3033 100644
      /**
       * Callback for listeners to be able to update the connectivity status
       * @param noDefaultNetwork whether there is any default network.
-@@ -189,3 +192,37 @@ data class IconState(
+@@ -189,3 +192,29 @@ data class IconState(
                  .toString()
      }
  }
 +
 +data class ImsIconState(
 +    @JvmField var visible: Boolean,
-+    @JvmField val volteVisible: Boolean,
-+    @JvmField val vowifiVisible: Boolean,
-+    @JvmField val volteIcon: Int,
-+    @JvmField val vowifiIcon: Int,
++    @JvmField val slot1Icon: Int,
++    @JvmField val slot2Icon: Int,
 +    @JvmField val contentDescription: String
 +) {
 +    constructor(
-+        volteVisible: Boolean,
-+        vowifiVisible: Boolean,
-+        volteIcon: Int,
-+        vowifiIcon: Int,
++        slot1Icon: Int,
++        slot2Icon: Int,
 +        contentDescription: String
 +    ): this(
-+        volteVisible || vowifiVisible,
-+        volteVisible,
-+        vowifiVisible,
-+        volteIcon,
-+        vowifiIcon,
++        slot1Icon > 0 || slot2Icon > 0,
++        slot1Icon,
++        slot2Icon,
 +        contentDescription) {}
 +
 +    override fun toString(): String {
 +        return java.lang.StringBuilder("ImsIconState[")
 +                .append("visible=").append(visible)
-+                .append(",volteVisible=").append(volteVisible)
-+                .append(",vowifiVisible=").append(vowifiVisible)
-+                .append(",volteIcon=").append(volteIcon)
-+                .append(",vowifiIcon=").append(vowifiIcon)
++                .append(",slot1Icon=").append(slot1Icon)
++                .append(",slot2Icon=").append(slot2Icon)
 +                .append(",contentDescription=").append(contentDescription)
 +                .append(']').toString()
 +    }
