@@ -1,3 +1,5 @@
 typeattribute init mlstrustedsubject;
 type sysfs_memory, fs_type, sysfs_type;
 allow init sysfs_memory:file rw_file_perms;
+allow init sysfs:file rw_file_perms;
+allow init mnt_vendor_file:dir r_dir_perms;
