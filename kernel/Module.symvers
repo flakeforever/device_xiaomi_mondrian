@@ -11242,7 +11242,6 @@
 0x4cba441d	iwe_stream_add_event	vmlinux	EXPORT_SYMBOL	
 0xa8551457	tso_build_hdr	vmlinux	EXPORT_SYMBOL	
 0xdc325107	sock_recv_errqueue	vmlinux	EXPORT_SYMBOL	
-0xb23157a7	ksu_kallsyms_lookup_name	vmlinux	EXPORT_SYMBOL	
 0x024efbe5	rproc_alloc	vmlinux	EXPORT_SYMBOL	
 0x4a164b4d	__mmc_claim_host	vmlinux	EXPORT_SYMBOL	
 0x838d88db	__v4l2_ctrl_s_ctrl	vmlinux	EXPORT_SYMBOL	
