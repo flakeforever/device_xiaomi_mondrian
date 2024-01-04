@@ -182,7 +182,8 @@ PRODUCT_PACKAGES += \
     libgralloc.qti \
     libgui_vendor \
     libqdMetaData \
-    vendor.display.config@1.11 \
+    vendor.display.config@1.14 \
+    vendor.display.config@2.0 \
     vendor.qti.hardware.display.allocator@1.0 \
     vendor.qti.hardware.display.allocator@3.0 \
     vendor.qti.hardware.display.allocator@4.0 \
@@ -210,6 +211,7 @@ PRODUCT_PACKAGES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.allocator@1.0 \
+    android.hidl.base@1.0 \
     android.hidl.memory.block@1.0 \
     libhidltransport \
     libhwbinder
