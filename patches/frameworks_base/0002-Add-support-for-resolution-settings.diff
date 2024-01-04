@@ -133,39 +133,8 @@ index 621e3dbde360..ebe746e497bc 100644
                  }
              }
          }
-diff --git a/services/core/java/com/android/server/power/ShutdownThread.java b/services/core/java/com/android/server/power/ShutdownThread.java
-index c6aa0dfa645f..d909c0328ce5 100644
---- a/services/core/java/com/android/server/power/ShutdownThread.java
-+++ b/services/core/java/com/android/server/power/ShutdownThread.java
-@@ -49,6 +49,9 @@ import android.util.Log;
- import android.util.Slog;
- import android.util.TimingsTraceLog;
- import android.view.WindowManager;
-+import android.view.Display;
-+import android.view.IWindowManager;
-+import android.view.WindowManagerGlobal;
- 
- import com.android.server.LocalServices;
- import com.android.server.RescueParty;
-@@ -502,6 +505,16 @@ public final class ShutdownThread extends Thread {
-         shutdownTimingLog.traceBegin("SendShutdownBroadcast");
-         Log.i(TAG, "Sending shutdown broadcast...");
- 
-+        // reset display
-+        try {
-+            final IWindowManager wms = WindowManagerGlobal.getWindowManagerService();
-+            int displayId = Display.DEFAULT_DISPLAY;
-+            wms.clearForcedDisplaySize(displayId);
-+            wms.clearForcedDisplayDensityForUser(displayId, UserHandle.USER_CURRENT);
-+        } catch (RemoteException e) {
-+            //Slog.e(TAG, "Remote execution", e);
-+        }
-+
-         // First send the high-level shut down broadcast.
-         mActionDone = false;
-         Intent intent = new Intent(Intent.ACTION_SHUTDOWN);
 diff --git a/services/core/java/com/android/server/wm/WindowManagerService.java b/services/core/java/com/android/server/wm/WindowManagerService.java
-index 2a54ca6b3a62..12a0daca7cda 100644
+index 2a54ca6b3a62..9f297b9a74be 100644
 --- a/services/core/java/com/android/server/wm/WindowManagerService.java
 +++ b/services/core/java/com/android/server/wm/WindowManagerService.java
 @@ -361,6 +361,7 @@ public class WindowManagerService extends IWindowManager.Stub
@@ -215,3 +184,17 @@ index 2a54ca6b3a62..12a0daca7cda 100644
              }
          }
      }
+@@ -5853,6 +5873,13 @@ public class WindowManagerService extends IWindowManager.Stub
+     private boolean applyForcedPropertiesForDefaultDisplay() {
+         boolean changed = false;
+         final DisplayContent displayContent = getDefaultDisplayContentLocked();
++
++        // reset forced size and density
++        displayContent.setForcedSize(displayContent.mInitialDisplayWidth,
++                displayContent.mInitialDisplayHeight);
++        displayContent.setForcedDensity(displayContent.mInitialDisplayDensity, 
++                mCurrentUserId);
++    
+         // Display size.
+         String sizeStr = Settings.Global.getString(mContext.getContentResolver(),
+                 Settings.Global.DISPLAY_SIZE_FORCED);
