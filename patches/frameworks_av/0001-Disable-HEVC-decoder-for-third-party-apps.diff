@@ -1,0 +1,17 @@
+diff --git a/media/libstagefright/MediaCodec.cpp b/media/libstagefright/MediaCodec.cpp
+index 3044c2091d..89cf54d6a4 100644
+--- a/media/libstagefright/MediaCodec.cpp
++++ b/media/libstagefright/MediaCodec.cpp
+@@ -758,7 +758,11 @@ sp<MediaCodec> MediaCodec::CreateByType(
+ sp<MediaCodec> MediaCodec::CreateByComponentName(
+         const sp<ALooper> &looper, const AString &name, status_t *err, pid_t pid, uid_t uid) {
+     sp<MediaCodec> codec = new MediaCodec(looper, pid, uid);
+-
++    ALOGE("Create by component name '%s'.", name.c_str());
++    if (name == "OMX.qcom.video.decoder.hevc.low_latency") {
++        *err = UNKNOWN_ERROR;
++        return NULL;
++    }
+     const status_t ret = codec->init(name);
+     if (err != NULL) {
+         *err = ret;
