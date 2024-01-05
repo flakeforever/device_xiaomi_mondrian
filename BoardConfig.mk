@@ -78,43 +78,24 @@ TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_xiaomi_mondrian
 TARGET_RECOVERY_DEVICE_MODULES ?= init_xiaomi_mondrian
 
 # Kernel
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CONFIG := vendor/mondrian_defconfig
-
 BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_BASE := 0x00000000
-BOARD_DTB_SIZE := 5102093
-BOARD_DTB_OFFSET := 0x01F00000
-BOARD_KERNEL_OFFSET := 0x00008000
-BOARD_RAMDISK_OFFSET := 0x01000000
-
-BOARD_KERNEL_CMDLINE := \
-    #console=ttyUSB0,115200 androidboot.console=ttyUSB0 printk.devkmsg=on
-    video=vfb:640x400,bpp=32,memsize=3072000 \
-    disable_dma32=on \
-    winfo.fingerprint=$(XPE_VERSION) \
-    bootinfo.fingerprint=$(XPE_VERSION) \
-    mtdoops.fingerprint=$(XPE_VERSION)
-
-# androidboot.selinux=permissive
-BOARD_BOOTCONFIG := \
-    androidboot.hardware=qcom \
-    androidboot.memcg=1 \
-    androidboot.usbcontroller=a600000.dwc3 \
-    androidboot.selinux=enforcing
-
-BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_RAMDISK_USE_LZ4 := true
+BOARD_USES_GENERIC_KERNEL_IMAGE := true
+TARGET_HAS_GENERIC_KERNEL_HEADERS := true
 
 BOARD_BOOT_HEADER_VERSION := 4
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
 
-BOARD_RAMDISK_USE_LZ4 := true
-TARGET_KERNEL_APPEND_DTB := false
-BOARD_KERNEL_SEPARATED_DTBO := true
-BOARD_INCLUDE_DTB_IN_BOOTIMG := false
+BOARD_KERNEL_CMDLINE := \
+    mtdoops.fingerprint=$(CUSTOM_VERSION) \
+    swinfo.fingerprint=$(CUSTOM_VERSION)
 
-TARGET_FORCE_PREBUILT_KERNEL := true
+BOARD_BOOTCONFIG := \
+    androidboot.hardware=qcom \
+    androidboot.init_fatal_reboot_target=recovery \
+    androidboot.memcg=1 \
+    androidboot.usbcontroller=a600000.dwc3
 
 TARGET_PREBUILT_KERNEL := $(KERNEL_PREBUILT_DIR)/Image
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PREBUILT_DIR)/dtbs/dtbo.img
@@ -123,7 +104,7 @@ BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PREBUILT_DIR)/dtbs/dtbo.img
 BOARD_USES_METADATA_PARTITION := true
 
 # Partitions
-BOARD_FLASH_BLOCK_SIZE := 262144
+BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_DTBOIMG_PARTITION_SIZE := 25165824
 BOARD_BOOTIMAGE_PARTITION_SIZE := 201326592
