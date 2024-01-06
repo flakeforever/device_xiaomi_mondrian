@@ -1,8 +1,8 @@
 diff --git a/core/java/android/provider/Settings.java b/core/java/android/provider/Settings.java
-index 6b34f46e1b03..974df26780d5 100644
+index 6b34f46e1b03..e67cd6487e10 100644
 --- a/core/java/android/provider/Settings.java
 +++ b/core/java/android/provider/Settings.java
-@@ -4596,7 +4596,37 @@ public final class Settings {
+@@ -4596,7 +4596,23 @@ public final class Settings {
           * SCREEN_BRIGHTNESS_MODE value for automatic mode.
           */
          public static final int SCREEN_BRIGHTNESS_MODE_AUTOMATIC = 1;
@@ -15,33 +15,19 @@ index 6b34f46e1b03..974df26780d5 100644
 +         */
 +        @Readable
 +        public static final String SCREEN_RESOLUTION_MODE = "screen_resolution_mode";
-+
-+        /**
-+         * Override resolution width.
-+         * @hide
-+         */
-+        @Readable
-+        public static final String SCREEN_OVERRIDE_WIDTH = "screen_override_width";
  
 +        /**
-+         * Override resolution height.
++         * User resolution density.
 +         * @hide
 +         */
 +        @Readable
-+        public static final String SCREEN_OVERRIDE_HEIGHT = "screen_override_height";
-+
-+        /**
-+         * Override resolution density.
-+         * @hide
-+         */
-+        @Readable
-+        public static final String SCREEN_OVERRIDE_DENSITY = "screen_override_density";
++        public static final String SCREEN_USER_DENSITY = "screen_user_density";
 +        
          /**
           * Control whether to enable adaptive sleep mode.
           * @deprecated Use {@link android.provider.Settings.Secure#ADAPTIVE_SLEEP} instead.
 diff --git a/packages/SettingsLib/src/com/android/settingslib/display/DisplayDensityUtils.java b/packages/SettingsLib/src/com/android/settingslib/display/DisplayDensityUtils.java
-index ac7be53b7169..16725f28797e 100644
+index ac7be53b7169..1a7541fa85cb 100644
 --- a/packages/SettingsLib/src/com/android/settingslib/display/DisplayDensityUtils.java
 +++ b/packages/SettingsLib/src/com/android/settingslib/display/DisplayDensityUtils.java
 @@ -18,10 +18,12 @@ package com.android.settingslib.display;
@@ -57,7 +43,18 @@ index ac7be53b7169..16725f28797e 100644
  import android.util.DisplayMetrics;
  import android.util.Log;
  import android.util.MathUtils;
-@@ -132,7 +134,7 @@ public class DisplayDensityUtils {
+@@ -49,6 +51,10 @@ public class DisplayDensityUtils {
+     /** Summary used for "custom" scale. */
+     private static final int SUMMARY_CUSTOM = R.string.screen_zoom_summary_custom;
+ 
++    static final int OVERRIDE_DEFAULT_WIDTH = 1080;
++    static final int OVERRIDE_DEFAULT_HEIGHT = 2400;
++    static final int OVERRIDE_DEFAULT_DENSITY = 420;
++
+     /**
+      * Summaries for scales smaller than "default" in order of smallest to
+      * largest.
+@@ -132,7 +138,7 @@ public class DisplayDensityUtils {
              }
  
              final int defaultDensity = DisplayDensityUtils.getDefaultDensityForDisplay(
@@ -66,7 +63,7 @@ index ac7be53b7169..16725f28797e 100644
              if (defaultDensity <= 0) {
                  Log.w(LOG_TAG, "Cannot fetch default density for display "
                          + display.getDisplayId());
-@@ -248,10 +250,22 @@ public class DisplayDensityUtils {
+@@ -248,10 +254,15 @@ public class DisplayDensityUtils {
       * @return the default density of the specified display, or {@code -1} if
       *         the display does not exist or the density could not be obtained
       */
@@ -75,35 +72,26 @@ index ac7be53b7169..16725f28797e 100644
         try {
 -           final IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
 -           return wm.getInitialDisplayDensity(displayId);
-+            int overrideWidth = Settings.System.getIntForUser(context.getContentResolver(), 
-+                Settings.System.SCREEN_OVERRIDE_WIDTH, 0, UserHandle.USER_CURRENT);
-+            int overrideHeight = Settings.System.getIntForUser(context.getContentResolver(), 
-+                Settings.System.SCREEN_OVERRIDE_HEIGHT, 0, UserHandle.USER_CURRENT);
-+            int overrideDensity = Settings.System.getIntForUser(context.getContentResolver(), 
-+                Settings.System.SCREEN_OVERRIDE_DENSITY, 0, UserHandle.USER_CURRENT);
-+                
 +            final IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
 +            Point size = new Point();
 +            wm.getBaseDisplaySize(displayId, size);
-+            if (size.x == overrideWidth && size.y == overrideHeight && overrideDensity > 0) {
-+                return overrideDensity;
++            if (size.x == OVERRIDE_DEFAULT_WIDTH && size.y == OVERRIDE_DEFAULT_HEIGHT) {
++                return OVERRIDE_DEFAULT_DENSITY;
 +            }
 +            return wm.getInitialDisplayDensity(displayId);
         } catch (RemoteException exc) {
             return -1;
         }
 diff --git a/packages/SettingsProvider/src/android/provider/settings/validators/SystemSettingsValidators.java b/packages/SettingsProvider/src/android/provider/settings/validators/SystemSettingsValidators.java
-index 361209c69d10..20c980968447 100644
+index 361209c69d10..caf4914069b5 100644
 --- a/packages/SettingsProvider/src/android/provider/settings/validators/SystemSettingsValidators.java
 +++ b/packages/SettingsProvider/src/android/provider/settings/validators/SystemSettingsValidators.java
-@@ -114,6 +114,10 @@ public class SystemSettingsValidators {
+@@ -114,6 +114,8 @@ public class SystemSettingsValidators {
          VALIDATORS.put(System.SCREEN_OFF_TIMEOUT, NON_NEGATIVE_INTEGER_VALIDATOR);
          VALIDATORS.put(System.SCREEN_BRIGHTNESS_FOR_VR, new InclusiveIntegerRangeValidator(0, 255));
          VALIDATORS.put(System.SCREEN_BRIGHTNESS_MODE, BOOLEAN_VALIDATOR);
 +        VALIDATORS.put(System.SCREEN_RESOLUTION_MODE, NON_NEGATIVE_INTEGER_VALIDATOR);
-+        VALIDATORS.put(System.SCREEN_OVERRIDE_WIDTH, NON_NEGATIVE_INTEGER_VALIDATOR);
-+        VALIDATORS.put(System.SCREEN_OVERRIDE_HEIGHT, NON_NEGATIVE_INTEGER_VALIDATOR);
-+        VALIDATORS.put(System.SCREEN_OVERRIDE_DENSITY, NON_NEGATIVE_INTEGER_VALIDATOR);
++        VALIDATORS.put(System.SCREEN_USER_DENSITY, NON_NEGATIVE_INTEGER_VALIDATOR);
          VALIDATORS.put(System.ADAPTIVE_SLEEP, BOOLEAN_VALIDATOR);
          VALIDATORS.put(System.MODE_RINGER_STREAMS_AFFECTED, NON_NEGATIVE_INTEGER_VALIDATOR);
          VALIDATORS.put(System.MUTE_STREAMS_AFFECTED, NON_NEGATIVE_INTEGER_VALIDATOR);
@@ -134,7 +122,7 @@ index 621e3dbde360..ebe746e497bc 100644
              }
          }
 diff --git a/services/core/java/com/android/server/wm/WindowManagerService.java b/services/core/java/com/android/server/wm/WindowManagerService.java
-index 2a54ca6b3a62..9f297b9a74be 100644
+index 2a54ca6b3a62..55f952e6adb2 100644
 --- a/services/core/java/com/android/server/wm/WindowManagerService.java
 +++ b/services/core/java/com/android/server/wm/WindowManagerService.java
 @@ -361,6 +361,7 @@ public class WindowManagerService extends IWindowManager.Stub
@@ -161,16 +149,18 @@ index 2a54ca6b3a62..9f297b9a74be 100644
              // If the display is already prepared, update the density.
              // Otherwise, we'll update it when it's prepared.
              if (mDisplayReady) {
+-                final int forcedDensity = getForcedDisplayDensityForUserLocked(newUserId);
+-                final int targetDensity = forcedDensity != 0 ? forcedDensity
+-                        : displayContent.mInitialDisplayDensity;
+-                displayContent.setForcedDensity(targetDensity, UserHandle.USER_CURRENT);
 +                int currentResolutionMode = isOverrideSize(displayContent) ? 1 : 0;
 +                int resolutionMode = Settings.System.getIntForUser(mContext.getContentResolver(),
 +                    Settings.System.SCREEN_RESOLUTION_MODE, 0, newUserId);
 +                
 +                final int initialDisplayDensity = isOverrideSize(displayContent) ? 
 +                        OVERRIDE_DEFAULT_DENSITY : displayContent.mInitialDisplayDensity;
-                 final int forcedDensity = getForcedDisplayDensityForUserLocked(newUserId);
-                 final int targetDensity = forcedDensity != 0 ? forcedDensity
--                        : displayContent.mInitialDisplayDensity;
--                displayContent.setForcedDensity(targetDensity, UserHandle.USER_CURRENT);
++                 final int forcedDensity = getForcedDisplayDensityForUserLocked(newUserId);
++                 final int targetDensity = forcedDensity != 0 ? forcedDensity
 +                        : initialDisplayDensity;
 +
 +                if (currentResolutionMode != resolutionMode) {
@@ -184,17 +174,34 @@ index 2a54ca6b3a62..9f297b9a74be 100644
              }
          }
      }
-@@ -5853,6 +5873,13 @@ public class WindowManagerService extends IWindowManager.Stub
+@@ -5853,6 +5873,11 @@ public class WindowManagerService extends IWindowManager.Stub
      private boolean applyForcedPropertiesForDefaultDisplay() {
          boolean changed = false;
          final DisplayContent displayContent = getDefaultDisplayContentLocked();
 +
-+        // reset forced size and density
++        // Reset forced size
 +        displayContent.setForcedSize(displayContent.mInitialDisplayWidth,
 +                displayContent.mInitialDisplayHeight);
-+        displayContent.setForcedDensity(displayContent.mInitialDisplayDensity, 
-+                mCurrentUserId);
-+    
++
          // Display size.
          String sizeStr = Settings.Global.getString(mContext.getContentResolver(),
                  Settings.Global.DISPLAY_SIZE_FORCED);
+@@ -5881,7 +5906,17 @@ public class WindowManagerService extends IWindowManager.Stub
+         }
+ 
+         // Display density.
+-        final int density = getForcedDisplayDensityForUserLocked(mCurrentUserId);
++        int density = getForcedDisplayDensityForUserLocked(mCurrentUserId);
++        // Set user density
++        Settings.System.putIntForUser(mContext.getContentResolver(),
++                Settings.System.SCREEN_USER_DENSITY, 
++                density, mCurrentUserId);
++
++        // Reset forced density
++        displayContent.setForcedDensity(displayContent.mInitialDisplayDensity, 
++                mCurrentUserId);
++
++        density = displayContent.mInitialDisplayDensity;
+         if (density != 0 && density != displayContent.mBaseDisplayDensity) {
+             displayContent.mBaseDisplayDensity = density;
+             changed = true;
