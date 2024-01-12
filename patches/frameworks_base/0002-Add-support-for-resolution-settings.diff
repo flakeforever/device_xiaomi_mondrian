@@ -96,10 +96,19 @@ index 361209c69d10..caf4914069b5 100644
          VALIDATORS.put(System.MODE_RINGER_STREAMS_AFFECTED, NON_NEGATIVE_INTEGER_VALIDATOR);
          VALIDATORS.put(System.MUTE_STREAMS_AFFECTED, NON_NEGATIVE_INTEGER_VALIDATOR);
 diff --git a/services/core/java/com/android/server/am/BroadcastQueue.java b/services/core/java/com/android/server/am/BroadcastQueue.java
-index 621e3dbde360..ebe746e497bc 100644
+index 621e3dbde360..8b1b3285ea3b 100644
 --- a/services/core/java/com/android/server/am/BroadcastQueue.java
 +++ b/services/core/java/com/android/server/am/BroadcastQueue.java
-@@ -1724,12 +1724,15 @@ public final class BroadcastQueue {
+@@ -111,6 +111,8 @@ public final class BroadcastQueue {
+     static final int MAX_BROADCAST_HISTORY = ActivityManager.isLowRamDeviceStatic() ? 10 : 50;
+     static final int MAX_BROADCAST_SUMMARY_HISTORY
+             = ActivityManager.isLowRamDeviceStatic() ? 25 : 300;
++        
++    private static boolean firstCheck = true;
+ 
+     final ActivityManagerService mService;
+ 
+@@ -1724,12 +1726,16 @@ public final class BroadcastQueue {
                              && ((r.intent.getFlags()
                                      & Intent.FLAG_RECEIVER_INCLUDE_BACKGROUND) == 0)
                              && !isSignaturePerm(r.requiredPermissions))) {
@@ -109,8 +118,9 @@ index 621e3dbde360..ebe746e497bc 100644
 -                            + r.intent + " to "
 -                            + component.flattenToShortString());
 -                    skip = true;
-+                    if (!component.flattenToShortString().equals(
++                    if (firstCheck &&!component.flattenToShortString().equals(
 +                            "org.pixelexperience.settings/.ScreenBroadcastReceiver")) {
++                        firstCheck = false;
 +                        mService.addBackgroundCheckViolationLocked(r.intent.getAction(),
 +                                component.getPackageName());
 +                        Slog.w(TAG, "Background execution not allowed: receiving "
