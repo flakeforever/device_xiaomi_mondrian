@@ -1,3 +1,5 @@
+[How to build](https://github.com/flakeforever/device_xiaomi_mondrian/blob/peplus-13/BUILD.md)
+
 Copyright (C) 2022-2023 The LineageOS Project
 
 Device configuration for POCO F5 Pro / Xiaomi Redmi K60
