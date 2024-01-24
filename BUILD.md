@@ -4,8 +4,8 @@
     cd peplus/device
     mkdir xiaomi
     cd xiaomi
-    git clone https://github.com/flakeforever/device_xiaomi_mondrian.git
-    git clone https://github.com/flakeforever/device_xiaomi_sm8450-common.git
+    git clone https://github.com/flakeforever/device_xiaomi_mondrian.git mondrian
+    git clone https://github.com/flakeforever/device_xiaomi_sm8450-common.git sm8450-common
 
 ## Get kernel files
     cd peplus/kernel
