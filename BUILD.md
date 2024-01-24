@@ -7,11 +7,15 @@
     git clone https://github.com/flakeforever/device_xiaomi_mondrian.git
     git clone https://github.com/flakeforever/device_xiaomi_sm8450-common.git
 
-## Get kernel file
+## Get kernel files
     cd peplus/kernel
     mkdir xiaomi
     cd xiaomi
     git clone https://github.com/cupid-development/android_kernel_xiaomi_sm8450.git -b mondrian sm8450
+
+## Get hardware files
+    cd peplus/hardware
+    git clone https://github.com/AOSPA/android_hardware_xiaomi.git -b topaz xiaomi
 
 ## Get vendor files
     cd peplus/vendor
