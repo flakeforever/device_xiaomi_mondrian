@@ -23,7 +23,7 @@
     device/xiaomi/mondrian/apply-patches.sh
 
 ## Build project
-
+    start to build
 Credits: 
     [affggh](https://github.com/affggh)
     [ArianK16a](https://github.com/ArianK16a)
