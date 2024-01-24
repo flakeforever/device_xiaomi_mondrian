@@ -1,0 +1,148 @@
+diff --git a/composer/vendor.qti.hardware.display.composer-service.rc b/composer/vendor.qti.hardware.display.composer-service.rc
+index 7513fd62..e82d15b0 100644
+--- a/composer/vendor.qti.hardware.display.composer-service.rc
++++ b/composer/vendor.qti.hardware.display.composer-service.rc
+@@ -3,7 +3,7 @@ service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.
+     user system
+     group graphics drmrpc
+     capabilities SYS_NICE
++    onrestart restart vendor.displayfeature-hal-1-0
+     onrestart restart surfaceflinger
+-    onrestart restart feature_enabler_client
+     socket pps stream 0660 system system
+-    writepid /dev/cpuset/system-background/tasks
++    writepid /sys/kernel/reserve_pool/pid
+diff --git a/config/snapdragon_color_libs_config.xml b/config/snapdragon_color_libs_config.xml
+index 4dd0095b..ca924d1d 100644
+--- a/config/snapdragon_color_libs_config.xml
++++ b/config/snapdragon_color_libs_config.xml
+@@ -32,4 +32,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+         <Name>libsnapdragoncolor-qdcm.so</Name>
+         <ProcessingOrder>1</ProcessingOrder>
+     </Library>
++    <Library>
++        <Name>libmi-stc-HW-modulate.so</Name>
++        <ProcessingOrder>2</ProcessingOrder>
++    </Library>
+ </StcLibraries>
+diff --git a/gralloc/vendor.qti.hardware.display.allocator-service.rc b/gralloc/vendor.qti.hardware.display.allocator-service.rc
+index ca2c7b99..70b45609 100644
+--- a/gralloc/vendor.qti.hardware.display.allocator-service.rc
++++ b/gralloc/vendor.qti.hardware.display.allocator-service.rc
+@@ -4,3 +4,4 @@ service vendor.qti.hardware.display.allocator /vendor/bin/hw/vendor.qti.hardware
+     group graphics drmrpc
+     capabilities SYS_NICE
+     onrestart restart surfaceflinger
++    writepid /sys/kernel/reserve_pool/pid
+diff --git a/init/init.qti.display_boot.sh b/init/init.qti.display_boot.sh
+index e0438a5c..80603c5d 100644
+--- a/init/init.qti.display_boot.sh
++++ b/init/init.qti.display_boot.sh
+@@ -71,35 +71,32 @@ fi
+ 
+ case "$target" in
+     "taro")
+-    #Set property to differentiate Taro
+-    #SOC ID for Taro is 457
+-    #SOC ID for Taro P is 482
+-    #SOC ID for Taro 4g is 552
++    #Set property to differentiate Waipio
++    #SOC ID for Waipio is 457
+     #SOC ID for Cape MSM is 530
+     #SOC ID for Cape APQ is 531
+     #SOC ID for Cape 4g is 540
+-    #SOC ID for cape ukee 591
+     case "$soc_hwid" in
+-        457|482|552)
++        457|552)
+         setprop vendor.gralloc.use_dma_buf_heaps 1
+         setprop vendor.display.enable_posted_start_dyn 2
+         setprop vendor.display.enable_allow_idle_fallback 1
+         setprop vendor.display.enable_perf_hint_large_comp_cycle 1
+         setprop vendor.display.enable_rotator_ui 1
+-        setprop vendor.display.enable_spec_fence 1
++        #setprop vendor.display.enable_spec_fence 1
+         setprop vendor.display.thermal.version 1
+         setprop vendor.display.enable_rc_support 1
+         setprop vendor.display.target.version 3
+         setprop vendor.display.disable_mitigated_fps 1
+         setprop vendor.display.disable_cwb_idle_fallback 1
+         ;;
+-        530|531|540|591)
++        530|531|540)
+         setprop vendor.gralloc.use_dma_buf_heaps 1
+         setprop vendor.display.enable_posted_start_dyn 2
+         setprop vendor.display.enable_allow_idle_fallback 1
+         setprop vendor.display.enable_perf_hint_large_comp_cycle 1
+         setprop vendor.display.enable_rotator_ui 1
+-        setprop vendor.display.enable_spec_fence 1
++        #setprop vendor.display.enable_spec_fence 1
+         setprop vendor.display.thermal.version 1
+         setprop vendor.display.enable_rc_support 1
+         setprop vendor.display.target.version 2
+@@ -121,10 +118,6 @@ case "$target" in
+         setprop vendor.display.target.version 2
+         setprop vendor.display.enable_qsync_idle 1
+         ;;
+-    esac
+-    ;;
+-    "parrot")
+-    case "$soc_hwid" in
+         537)
+         # Set property for Parrot
+         setprop vendor.gralloc.use_dma_buf_heaps 1
+@@ -137,29 +130,6 @@ case "$target" in
+         setprop vendor.display.enable_rc_support 1
+         setprop vendor.display.target.version 2
+         setprop vendor.display.enable_qsync_idle 1
+-        setprop vendor.display.disable_mitigated_fps 1
+-        setprop vendor.display.secure_preview_buffer_format 420_sp
+-        setprop vendor.gralloc.secure_preview_buffer_format 420_sp
+-        setprop vendor.display.disable_non_wfd_vds 1
+-        ;;
+-        568|602)
+-        # Set property for Ravelin
+-        # SOC ID for Ravelin is 568
+-        # SOC ID for Ravelin APQ is 602
+-        setprop vendor.gralloc.use_dma_buf_heaps 1
+-        setprop vendor.display.enable_posted_start_dyn 2
+-        setprop vendor.display.enable_allow_idle_fallback 1
+-        setprop vendor.display.enable_perf_hint_large_comp_cycle 1
+-        setprop vendor.display.enable_rotator_ui 1
+-        setprop vendor.display.enable_spec_fence 1
+-        setprop vendor.display.thermal.version 1
+-        setprop vendor.display.enable_rc_support 1
+-        setprop vendor.display.target.version 2
+-        setprop vendor.display.enable_qsync_idle 1
+-        setprop vendor.display.disable_mitigated_fps 1
+-        setprop vendor.display.secure_preview_buffer_format 420_sp
+-        setprop vendor.gralloc.secure_preview_buffer_format 420_sp
+-        setprop vendor.display.disable_cwb_idle_fallback 1
+         ;;
+     esac
+     ;;
+@@ -188,24 +158,6 @@ case "$target" in
+         ;;
+     esac
+     ;;
+-    "neo")
+-    case "$soc_hwid" in
+-        554)
+-            setprop vendor.display.enable_null_display 1
+-        ;;
+-        579)
+-            setprop vendor.gralloc.use_dma_buf_heaps 1
+-            setprop vendor.display.enable_posted_start_dyn 2
+-            setprop vendor.display.enable_allow_idle_fallback 1
+-            setprop vendor.display.enable_rotator_ui 1
+-            setprop vendor.display.thermal.version 1
+-            setprop vendor.display.target.version 3
+-            setprop vendor.display.disable_mitigated_fps 1
+-            setprop vendor.display.disable_cwb_idle_fallback 1
+-            setprop vendor.display.wait_for_primary_display 1
+-        ;;
+-    esac
+-    ;;
+     "holi")
+     # Set property for holi
+     setprop vendor.display.target.version 2

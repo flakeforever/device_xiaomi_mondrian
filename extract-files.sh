@@ -6,80 +6,27 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-set -e
-
-DEVICE=mondrian
-VENDOR=xiaomi
-
-# Load extract_utils and do some sanity checks
-MY_DIR="${BASH_SOURCE%/*}"
-if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
-
-ANDROID_ROOT="${MY_DIR}/../../.."
-
-HELPER="${ANDROID_ROOT}/tools/extract-utils/extract_utils.sh"
-if [ ! -f "${HELPER}" ]; then
-    echo "Unable to find helper script at ${HELPER}"
-    exit 1
-fi
-source "${HELPER}"
-
-# Default to sanitizing the vendor folder before extraction
-CLEAN_VENDOR=true
-
-KANG=
-SECTION=
-
-while [ "${#}" -gt 0 ]; do
-    case "${1}" in
-    -n | --no-cleanup)
-        CLEAN_VENDOR=false
-        ;;
-    -k | --kang)
-        KANG="--kang"
-        ;;
-    -s | --section)
-        SECTION="${2}"
-        shift
-        CLEAN_VENDOR=false
-        ;;
-    *)
-        SRC="${1}"
-        ;;
-    esac
-    shift
-done
-
-if [ -z "${SRC}" ]; then
-    SRC="adb"
-fi
-
 function blob_fixup() {
     case "${1}" in
-        vendor/etc/camera/mondrian_enhance_motiontuning.xml)
-            sed -i "s|xml=version|xml version|g" "${2}"
-            ;;
-        vendor/etc/camera/mondrian_motiontuning.xml)
-            sed -i "s|xml=version|xml version|g" "${2}"
+        vendor/etc/camera/mondrian_enhance_motiontuning.xml|vendor/etc/camera/mondrian_motiontuning.xml)
+            sed -i 's/xml=version/xml version/g' "${2}"
             ;;
         vendor/etc/camera/pureView_parameter.xml)
-            sed -i "s|iso=100|iso=\"100\"|g" "${2}"
-            sed -i "s|iso=200|iso=\"200\"|g" "${2}"
-            sed -i "s|iso=400|iso=\"400\"|g" "${2}"
-            sed -i "s|iso=800|iso=\"800\"|g" "${2}"
-            sed -i "s|iso=1600|iso=\"1600\"|g" "${2}"
-            sed -i "s|iso=3200|iso=\"3200\"|g" "${2}"
-            sed -i "s|iso=6400|iso=\"6400\"|g" "${2}"
-            sed -i "s|iso=12800|iso=\"12800\"|g" "${2}"
-            sed -i "s|ynrParam groupId=0|ynrParam groupId=\"0\"|g" "${2}"
-            sed -i "s|ynrParam groupId=1|ynrParam groupId=\"1\"|g" "${2}"
+            sed -i 's/=\([0-9]\+\)>/="\1">/g' "${2}"
             ;;
     esac
 }
 
-# Initialize the helper
-setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
+# If we're being sourced by the common script that we called,
+# stop right here. No need to go down the rabbit hole.
+if [ "${BASH_SOURCE[0]}" != "${0}" ]; then
+    return
+fi
 
-extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${KANG}" --section "${SECTION}"
+set -e
 
-"${MY_DIR}/setup-makefiles.sh"
+export DEVICE=mondrian
+export DEVICE_COMMON=sm8450-common
+export VENDOR=xiaomi
+
+"./../../${VENDOR}/${DEVICE_COMMON}/extract-files.sh" "$@"

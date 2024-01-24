@@ -1,0 +1,13 @@
+diff --git a/android.hardware.power-service-qti.rc b/android.hardware.power-service-qti.rc
+index 05c4d33..01f9e70 100644
+--- a/android.hardware.power-service-qti.rc
++++ b/android.hardware.power-service-qti.rc
+@@ -2,3 +2,8 @@ service vendor.power /vendor/bin/hw/android.hardware.power-service-qti
+     class hal
+     user system
+     group system
++
++on post-fs
++    chmod 0664 /sys/devices/virtual/graphics/fb0/idle_time
++    chown system graphics /sys/devices/virtual/graphics/fb0/idle_time
++    write /sys/devices/virtual/graphics/fb0/idle_time 100

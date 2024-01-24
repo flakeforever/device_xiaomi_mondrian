@@ -1,4 +1,0 @@
-type hwinfo, domain;
-type proc_tp_lockdown, fs_type, sysfs_type;
-
-allow hwinfo proc_tp_lockdown:file r_file_perms;

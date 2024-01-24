@@ -1,2 +1,0 @@
-allow system_app qemu_hw_prop:file { getattr open read map };
-allow system_app zygote:unix_stream_socket { getopt };

@@ -1,6 +1,0 @@
-allow vendor_init device:chr_file { getattr };
-allow vendor_init proc_security:file rw_file_perms;
-allow vendor_init cgroup:file rw_file_perms;
-allow vendor_init persist_debug_prop:file rw_file_perms;
-allow vendor_init default_prop:file rw_file_perms;
-allow vendor_init radio_prop:file rw_file_perms;

@@ -1,21 +1,24 @@
-# Device tree for Poco F5 Pro | Redmi K60
+Copyright (C) 2022-2023 The LineageOS Project
 
-## Kernel (Baalam Kernel)
-- https://github.com/LowTension/android_kernel_xiaomi_sm8475
+Device configuration for POCO F5 Pro / Xiaomi Redmi K60
+=========================================
 
-## Required system patches
-    cd peplus
-    device/xiaomi/mondrian/apply-patches.sh
+The POCO F5 Pro / Xiaomi Redmi K60 (codenamed _"mondrian"_) is a high-end smartphone from Xiaomi.
 
-## Prebuilt files (customized from Global V14.0.6.0):
-- Download [vendor.img](https://drive.google.com/drive/folders/15Ihtjg5cZEeSgChfvwoYBC3Kv7HRyav4?usp=sharing)
+It was released in China in January 2023 and globally in May 2023.
 
-Credits: 
-    [affggh](https://github.com/affggh)
-    [johnmart19](https://github.com/johnmart19)
-    [Klozz](https://github.com/Klozz)
-    [LowTension](https://github.com/LowTension)
+## Device specifications
 
-    
-    
-    
+Basic   | Spec Sheet
+-------:|:-------------------------
+Platform | Snapdragon® 8+ Gen 1 (SM8475)
+RAM & Storage | 8GB/128GB, 8GB/256GB, 12GB/256GB, 12GB/512GB, 12GB/512GB, 16GB/512GB, 16GB/1024GB (LPDDR5 RAM, UFS 3.1 storage)
+Shipped Android Version | 13
+Battery | Non-removable, 5500 mAh
+Display | 6.67″, 120Hz, 3200x1440 (526 ppi)
+Rear camera | 64MP wide angle, 8MP ultra wide-angle, 2MP macro
+Front camera | 16MP in-display
+
+## Device picture
+
+![POCO F5 Pro](https://i02.appmifile.com/638_operator_sg/21/04/2023/96bd043ea8810ff590a07ef10ff3508f.png "POCO F5 Pro in black and white")

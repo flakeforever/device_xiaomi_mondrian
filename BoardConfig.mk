@@ -1,182 +1,38 @@
 #
-# Copyright (C) 2023 The Android Open Source Project
+# Copyright (C) 2022-2023 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Inherit from xiaomi sm8450-common
+include device/xiaomi/sm8450-common/BoardConfigCommon.mk
+
 # Inherit from the proprietary version
--include vendor/xiaomi/mondrian/BoardConfigVendor.mk
+include vendor/xiaomi/mondrian/BoardConfigVendor.mk
 
-# A/B
-AB_OTA_UPDATER := true
-
-AB_OTA_PARTITIONS += \
-    boot \
-    dtbo \
-    odm \
-    product \
-    system \
-    system_ext \
-    vbmeta \
-    vbmeta_system \
-    vendor \
-    vendor_boot \
-    vendor_dlkm
-
-# Audio
-AUDIO_FEATURE_ENABLED_DLKM := true
-AUDIO_FEATURE_ENABLED_DTS_EAGLE := false
-AUDIO_FEATURE_ENABLED_GEF_SUPPORT := true
-AUDIO_FEATURE_ENABLED_HW_ACCELERATED_EFFECTS := false
-AUDIO_FEATURE_ENABLED_INSTANCE_ID := true
-AUDIO_FEATURE_ENABLED_LSM_HIDL := true
-AUDIO_FEATURE_ENABLED_PAL_HIDL := true
-AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
-TARGET_USES_QCOM_MM_AUDIO := true
-
-# Architecture
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a-branchprot
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := generic
-TARGET_CPU_VARIANT_RUNTIME := kryo300
-
-TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-2a
-TARGET_2ND_CPU_ABI := armeabi-v7a
-TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := generic
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a75
-
-# Boot control
-SOONG_CONFIG_NAMESPACES += ufsbsg
-SOONG_CONFIG_ufsbsg += ufsframework
-SOONG_CONFIG_ufsbsg_ufsframework := bsg
-
-# Bootloader
-PRODUCT_PLATFORM := taro
-TARGET_BOOTLOADER_BOARD_NAME := mondrian
-TARGET_NO_BOOTLOADER := true
-TARGET_USES_UEFI := true
-
-# Build
-BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
-# Dolby Vision
-SOONG_CONFIG_NAMESPACES += dolby_vision
-SOONG_CONFIG_dolby_vision += enabled
-SOONG_CONFIG_dolby_vision_enabled := true
-
-# Fingerprint
-TARGET_HAS_UDFPS := true
-TARGET_SURFACEFLINGER_UDFPS_LIB := //hardware/xiaomi:libudfps_extension.xiaomi
-
-# Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_xiaomi_mondrian
-TARGET_RECOVERY_DEVICE_MODULES ?= init_xiaomi_mondrian
+DEVICE_PATH := device/xiaomi/mondrian
+KERNEL_PREBUILT_DIR := $(DEVICE_PATH)/kernel
 
 # Kernel
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-BOARD_RAMDISK_USE_LZ4 := true
-BOARD_USES_GENERIC_KERNEL_IMAGE := true
-TARGET_HAS_GENERIC_KERNEL_HEADERS := true
+TARGET_PREBUILT_DTB := $(KERNEL_PREBUILT_DIR)/dtbs/dtb
+BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PREBUILT_DIR)/dtbs
 
-BOARD_BOOT_HEADER_VERSION := 4
-BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
+PRODUCT_COPY_FILES += $(KERNEL_PREBUILT_DIR)/dtbs/dtb:dtb.img
 
-BOARD_KERNEL_CMDLINE := \
-    mtdoops.fingerprint=$(CUSTOM_VERSION) \
-    swinfo.fingerprint=$(CUSTOM_VERSION)
-
-BOARD_BOOTCONFIG := \
-    androidboot.hardware=qcom \
-    androidboot.init_fatal_reboot_target=recovery \
-    androidboot.memcg=1 \
-    androidboot.usbcontroller=a600000.dwc3
-
-TARGET_PREBUILT_KERNEL := $(KERNEL_PREBUILT_DIR)/Image
+TARGET_NEEDS_DTBOIMAGE := false
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PREBUILT_DIR)/dtbs/dtbo.img
 
-# Metadata
-BOARD_USES_METADATA_PARTITION := true
+TARGET_FORCE_PREBUILT_KERNEL := true
+TARGET_PREBUILT_KERNEL := $(KERNEL_PREBUILT_DIR)/Image
 
-# Partitions
-BOARD_FLASH_BLOCK_SIZE := 131072
+PRODUCT_COPY_FILES += $(KERNEL_PREBUILT_DIR)/Image:kernel
 
-BOARD_DTBOIMG_PARTITION_SIZE := 25165824
-BOARD_BOOTIMAGE_PARTITION_SIZE := 201326592
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 104857600
-BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 100663296
-
-BOARD_SUPER_PARTITION_SIZE := 9126805504
-BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor vendor_dlkm
-BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9122611200
-
-BOARD_PARTITION_LIST := $(call to-upper, $(BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST))
-$(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := ext4))
-$(foreach p, $(BOARD_PARTITION_LIST), $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
-
-# BOARD_PREBUILT_ODMIMAGE := device/xiaomi/mondrian/prebuilts/odm.img
-BOARD_PREBUILT_VENDORIMAGE := device/xiaomi/mondrian/prebuilts/vendor.img
-BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
-
-TARGET_USERIMAGES_USE_F2FS := true
-BOARD_USES_VENDOR_DLKMIMAGE := true
-BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
-
-# Platform
-TARGET_BOARD_PLATFORM := taro
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno730
-QCOM_BOARD_PLATFORMS += sm8450
-BOARD_USES_QCOM_HARDWARE := true
-
-# Power
-TARGET_POWERHAL_MODE_EXT := $(DEVICE_PATH)/power/power-mode.cpp
-
-# Properties
-TARGET_PRODUCT_PROP += $(DEVICE_PATH)/configs/properties/product.prop
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/properties/system.prop
-TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/configs/properties/system_ext.prop
-
-# Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_USES_RECOVERY_AS_BOOT := false
-BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
-BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := false
-
-# RIL
-ENABLE_VENDOR_RIL_SERVICE := true
-
-# Sensor
-SOONG_CONFIG_NAMESPACES += SENSORS_XIAOMI
-SOONG_CONFIG_SENSORS_XIAOMI += USES_UDFPS_SENSOR
-SOONG_CONFIG_SENSORS_XIAOMI_USES_UDFPS_SENSOR := true
-
-# Sepolicy
-include device/qcom/sepolicy_vndr/SEPolicy.mk
-
-PRODUCT_PRECOMPILED_SEPOLICY := false
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
-SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
-SYSTEM_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/dolby
-SELINUX_IGNORE_NEVERALLOWS := true
-
-# Vendor boot
+# Kernel Modules
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_PREBUILT_DIR)/vendor_ramdisk/*.ko)
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PREBUILT_DIR)/vendor_ramdisk/modules.load))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PREBUILT_DIR)/vendor_ramdisk/modules.blocklist
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PREBUILT_DIR)/vendor_ramdisk/modules.load.recovery))
 
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
-
-# Vendor_dlkm
 BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
 BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.KERNEL_MODULE_DIRS := top
 
@@ -184,28 +40,17 @@ BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_PREBUILT_DIR)/vendor_dlkm/*.k
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PREBUILT_DIR)/vendor_dlkm/modules.load))
 BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE :=  $(KERNEL_PREBUILT_DIR)/vendor_dlkm/modules.blocklist
 
-# Verified Boot
-BOARD_AVB_ENABLE := true
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
-BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/properties/system.prop
 
-BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_RECOVERY_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
+# Screen density
+TARGET_SCREEN_DENSITY := 560
 
-BOARD_AVB_VBMETA_SYSTEM := system system_ext product
-BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
+# Sensor
+SOONG_CONFIG_NAMESPACES += SENSORS_XIAOMI
+SOONG_CONFIG_SENSORS_XIAOMI += USES_UDFPS_SENSOR
+SOONG_CONFIG_SENSORS_XIAOMI_USES_UDFPS_SENSOR := true
 
-# VINTF
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/framework_compatibility_matrix.xml
-ODM_MANIFEST_FILES += $(DEVICE_PATH)/configs/vintf/odm/manifest_mondrian.xml
-
-# VNDK
-BOARD_VNDK_VERSION := current
-
-# erofs
-BOARD_EROFS_PCLUSTER_SIZE := 262144
+# Vibrator
+TARGET_QTI_VIBRATOR_EFFECT_LIB := libqtivibratoreffect.xiaomi
+TARGET_QTI_VIBRATOR_USE_EFFECT_STREAM := true

@@ -1,2 +1,0 @@
-on property:dev.bootcomplete=1
-    chmod 0666 /dev/xiaomi-touch
