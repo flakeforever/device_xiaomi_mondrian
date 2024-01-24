@@ -11,7 +11,7 @@
     cd peplus/kernel
     mkdir xiaomi
     cd xiaomi
-    git clone https://github.com/cupid-development/android_kernel_xiaomi_sm8450.git -b sm8450
+    git clone https://github.com/cupid-development/android_kernel_xiaomi_sm8450.git -b mondrian sm8450
 
 ## Get vendor files
     cd peplus/vendor
