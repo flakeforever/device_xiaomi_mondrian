@@ -1,0 +1,13 @@
+diff --git a/sensors/Sensor.h b/sensors/Sensor.h
+index b8f9060..52b5197 100644
+--- a/sensors/Sensor.h
++++ b/sensors/Sensor.h
+@@ -131,7 +131,7 @@ class UdfpsSensor : public SysfsPollingOneShotSensor {
+     UdfpsSensor(int32_t sensorHandle, ISensorsEventCallback* callback)
+         : SysfsPollingOneShotSensor(
+               sensorHandle, callback, GetPollPath(udfpsStatePaths),
+-              "UDFPS Sensor", "co.aospa.sensor.udfps",
++              "UDFPS Sensor", "org.lineageos.sensor.udfps",
+               static_cast<SensorType>(static_cast<int32_t>(SensorType::DEVICE_PRIVATE_BASE) + 2)) {}
+ };
+ #endif

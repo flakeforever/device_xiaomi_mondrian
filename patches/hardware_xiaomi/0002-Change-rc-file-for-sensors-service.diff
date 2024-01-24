@@ -1,0 +1,14 @@
+diff --git a/hidl/sensors/2.1/android.hardware.sensors@2.1-service.xiaomi-multihal.rc b/hidl/sensors/2.1/android.hardware.sensors@2.1-service.xiaomi-multihal.rc
+index 68c6792..e82f8f2 100644
+--- a/hidl/sensors/2.1/android.hardware.sensors@2.1-service.xiaomi-multihal.rc
++++ b/hidl/sensors/2.1/android.hardware.sensors@2.1-service.xiaomi-multihal.rc
+@@ -1,7 +1,7 @@
+ service vendor.sensors-hal-2-1-multihal /vendor/bin/hw/android.hardware.sensors@2.1-service.xiaomi-multihal
+     class hal
+     user system
+-    group system wakelock context_hub uhid
+-    writepid /dev/cpuset/system-background/tasks
++    group system wakelock context_hub
++    task_profiles ServiceCapacityLow
+     capabilities BLOCK_SUSPEND
+     rlimit rtprio 10 10
