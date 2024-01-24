@@ -1,8 +1,5 @@
 # How to build
 
-## Kernel (Baalam Kernel)
-- https://github.com/LowTension/android_kernel_xiaomi_sm8475
-
 ## Get device files
     cd peplus/device
     mkdir xiaomi
