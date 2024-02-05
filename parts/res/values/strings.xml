@@ -16,111 +16,111 @@
 -->
 <resources>
      <!-- Dirac settings -->
-     <string name="dirac_enable">Enable dirac</string>
-     <string name="dirac_title">Dirac™ Sound</string>
-     <string name="dirac_summary">Optimize audio quality</string>
-     <string name="dirac_headset_title">Choose headphones type</string>
-     <string name="dirac_preset_title">Choose a preset</string>
-     <string name="dirac_hifi_enable_title">Enable Hi-fi</string>
+     <string name="dirac_enable">Activer dirac</string>
+     <string name="dirac_title">Son Dirac™</string>
+     <string name="dirac_summary">Optimiser la qualité audio</string>
+     <string name="dirac_headset_title">Choisissez le type d\'écouteur</string>
+     <string name="dirac_preset_title">Choisissez un préréglage</string>
+     <string name="dirac_hifi_enable_title">Activer la chaîne Hi-Fi</string>
      <string name="dirac_hifi_title">Hi-Fi</string>
-     <string name="dirac_hifi_summary">Decrease noise and Distortion and increase audio quality</string>
+     <string name="dirac_hifi_summary">Réduire le bruit et la distorsion et augmenter la qualité audio</string>
 
      <!-- Dirac settings: Headset types -->
-     <string name="dirac_headset_default">Default</string>
-     <string name="dirac_headset_earbuds">Mi Earbuds</string>
+     <string name="dirac_headset_default">Par défaut</string>
+     <string name="dirac_headset_earbuds">Écouteurs Mi</string>
      <string name="dirac_headset_in_ear_2013">Mi In-Ear (2013)</string>
      <string name="dirac_headset_piston_1">Mi Piston-1</string>
-     <string name="dirac_headset_general">General</string>
-     <string name="dirac_headset_general_inear">General In-Ear</string>
-     <string name="dirac_headset_piston_basic">Basic Edition</string>
+     <string name="dirac_headset_general">Général</string>
+     <string name="dirac_headset_general_inear">Intra-auriculaire général</string>
+     <string name="dirac_headset_piston_basic">Édition de base</string>
      <string name="dirac_headset_piston_2">Mi Piston-2</string>
-     <string name="dirac_headset_piston_standard">Standard Edition</string>
-     <string name="dirac_headset_headphone">Mi Headphones</string>
-     <string name="dirac_headset_piston_youth">Youth Edition</string>
-     <string name="dirac_headset_piston_color">Color Edition</string>
+     <string name="dirac_headset_piston_standard">Édition Standard</string>
+     <string name="dirac_headset_headphone">Écouteurs Mi</string>
+     <string name="dirac_headset_piston_youth">Édition jeunesse</string>
+     <string name="dirac_headset_piston_color">Édition couleur</string>
      <string name="dirac_headset_in_ear">Mi In-Ear</string>
      <string name="dirac_headset_capsule">Mi Capsule</string>
      <string name="dirac_headset_in_ear_pro">Mi In-Ear Pro</string>
-     <string name="dirac_headset_comfort">Mi Comfort</string>
+     <string name="dirac_headset_comfort">Mi Confort</string>
      <string name="dirac_headset_reduction_noise">Mi Noise Cancelling Type-C</string>
-     <string name="dirac_headset_cancelling">Mi Noise Cancelling 3.5mm</string>
+     <string name="dirac_headset_cancelling">Mi Noise Cancelling 3,5 mm</string>
      <string name="dirac_headset_half_in_ear">Mi Half In-Ear</string>
      <string name="dirac_headset_in_ear2">Mi In-Ear 2</string>
-     <string name="dirac_headset_earphone_basic">Mi Earphones Basic</string>
-     <string name="dirac_headset_earphone">Mi Earphones</string>
-     <string name="dirac_headset_ear_four">Mi Quadruple Driver Earphones</string>
-     <string name="dirac_headset_piston_typec">Mi In-Ear Headphones (Type-C)</string>
-     <string name="dirac_headset_bluetooth_collar">Mi Bluetooth Neckband</string>
-     <string name="dirac_headset_bluetooth_linefree">Mi Bluetooth Earphones</string>
-     <string name="dirac_headset_redmi_earphones">Redmi Earphones</string>
-     <string name="dirac_headset_dual_driver_in_ear">Mi Dual Driver In-ear Earphones</string>
+     <string name="dirac_headset_earphone_basic">Écouteurs Mi Basic</string>
+     <string name="dirac_headset_earphone">Écouteurs Mi</string>
+     <string name="dirac_headset_ear_four">Écouteurs Mi Quadruple Driver</string>
+     <string name="dirac_headset_piston_typec">Écouteurs intra-auriculaires Mi (Type-C)</string>
+     <string name="dirac_headset_bluetooth_collar">Tour de cou Bluetooth Mi</string>
+     <string name="dirac_headset_bluetooth_linefree">Écouteurs Bluetooth Mi</string>
+     <string name="dirac_headset_redmi_earphones">Écouteurs Redmi</string>
+     <string name="dirac_headset_dual_driver_in_ear">Écouteurs intra-auriculaires Mi Dual Driver</string>
 
      <!-- Dirac settings: Equalizer presets -->
-     <string name="dirac_preset_default">Default</string>
-     <string name="dirac_preset_rock">Rock</string>
+     <string name="dirac_preset_default">Par défaut</string>
+     <string name="dirac_preset_rock">Rocher</string>
      <string name="dirac_preset_jazz">Jazz</string>
      <string name="dirac_preset_pop">Pop</string>
-     <string name="dirac_preset_classical">Classical</string>
-     <string name="dirac_preset_hiphop">Hip Hop</string>
-     <string name="dirac_preset_blues">Blues</string>
-     <string name="dirac_preset_electronic">Electronic</string>
-     <string name="dirac_preset_country">Country</string>
-     <string name="dirac_preset_dance">Dance</string>
-     <string name="dirac_preset_metal">Metal</string>
-     <string name="dirac_preset_bass_booster">Bass Booster</string>
-     <string name="dirac_preset_live">Live</string>
-     <string name="dirac_preset_balanced">Balanced</string>
-     <string name="dirac_preset_bass_reduction">Bass Reduction</string>
-     <string name="dirac_preset_treble_reduction">Treble Reduction</string>
-     <string name="dirac_preset_soft_bass">Soft Bass</string>
-     <string name="dirac_preset_soft_treble">Soft Treble</string>
+     <string name="dirac_preset_classical">Classique</string>
+     <string name="dirac_preset_hiphop">HipHop</string>
+     <string name="dirac_preset_blues">Bleus</string>
+     <string name="dirac_preset_electronic">Électronique</string>
+     <string name="dirac_preset_country">Pays</string>
+     <string name="dirac_preset_dance">Danse</string>
+     <string name="dirac_preset_metal">Métal</string>
+     <string name="dirac_preset_bass_booster">Amplificateur de basses</string>
+     <string name="dirac_preset_live">En direct</string>
+     <string name="dirac_preset_balanced">Équilibré</string>
+     <string name="dirac_preset_bass_reduction">Réduction des basses</string>
+     <string name="dirac_preset_treble_reduction">Réduction des aigus</string>
+     <string name="dirac_preset_soft_bass">Basses douces</string>
+     <string name="dirac_preset_soft_treble">Aigus doux</string>
 
      <!-- Dirac settings: Sound Scenes -->
-     <string name="music_headset_scenario_select">Choose scene</string>
-     <string name="music_headset_scenario_intelligent">Smart</string>
-     <string name="music_headset_scenario_music">Music</string>
-     <string name="music_headset_scenario_video">Video</string>
-     <string name="music_headset_scenario_vocal">Voice</string>
+     <string name="music_headset_scenario_select">Choisir une scène</string>
+     <string name="music_headset_scenario_intelligent">Intelligent</string>
+     <string name="music_headset_scenario_music">Musique</string>
+     <string name="music_headset_scenario_video">Vidéo</string>
+     <string name="music_headset_scenario_vocal">Voix</string>
 
      <!-- Thermal Profiles -->
-     <string name="thermal_title">Thermal Profiles</string>
-     <string name="thermal_summary">Adjust per-app thermal profiles for optimum performance</string>
-     <string name="thermal_default">Default</string>
-     <string name="thermal_benchmark">Benchmark</string>
-     <string name="thermal_browser">Browser</string>
-     <string name="thermal_camera">Camera</string>
-     <string name="thermal_dialer">Dialer</string>
-     <string name="thermal_gaming">Gaming</string>
-     <string name="thermal_streaming">Streaming</string>
+     <string name="thermal_title">Profils thermiques</string>
+     <string name="thermal_summary">Ajustez les profils thermiques par application pour des performances optimales</string>
+     <string name="thermal_default">Par défaut</string>
+     <string name="thermal_benchmark">Analyse de référence</string>
+     <string name="thermal_browser">Navigateur</string>
+     <string name="thermal_camera">Caméra</string>
+     <string name="thermal_dialer">Commandeur</string>
+     <string name="thermal_gaming">Jeux</string>
+     <string name="thermal_streaming">Diffusion</string>
 
      <!-- Clear Speaker -->
-     <string name="clear_speaker_title">Clear speaker</string>
-     <string name="clear_speaker_summary">Play a 30-second audio to clear the speaker</string>
-     <string name="clear_speaker_description">Run this feature once or twice if you find that your speaker is lightly blocked by dust. Set media volume to maximum.\n\nIf the speaker is blocked heavily, run this feature 2-5 times while shaking your device with the speaker facing downwards.\n\nWARNING: Ensure that any headphones are unplugged.</string>
+     <string name="clear_speaker_title">Effacer le haut-parleur</string>
+     <string name="clear_speaker_summary">Lisez un audio de 30 secondes pour libérer le haut-parleur</string>
+     <string name="clear_speaker_description">Exécutez cette fonctionnalité une ou deux fois si vous constatez que votre haut-parleur est légèrement obstrué par la poussière. Réglez le volume multimédia au maximum.\n\nSi le haut-parleur est fortement bloqué, exécutez cette fonctionnalité 2 à 5 fois tout en secouant votre appareil avec le haut-parleur orienté vers le bas.\n\nAVERTISSEMENT: Assurez-vous que tous les écouteurs sont débranchés.</string>
 
      <!-- Screen resolution -->
-     <string name="screen_resolution_title">Screen resolution</string>
-     <string name="choose_resolution_title">Choose resolution</string>
-     <string name="screen_resolution_option_high">FHD+ (2400x1080)</string>
-     <string name="screen_resolution_option_highest">WQHD+ (3200x1440)</string>
-     <string name="screen_resolution_summary_high">1080p FHD+</string>
-     <string name="screen_resolution_summary_highest">1440p WQHD+</string>
-     <string name="screen_resolution_footer">Full resolution uses more of your battery. Switching your resolution may cause some apps to restart.</string>
+     <string name="screen_resolution_title">Résolution d\'écran</string>
+      <string name="choose_resolution_title">Choisir la résolution</string>
+      <string name="screen_resolution_option_high">FHD+ (2400x1080)</string>
+      <string name="screen_resolution_option_highest">WQHD+ (3200 x 1440)</string>
+      <string name="screen_resolution_summary_high">1080p FHD+</string>
+      <string name="screen_resolution_summary_highest">1440p WQHD+</string>
+      <string name="screen_resolution_footer">La pleine résolution utilise davantage votre batterie. Changer votre résolution peut entraîner le redémarrage de certaines applications.</string>
 
      <!-- Refresh rate -->
-     <string name="refresh_title">Per-app refresh rate</string>
-     <string name="refresh_summary">Adjust per-app maximum refresh rate</string>
-     <string name="refresh_default">Default</string>
+     <string name="refresh_title">Taux de rafraîchissement par application</string>
+     <string name="refresh_summary">Ajuster le taux de rafraîchissement maximum par application</string>
+     <string name="refresh_default">Par défaut</string>
      <string name="refresh_standard">60 Hz</string>
      <string name="refresh_high">90 Hz</string>
      <string name="refresh_extreme">120 Hz</string>
 
      <!-- Double-tap gesture -->
-     <string name="double_tap_gesture_title">Double tap</string>
-     <string name="double_tap_gesture_summary">Double tap to wake the device</string>
+     <string name="double_tap_gesture_title">Appuyez deux fois</string>
+     <string name="double_tap_gesture_summary">Appuyez deux fois pour réveiller l\'appareil</string>
 
      <!-- Press-Udfps gesture -->
-     <string name="press_udfps_gesture_title">Press fingerprint sensor</string>
-     <string name="press_udfps_gesture_summary">Pulse notifications on press fingerprint sensor</string>
-     <string name="press_udfps_wake_gesture_summary">Wake device on press fingerprint sensor</string>
+     <string name="press_udfps_gesture_title">Appuyez sur le capteur d\'empreintes digitales</string>
+     <string name="press_udfps_gesture_summary">Notifications d\'impulsions sur le capteur d\'empreintes digitales de la presse</string>
+     <string name="press_udfps_wake_gesture_summary">Réveiller l\'appareil en appuyant sur le capteur d\'empreinte digitale</string>
 </resources>
