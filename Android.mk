@@ -6,7 +6,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter cupid marble mondrian zeus,$(TARGET_DEVICE)),)
+ifeq ($(TARGET_DEVICE),mondrian)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
