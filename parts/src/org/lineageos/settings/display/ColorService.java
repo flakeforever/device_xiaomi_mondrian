@@ -7,11 +7,15 @@
 package org.lineageos.settings.display;
 
 import static android.provider.Settings.System.DISPLAY_COLOR_MODE;
+import static org.lineageos.settings.utils.DisplayFeatureWrapper.DfParams;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.ContentObserver;
+import android.hardware.display.AmbientDisplayConfiguration;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.SystemProperties;
@@ -21,20 +25,22 @@ import android.util.Log;
 
 import java.util.Map;
 
-import vendor.xiaomi.hardware.displayfeature.V1_0.IDisplayFeature;
+import org.lineageos.settings.utils.DisplayFeatureWrapper;
 
 public class ColorService extends Service {
     private static final String TAG = "ColorService";
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
 
     private static final int DEFAULT_COLOR_MODE = SystemProperties.getInt(
             "persist.sys.sf.native_mode", 0);
+
+    private static final DfParams STANDARD_PARAMS = new DfParams(2, 2, 255);
 
     /* color mode -> displayfeature (mode, value, cookie) */
     private static final Map<Integer, DfParams> COLOR_MAP = Map.of(
         258 /* vivid */, new DfParams(0, 2, 255),
         256 /* saturated */, new DfParams(1, 2, 255),
-        257 /* standard */, new DfParams(2, 2, 255),
+        257 /* standard */, STANDARD_PARAMS,
         269 /* original */, new DfParams(26, 1, 0),
         268 /* p3 */, new DfParams(26, 2, 0),
         267 /* srgb */, new DfParams(26, 3, 0)
@@ -43,35 +49,76 @@ public class ColorService extends Service {
     private static final int EXPERT_MODE = 26;
     private static final DfParams EXPERT_PARAMS = new DfParams(26, 0, 10);
 
-    private IDisplayFeature mDisplayFeature;
+    private Handler mHandler = new Handler();
+    private AmbientDisplayConfiguration mAmbientConfig;
+    private boolean mIsDozing;
 
-    private final ContentObserver mSettingObserver = new ContentObserver(new Handler()) {
+    private final ContentObserver mSettingObserver = new ContentObserver(mHandler) {
         @Override
         public void onChange(boolean selfChange) {
-            dlog("SettingObserver: onChange");
+            if (DEBUG) Log.d(TAG, "SettingObserver: onChange");
             setCurrentColorMode();
+        }
+    };
+
+    private final BroadcastReceiver mScreenStateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (DEBUG) Log.d(TAG, "onReceive: " + intent.getAction());
+            switch (intent.getAction()) {
+                case Intent.ACTION_SCREEN_ON:
+                    if (mIsDozing) {
+                        mIsDozing = false;
+                        mHandler.removeCallbacksAndMessages(null);
+                        mHandler.postDelayed(() -> {
+                            if (DEBUG) Log.d(TAG, "Was in AOD, restore color mode");
+                            setCurrentColorMode();
+                        }, 100);
+                    }
+                    break;
+                case Intent.ACTION_SCREEN_OFF:
+                    if (!mAmbientConfig.alwaysOnEnabled(UserHandle.USER_CURRENT)) {
+                        if (DEBUG) Log.d(TAG, "AOD is not enabled");
+                        mIsDozing = false;
+                        break;
+                    }
+                    mIsDozing = true;
+                    mHandler.removeCallbacksAndMessages(null);
+                    if (DEBUG) Log.d(TAG, "Entered AOD, set color mode to standard");
+                    try {
+                        DisplayFeatureWrapper.setDisplayFeature(STANDARD_PARAMS);
+                    } catch (Exception e) {
+                        Log.e(TAG, "updateDozeBrightness failed!", e);
+                    }
+                    break;
+            }
         }
     };
 
     @Override
     public void onCreate() {
         super.onCreate();
-        dlog("onCreate");
+        if (DEBUG) Log.d(TAG, "onCreate");
+        mAmbientConfig = new AmbientDisplayConfiguration(this);
         getContentResolver().registerContentObserver(Settings.System.getUriFor(DISPLAY_COLOR_MODE),
                     false, mSettingObserver, UserHandle.USER_CURRENT);
+        IntentFilter screenStateFilter = new IntentFilter(Intent.ACTION_SCREEN_ON);
+        screenStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        registerReceiver(mScreenStateReceiver, screenStateFilter);
         setCurrentColorMode();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        dlog("onStartCommand");
+        if (DEBUG) Log.d(TAG, "onStartCommand");
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
-        dlog("onDestroy");
+        if (DEBUG) Log.d(TAG, "onDestroy");
         getContentResolver().unregisterContentObserver(mSettingObserver);
+        unregisterReceiver(mScreenStateReceiver);
         super.onDestroy();
     }
 
@@ -79,12 +126,16 @@ public class ColorService extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
-
+    
     public static void startService(Context context) {
         context.startServiceAsUser(new Intent(context, ColorService.class), UserHandle.CURRENT);
     }
 
     private void setCurrentColorMode() {
+        if (mIsDozing) {
+            if (DEBUG) Log.d(TAG, "setCurrentColorMode: skip in AOD");
+            return;
+        }
         final int colorMode = Settings.System.getIntForUser(getContentResolver(),
                 DISPLAY_COLOR_MODE, DEFAULT_COLOR_MODE, UserHandle.USER_CURRENT);
         if (!COLOR_MAP.containsKey(colorMode)) {
@@ -92,55 +143,14 @@ public class ColorService extends Service {
             return;
         }
         final DfParams params = COLOR_MAP.get(colorMode);
-        dlog("setCurrentColorMode: " + colorMode + ", params=" + params);
-        if (params.mode == EXPERT_MODE) {
-            setDisplayFeatureParams(EXPERT_PARAMS);
-        }
-        setDisplayFeatureParams(params);
-    }
-
-    private void setDisplayFeatureParams(DfParams params) {
-        final IDisplayFeature displayFeature = getDisplayFeature();
-        if (displayFeature == null) {
-            Log.e(TAG, "setDisplayFeatureParams: displayFeature is null!");
-            return;
-        }
-        dlog("setDisplayFeatureParams: " + params);
+        if (DEBUG) Log.d(TAG, "setCurrentColorMode: " + colorMode + ", params=" + params);
         try {
-            displayFeature.setFeature(0, params.mode, params.value, params.cookie);
-        } catch (Exception e) {
-            Log.e(TAG, "setDisplayFeatureParams failed!", e);
-        }
-    }
-
-    private IDisplayFeature getDisplayFeature() {
-        if (mDisplayFeature == null) {
-            dlog("getDisplayFeature: mDisplayFeature=null");
-            try {
-                mDisplayFeature = IDisplayFeature.getService();
-            } catch (Exception e) {
-                Log.e(TAG, "getDisplayFeature failed!", e);
+            if (params.mode == EXPERT_MODE) {
+                DisplayFeatureWrapper.setDisplayFeature(EXPERT_PARAMS);
             }
-        }
-        return mDisplayFeature;
-    }
-
-    private static void dlog(String msg) {
-        if (DEBUG) Log.d(TAG, msg);
-    }
-
-    private static class DfParams {
-        /* displayfeature parameters */
-        final int mode, value, cookie;
-
-        DfParams(int mode, int value, int cookie) {
-            this.mode = mode;
-            this.value = value;
-            this.cookie = cookie;
-        }
-
-        public String toString() {
-            return "DisplayFeatureParams(" + mode + ", " + value + ", " + cookie + ")";
+            DisplayFeatureWrapper.setDisplayFeature(params);
+        } catch (Exception e) {
+            Log.e(TAG, "updateDozeBrightness failed!", e);
         }
     }
 }
