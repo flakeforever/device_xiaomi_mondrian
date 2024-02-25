@@ -338,15 +338,10 @@ PRODUCT_PACKAGES += \
     WifiResCommon
 
 PRODUCT_PACKAGES += \
-    FrameworksResTarget_Vendor \
-    FrameworksResXiaomi \
-    SettingsProviderResXiaomi \
-    SettingsResXiaomi \
     WifiResTarget \
     WifiResTarget_spf
 
 PRODUCT_PACKAGES += \
-    ApertureResMondrian \
     FrameworksResMondrian \
     SettingsProviderResMondrian \
     SettingsResMondrian \
