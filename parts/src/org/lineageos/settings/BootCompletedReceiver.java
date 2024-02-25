@@ -23,6 +23,7 @@ import android.view.Display.HdrCapabilities;
 
 import org.lineageos.settings.camera.NfcCameraService;
 import org.lineageos.settings.display.ColorService;
+import org.lineageos.settings.dirac.DiracUtils;
 import org.lineageos.settings.dolby.DolbyUtils;
 import org.lineageos.settings.doze.AodBrightnessService;
 import org.lineageos.settings.doze.DozeUtils;
@@ -43,6 +44,9 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         ThermalUtils.startService(context);
 
         Log.i(TAG, "Boot completed");
+
+        // Dirac
+        DiracUtils.initialize(context);
 
         // Dolby Atmos
         DolbyUtils.getInstance(context);
