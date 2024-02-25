@@ -62,6 +62,12 @@ function blob_fixup() {
         vendor/etc/vintf/manifest/c2_manifest_vendor.xml)
             sed -ni '/dolby/!p' "${2}"
             ;;
+        vendor/lib64/libsdmcore.so)
+            "${PATCHELF}" --replace-needed "libutils.so" "libutils-v33.so" "${2}"
+            ;;
+        vendor/lib/libsdmcore.so)
+            "${PATCHELF}" --replace-needed "libutils.so" "libutils-v33.so" "${2}"
+            ;;
         vendor/lib64/hw/displayfeature.default.so)
             "${PATCHELF}" --replace-needed "libstagefright_foundation.so" "libstagefright_foundation-v33.so" "${2}"
             ;;
