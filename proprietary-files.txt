@@ -30,6 +30,7 @@ vendor/lib/libadsp_default_listener.so
 vendor/lib64/libadsp_default_listener.so
 
 # ADSP modules
+vendor/lib/rfsa/adsp/misound_res_spk.bin
 vendor/lib/rfsa/adsp/bm2n00.bin
 vendor/lib/rfsa/adsp/bm2n01.bin
 vendor/lib/rfsa/adsp/bm2n02.bin
@@ -117,17 +118,30 @@ vendor/lib/rfsa/adsp/weak_refs.so
 vendor/lib/hw/com.dsi.ant@1.0-impl.so
 vendor/lib64/hw/com.dsi.ant@1.0-impl.so
 
+# Audio
+vendor/lib64/hw/audio.bluetooth_qti.default.so
+
+# Audio configs
+vendor/etc/audio_policy_engine_configuration_mi.xml
+vendor/etc/audio_policy_engine_default_stream_volumes.xml
+vendor/etc/audio_policy_engine_product_strategies.xml
+vendor/etc/audio_policy_engine_stream_volumes.xml
+vendor/etc/audio_policy_volumes.xml
+vendor/etc/bluetooth_qti_audio_policy_configuration.xml
+vendor/etc/bluetooth_qti_hearing_aid_audio_policy_configuration.xml
+
 # Audio firmware
 vendor/firmware/aw882xx_acf.bin
 
 # Audio graph manager
+-vendor/lib/libagm.so
+-vendor/lib64/libagm.so
 vendor/bin/agmcap
 vendor/bin/agmcompressplay
 vendor/bin/agmplay
 vendor/bin/cplay
 vendor/bin/hw/vendor.qti.hardware.AGMIPC@1.0-service
 vendor/etc/init/vendor.qti.hardware.AGMIPC@1.0-service.rc
--vendor/lib/libagm.so
 vendor/lib/libagm_compress_plugin.so
 vendor/lib/libagm_mixer_plugin.so
 vendor/lib/libagm_pcm_plugin.so
@@ -135,7 +149,6 @@ vendor/lib/libagmclient.so
 vendor/lib/libagmmixer.so
 -vendor/lib/vendor.qti.hardware.AGMIPC@1.0-impl.so
 vendor/lib/vendor.qti.hardware.AGMIPC@1.0.so
--vendor/lib64/libagm.so
 vendor/lib64/libagm_compress_plugin.so
 vendor/lib64/libagm_mixer_plugin.so
 vendor/lib64/libagm_pcm_plugin.so
@@ -220,6 +233,16 @@ vendor/lib/soundfx/libshoebox.so
 vendor/lib/soundfx/libswdap.so
 vendor/lib/soundfx/libswgamedap.so
 vendor/lib/soundfx/libswvqe.so
+vendor/lib/soundfx/libaudiopreprocessing.so
+vendor/lib/soundfx/libbundlewrapper.so
+vendor/lib/soundfx/libdownmix.so
+vendor/lib/soundfx/libdynproc.so
+vendor/lib/soundfx/libeffectproxy.so
+vendor/lib/soundfx/libhapticgenerator.so
+vendor/lib/soundfx/libldnhncr.so
+vendor/lib/soundfx/libreverbwrapper.so
+vendor/lib/soundfx/libvisualizer.so
+vendor/lib/soundfx/libvolumelistener.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libhwdap.so
 vendor/lib64/soundfx/libmisoundfx.so
@@ -230,6 +253,16 @@ vendor/lib64/soundfx/libshoebox.so
 vendor/lib64/soundfx/libswdap.so
 vendor/lib64/soundfx/libswgamedap.so
 vendor/lib64/soundfx/libswvqe.so
+vendor/lib64/soundfx/libaudiopreprocessing.so
+vendor/lib64/soundfx/libbundlewrapper.so
+vendor/lib64/soundfx/libdownmix.so
+vendor/lib64/soundfx/libdynproc.so
+vendor/lib64/soundfx/libeffectproxy.so
+vendor/lib64/soundfx/libhapticgenerator.so
+vendor/lib64/soundfx/libldnhncr.so
+vendor/lib64/soundfx/libreverbwrapper.so
+vendor/lib64/soundfx/libvisualizer.so
+vendor/lib64/soundfx/libvolumelistener.so
 vendor/lib64/vendor.qti.hardware.pal@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.pal@1.0.so
 
@@ -1389,14 +1422,32 @@ vendor/etc/vintf/manifest/vendor.qti.diag.hal.service.xml
 vendor/lib/vendor.qti.diaghal@1.0.so
 vendor/lib64/vendor.qti.diaghal@1.0.so
 
+# Display feature
+vendor/bin/displayfeature
+vendor/bin/hw/vendor.xiaomi.hardware.displayfeature@1.0-service
+vendor/etc/init/vendor.xiaomi.hardware.displayfeature@1.0-service.rc
+vendor/etc/vintf/manifest/vendor.xiaomi.hardware.displayfeature@1.0-service.xml
+vendor/lib/libdisplayfeature.so
+vendor/lib/hw/displayfeature.default.so
+vendor/lib/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
+vendor/lib/libdisplayfeatureservice.so
+vendor/lib/vendor.xiaomi.hardware.displayfeature@1.0.so
+vendor/lib64/libdisplayfeature.so
+vendor/lib64/hw/displayfeature.default.so
+vendor/lib64/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
+vendor/lib64/libdisplayfeatureservice.so
+vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
+
 # Display
 vendor/bin/feature_enabler_client
 vendor/bin/hw/vendor.qti.hardware.display.allocator-service
 vendor/bin/hw/vendor.qti.hardware.display.composer-service
 vendor/etc/init/feature_enabler_client.rc
+vendor/etc/init.panel_info.sh
 vendor/etc/init/vendor.qti.hardware.display.allocator-service.rc
 vendor/etc/init/vendor.qti.hardware.display.composer-service.rc
-vendor/etc/init.panel_info.sh
+vendor/etc/vintf/manifest/vendor.qti.hardware.display.allocator-service.xml:vendor/etc/vintf/manifest/vendor.qti.hardware.display.allocator-service.mondrian.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml:vendor/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.mondrian.xml
 vendor/lib64/hw/gralloc.default.so
 vendor/lib64/libcolortempmode.so
 vendor/lib64/libdisplayconfig.qti.so
@@ -1464,22 +1515,6 @@ vendor/etc/miLut_7.txt
 vendor/etc/miLut_8.txt
 vendor/etc/miLut_9.txt
 vendor/etc/miLutInfo.txt
-
-# Display feature
-vendor/bin/displayfeature
-vendor/bin/hw/vendor.xiaomi.hardware.displayfeature@1.0-service
-vendor/etc/init/vendor.xiaomi.hardware.displayfeature@1.0-service.rc
-vendor/etc/vintf/manifest/vendor.xiaomi.hardware.displayfeature@1.0-service.xml
-vendor/lib/libdisplayfeature.so
-vendor/lib/hw/displayfeature.default.so
-vendor/lib/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
-vendor/lib/libdisplayfeatureservice.so
-vendor/lib/vendor.xiaomi.hardware.displayfeature@1.0.so
-vendor/lib64/libdisplayfeature.so
-vendor/lib64/hw/displayfeature.default.so
-vendor/lib64/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
-vendor/lib64/libdisplayfeatureservice.so
-vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
 
 # Display HDR
 vendor/lib/libhdr_backlight_adapter.so
@@ -1579,6 +1614,10 @@ vendor/lib64/libstagefrightdolby.so
 vendor/lib/libstagefrightdolby.so
 
 # Dolby music
+system/lib/libdolbyottcontrol.so
+system/lib/libdovi_omx.so
+system/lib64/libdolbyottcontrol.so
+system/lib64/libdovi_omx.so
 vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service
 vendor/etc/dolby/dax-default.xml
 vendor/etc/init/vendor.dolby.hardware.dms@2.0-service.rc
@@ -1587,6 +1626,10 @@ vendor/lib/vendor.dolby.hardware.dms@2.0.so
 vendor/lib64/libdlbdsservice.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0-impl.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0.so
+
+# Dolby vision
+vendor/etc/dolby_vision.cfg
+vendor/lib64/libdolbyvision.so
 
 # DPM
 system_ext/bin/dpmd
@@ -1632,6 +1675,11 @@ vendor/lib64/vendor.qti.hardware.dpmservice@1.0.so
 vendor/lib64/vendor.qti.hardware.dpmservice@1.1.so
 
 # DRM
+vendor/bin/hw/android.hardware.drm@1.4-service.clearkey
+vendor/etc/init/android.hardware.drm@1.4-service.clearkey.rc
+vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.clearkey.xml
+vendor/lib64/libdrm.so
+vendor/lib/libdrm.so
 vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service
 vendor/bin/qseecom_sample_client
 vendor/bin/qseecomd
@@ -1714,31 +1762,6 @@ vendor/lib64/hw/fingerprint.fpc_fod.so:vendor/lib64/hw/fingerprint.fpc_fod.defau
 vendor/lib64/hw/fingerprint.goodix_fod.so:vendor/lib64/hw/fingerprint.goodix_fod.default.so
 vendor/lib64/libgf_hal.so
 vendor/lib64/vendor.xiaomi.hardware.fx.tunnel@1.0.so
-
-# Graphics (Adreno firmware)
-vendor/firmware/a660_sqe.fw
-vendor/firmware/a662_gmu.bin
-vendor/firmware/a662_zap.b00
-vendor/firmware/a662_zap.b01
-vendor/firmware/a662_zap.b02
-vendor/firmware/a662_zap.elf
-vendor/firmware/a662_zap.mbn
-vendor/firmware/a662_zap.mdt
-vendor/firmware/a710_sqe.fw
-vendor/firmware/a710_zap.b00
-vendor/firmware/a710_zap.b01
-vendor/firmware/a710_zap.b02
-vendor/firmware/a710_zap.elf
-vendor/firmware/a710_zap.mbn
-vendor/firmware/a710_zap.mdt
-vendor/firmware/a730_sqe.fw
-vendor/firmware/a730_zap.b00
-vendor/firmware/a730_zap.b01
-vendor/firmware/a730_zap.b02
-vendor/firmware/a730_zap.elf
-vendor/firmware/a730_zap.mbn
-vendor/firmware/a730_zap.mdt
-vendor/firmware/gmu_gen70000.bin
 
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
@@ -1873,6 +1896,14 @@ vendor/lib64/libxtwifi_server_protocol_uri_v3.so
 vendor/lib64/vendor.qti.gnss-V1-ndk_platform.so
 vendor/lib64/vendor.qti.gnss-service.so
 
+# Graphics
+vendor/etc/vintf/manifest/android.hardware.graphics.mapper-impl-qti-display.xml
+vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so
+vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so
+vendor/lib64/libhdrdynamicootf.so
+vendor/lib64/libhdrdynamic.so
+vendor/lib/libgpu_tonemapper.so
+
 # Graphics (Adreno)
 vendor/app/com.qualcomm.qti.gpudrivers.taro.api31/com.qualcomm.qti.gpudrivers.taro.api31.apk
 vendor/gpu/kbc/sequence_manifest.bin
@@ -1916,6 +1947,31 @@ vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libllvm-qgl.so
 
+# Graphics (Adreno firmware)
+vendor/firmware/a660_sqe.fw
+vendor/firmware/a662_gmu.bin
+vendor/firmware/a662_zap.b00
+vendor/firmware/a662_zap.b01
+vendor/firmware/a662_zap.b02
+vendor/firmware/a662_zap.elf
+vendor/firmware/a662_zap.mbn
+vendor/firmware/a662_zap.mdt
+vendor/firmware/a710_sqe.fw
+vendor/firmware/a710_zap.b00
+vendor/firmware/a710_zap.b01
+vendor/firmware/a710_zap.b02
+vendor/firmware/a710_zap.elf
+vendor/firmware/a710_zap.mbn
+vendor/firmware/a710_zap.mdt
+vendor/firmware/a730_sqe.fw
+vendor/firmware/a730_zap.b00
+vendor/firmware/a730_zap.b01
+vendor/firmware/a730_zap.b02
+vendor/firmware/a730_zap.elf
+vendor/firmware/a730_zap.mbn
+vendor/firmware/a730_zap.mdt
+vendor/firmware/gmu_gen70000.bin
+
 # Graphics (Vulkan)
 vendor/lib/hw/vulkan.adreno.so
 vendor/lib64/hw/vulkan.adreno.so
@@ -1925,6 +1981,9 @@ product/priv-app/HotwordEnrollmentOKGoogleHEXAGON_WIDEBAND/HotwordEnrollmentOKGo
 product/priv-app/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND.apk
 system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
 system_ext/framework/com.android.hotwordenrollment.common.util.jar
+
+# IFAA
+vendor/app/IFAAService/IFAAService.apk
 
 # Identity service
 vendor/bin/hw/android.hardware.identity-service-qti
@@ -1954,6 +2013,8 @@ vendor/bin/vendor_modprobe.sh
 vendor/etc/init/hw/init.qti.kernel.rc
 
 # Keymaster
+vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
+vendor/bin/hw/android.hardware.keymaster@4.0-strongbox-service-qti
 vendor/bin/hw/android.hardware.keymaster@4.1-service-qti
 vendor/etc/init/android.hardware.keymaster@4.1-service-qti.rc
 vendor/lib/libkeymasterdeviceutils.so
@@ -2078,6 +2139,28 @@ vendor/lib64/libstagefright_softomx.so
 vendor/lib64/libstagefrighthw.so
 vendor/lib64/libvideotxr.so
 vendor/lib64/qti.video.utils.videobufferlayout.so
+vendor/etc/kvh2xml.xml
+vendor/etc/media_codecs_cape_vendor.xml
+vendor/etc/media_codecs_dolby_audio.xml
+vendor/etc/media_codecs_google_video_le.xml
+vendor/etc/media_codecs_google_video.xml
+vendor/etc/media_codecs_performance_cape_vendor.xml
+vendor/etc/media_codecs_performance_taro_vendor.xml
+vendor/etc/media_codecs_system_default.xml
+vendor/etc/media_codecs_taro_vendor.xml
+vendor/etc/media_codecs_with_dolby_taro.xml
+vendor/etc/media_codecs.xml
+vendor/etc/media_profiles_V1_0.xml
+vendor/etc/media_profiles.xml
+
+# MI charge
+vendor/bin/hw/vendor.xiaomi.hardware.micharge@1.0-service
+vendor/etc/init/vendor.xiaomi.hardware.micharge@1.0-service.rc
+vendor/etc/vintf/manifest/vendor.xiaomi.hardware.micharge@1.0.xml
+vendor/lib64/hw/vendor.xiaomi.hardware.micharge@1.0-impl.so
+vendor/lib64/vendor.xiaomi.hardware.micharge@1.0.so
+vendor/lib/hw/vendor.xiaomi.hardware.micharge@1.0-impl.so
+vendor/lib/vendor.xiaomi.hardware.micharge@1.0.so
 
 # Mlipay
 vendor/bin/fidoca
@@ -2120,6 +2203,48 @@ vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.3.so
 vendor/lib64/vendor.xiaomi.hardware.tidaservice@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.tidaservice@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.tidaservice@1.2.so
+
+# Misc
+vendor/lib64/libawcal.so
+vendor/lib64/libcalculator_htp.so
+vendor/lib64/libcalculator.so
+vendor/lib64/libclient2slpi.notifier.so
+vendor/lib64/libdither.so
+vendor/lib64/libeyecare.so
+vendor/lib64/libflatmode.so
+vendor/lib64/libfpsmonitor.so
+vendor/lib64/libgame_enhance.so
+vendor/lib64/libhta.so
+vendor/lib64/libmiBrightness.so
+vendor/lib64/libmi_dspp.so
+vendor/lib64/libmiSensorCtrl.so
+vendor/lib64/libmiXmlParser.so
+vendor/lib64/libpaperMode.so
+vendor/lib64/libPlatformValidatorShared.so
+vendor/lib64/libprotobuf-cpp-full-3.9.1.so
+vendor/lib64/libprotobuf-cpp-lite-3.9.1.so
+vendor/lib64/libSnpeHtpPrepare.so
+vendor/lib64/libSnpeHtpV68Stub.so
+vendor/lib64/libsre.so
+vendor/lib64/libtruetone.so
+vendor/lib64/libvndfwk_detect_jni.qti.so
+vendor/lib/libawcal.so
+vendor/lib/libcolortempmode.so
+vendor/lib/libdither.so
+vendor/lib/libeyecare.so
+vendor/lib/libflatmode.so
+vendor/lib/libfpsmonitor.so
+vendor/lib/libgrpc++_unsecure.so
+vendor/lib/libmiBrightness.so
+vendor/lib/libmi_dspp.so
+vendor/lib/libmiSensorCtrl.so
+vendor/lib/libmiXmlParser.so
+vendor/lib/libpaperMode.so
+vendor/lib/libprotobuf-cpp-full-3.9.1.so
+vendor/lib/libprotobuf-cpp-lite-3.9.1.so
+vendor/lib/libsre.so
+vendor/lib/libtruetone.so
+vendor/lib/libvndfwk_detect_jni.qti.so
 
 # Modem manager
 vendor/bin/modemManager
@@ -2263,6 +2388,7 @@ vendor/etc/perf/targetconfig.xml
 vendor/etc/perf/targetresourceconfigs.xml
 vendor/etc/perf/targetsysnodesconfigs.xml
 vendor/etc/perf/thermal-boost.conf
+vendor/etc/perf/thermalbreakboostconfig.xml
 vendor/etc/seccomp_policy/qapeservice.policy
 vendor/etc/vintf/manifest/vendor.qti.hardware.perf.xml
 vendor/lib/libperfconfig.so
@@ -2935,6 +3061,7 @@ vendor/etc/vintf/manifest/vendor.xiaomi.sensor.communicate@1.0_manifest.xml
 vendor/lib64/vendor.xiaomi.sensor.communicate@1.0.so
 
 # Sensors
+vendor/etc/sensor_diag.cfg
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
 vendor/bin/init.qcom.sensors.sh
 vendor/bin/sensors.qti
@@ -3281,13 +3408,30 @@ vendor/lib/liboemcrypto.so
 vendor/lib/libtrustedapploader.so
 vendor/lib/libwvkeybox.so
 vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib64/liboemcrypto.so
 vendor/lib64/libtrustedapploader.so
 vendor/lib64/libwvhidl.so
 vendor/lib64/libwvkeybox.so
 vendor/lib64/mediadrm/libwvdrmengine.so
+vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 
 # WiFi
+vendor/bin/athdiag
+vendor/bin/spectraltool
+vendor/bin/wifilearner
+vendor/bin/hw/android.hardware.wifi@1.0-service
+vendor/etc/init/android.hardware.wifi@1.0-service.rc
+vendor/etc/init/vendor.qti.hardware.wifi.wificfr@1.0-service.rc
+vendor/etc/init/vendor.qti.hardware.wifi.wifilearner@1.0-service.rc
+vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.wifi.wificfr@1.0-service.xml
+vendor/etc/wifi/icm.conf
+vendor/etc/wifi/passpointProfile.conf
+vendor/etc/wifi/qca6750/WCNSS_qcom_cfg.ini
+vendor/lib64/libwifi-hal.so
+vendor/lib64/vendor.qti.hardware.wifi.wificfr@1.0.so
+vendor/lib64/vendor.qti.hardware.wifi.wifilearner@1.0.so
 vendor/bin/cnss-daemon
 vendor/etc/init/init.vendor.wlan.rc
 
@@ -3353,6 +3497,7 @@ vendor/lib64/libmmrtpencoder_vendor.so
 vendor/lib64/libwfdcodecv4l2_proprietary.so
 vendor/lib64/libwfdcommonutils_proprietary.so
 vendor/lib64/libwfdconfigutils_proprietary.so
+vendor/lib64/libwfddisplayconfig_vendor.so
 vendor/lib64/libwfdhdcpcp.so
 vendor/lib64/libwfdhdcpservice_proprietary.so
 vendor/lib64/libwfdmminterface_proprietary.so
