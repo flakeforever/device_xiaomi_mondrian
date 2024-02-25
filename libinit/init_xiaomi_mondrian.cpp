@@ -10,7 +10,7 @@
 
 #include "vendor_init.h"
 
-#define FINGERPRINT_GL "POCO/mondrian_global/mondrian:13/SKQ1.220303.001/V14.0.5.0.TMNMIXM:user/release-keys"
+#define FINGERPRINT_GL "POCO/mondrian_global/mondrian:13/SKQ1.220303.001/V14.0.6.0.TMNMIXM:user/release-keys"
 #define FINGERPRINT_CN "Redmi/mondrian/mondrian:13/SKQ1.220303.001/V14.0.26.0.TMNCNXM:user/release-keys"
 
 static const variant_info_t mondrian_global_info = {
@@ -46,3 +46,4 @@ void vendor_load_properties() {
     set_dalvik_heap();
     search_variant(variants);
 }
+
