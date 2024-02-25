@@ -506,10 +506,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
-# Vendor service manager
-PRODUCT_PACKAGES += \
-    vndservicemanager
-
 # Vendor init
 PRODUCT_PACKAGES += \
     charger_fw_fstab.qti \
@@ -529,6 +525,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
+
+# Vendor service manager
+PRODUCT_PACKAGES += \
+    vndservicemanager
 
 # Verified boot
 PRODUCT_COPY_FILES += \
@@ -594,3 +594,7 @@ endif
 PRODUCT_PACKAGES += \
     libnl \
     libwfdaac_vendor
+
+# XiaomiParts
+PRODUCT_PACKAGES += \
+    XiaomiParts
