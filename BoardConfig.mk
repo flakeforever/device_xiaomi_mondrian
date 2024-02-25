@@ -111,12 +111,9 @@ BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_IMAGE_NAME := Image
 
 TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=$(PRODUCT_DEVICE)
-TARGET_KERNEL_SOURCE := kernel/xiaomi/sm8450
+TARGET_KERNEL_SOURCE := kernel/xiaomi/sm8475
 TARGET_KERNEL_CONFIG := \
-    gki_defconfig \
-    vendor/waipio_GKI.config \
-    vendor/xiaomi_GKI.config \
-    vendor/$(PRODUCT_DEVICE)_GKI.config
+    vendor/$(PRODUCT_DEVICE)_defconfig
 
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
