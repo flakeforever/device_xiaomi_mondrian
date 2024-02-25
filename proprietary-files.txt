@@ -1564,6 +1564,20 @@ vendor/lib64/libsdmextension.so
 vendor/lib64/libtestutils.so
 vendor/lib64/libtinyxml2_1.so
 
+# Dolby
+vendor/bin/hw/dolbycodec2
+vendor/etc/init/vendor.dolby.media.c2@1.0-service.rc
+vendor/lib64/c2.dolby.avc.enc.so
+vendor/lib64/c2.dolby.client.so
+vendor/lib64/c2.dolby.decoder.secure.so
+vendor/lib64/c2.dolby.decoder.so
+vendor/lib64/c2.dolby.egl.so
+vendor/lib64/c2.dolby.hevc.enc.so
+vendor/lib64/c2.dolby.store.so
+vendor/lib64/libdolbyottcameracontrol.so
+vendor/lib64/libstagefrightdolby.so
+vendor/lib/libstagefrightdolby.so
+
 # Dolby music
 vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service
 vendor/etc/dolby/dax-default.xml
