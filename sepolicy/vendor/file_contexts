@@ -49,6 +49,8 @@
 /sys/devices/virtual/mi_display/disp_feature/disp-DSI-+[0-1](/.*)? u:object_r:vendor_sysfs_displayfeature:s0
 
 # Dolby
+/(vendor|system/vendor)/bin/hw/vendor\.dolby\.hardware\.dms@2\.0-service       u:object_r:hal_dms_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.dolby\.media\.c2@1\.0-service u:object_r:vendorcodec_exec:s0
 /data/vendor/dolby(/.*)? u:object_r:vendor_data_file:s0
 /vendor/bin/hw/dolbycodec2 u:object_r:vendorcodec_exec:s0
 
@@ -59,6 +61,7 @@
 /mnt/vendor/persist/fpc(/.*)? u:object_r:vendor_fingerprint_data_file:s0
 /mnt/vendor/persist/goodix(/.*)? u:object_r:vendor_fingerprint_data_file:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.xiaomi u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.sm8475 u:object_r:hal_fingerprint_default_exec:s0
 
 # GNSS
 /data/vendor/ins(/.*)? u:object_r:vendor_ins_vendor_data_file:s0
@@ -93,7 +96,7 @@
 /(vendor|system/vendor)/bin/qrtr-lookup u:object_r:vendor_qrtr_exec:s0
 
 # Powershare
-/vendor/bin/hw/vendor\.lineage\.powershare@1\.0-service\.xiaomi u:object_r:hal_lineage_powershare_default_exec:s0
+/vendor/bin/hw/vendor\.lineage\.powershare@1\.0-service\.xiaomi_mondrian u:object_r:hal_lineage_powershare_default_exec:s0
 
 # RIL
 /data/vendor/diag(/.*)? u:object_r:minidump_data_file:s0
