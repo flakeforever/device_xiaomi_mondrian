@@ -8,7 +8,7 @@
 include vendor/xiaomi/mondrian/BoardConfigVendor.mk
 
 DEVICE_PATH := device/xiaomi/mondrian
-KERNEL_PREBUILT_DIR := $(DEVICE_PATH)/kernel
+KERNEL_PATH := $(DEVICE_PATH)-kernel
 
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
@@ -80,6 +80,15 @@ TARGET_NO_BOOTLOADER := true
 # Camera
 TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED := true
 
+# DTB
+TARGET_PREBUILT_DTB := $(KERNEL_PATH)/dtb
+BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtbs
+
+PRODUCT_COPY_FILES += $(KERNEL_PATH)/dtb:dtb.img
+
+TARGET_NEEDS_DTBOIMAGE := false
+BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
+
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config/config.fs
 
@@ -115,9 +124,8 @@ BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_IMAGE_NAME := Image
 
 TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=$(PRODUCT_DEVICE)
-TARGET_KERNEL_SOURCE := kernel/xiaomi/sm8475
-TARGET_KERNEL_CONFIG := \
-    vendor/$(PRODUCT_DEVICE)_defconfig
+TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
+TARGET_KERNEL_CONFIG := $(KERNEL_PATH)/mondrian_defconfig
 
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
@@ -128,39 +136,32 @@ BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.KERNEL_MODULE_DIRS := top
 BOARD_KERNEL_CMDLINE := \
     video=vfb:640x400,bpp=32,memsize=3072000 \
     disable_dma32=on \
-    bootinfo.fingerprint=$(LINEAGE_VERSION) \
-    mtdoops.fingerprint=$(LINEAGE_VERSION)
+    bootinfo.fingerprint=$(CUSTOM_VERSION) \
+    mtdoops.fingerprint=$(CUSTOM_VERSION)
+
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
     androidboot.usbcontroller=a600000.dwc3
 
-TARGET_PREBUILT_DTB := $(KERNEL_PREBUILT_DIR)/dtbs/dtb
-BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PREBUILT_DIR)/dtbs
-
-PRODUCT_COPY_FILES += $(KERNEL_PREBUILT_DIR)/dtbs/dtb:dtb.img
-
-TARGET_NEEDS_DTBOIMAGE := false
-BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PREBUILT_DIR)/dtbs/dtbo.img
-
 TARGET_FORCE_PREBUILT_KERNEL := true
 INLINE_KERNEL_BUILDING := true
-TARGET_PREBUILT_KERNEL := $(KERNEL_PREBUILT_DIR)/Image
+TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/Image
 
-PRODUCT_COPY_FILES += $(KERNEL_PREBUILT_DIR)/Image:kernel
+PRODUCT_COPY_FILES += $(KERNEL_PATH)/Image:kernel
 
 # Kernel Modules
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_PREBUILT_DIR)/vendor_ramdisk/*.ko)
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PREBUILT_DIR)/vendor_ramdisk/modules.load))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PREBUILT_DIR)/vendor_ramdisk/modules.blocklist
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PREBUILT_DIR)/vendor_ramdisk/modules.load.recovery))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/vendor_ramdisk/*.ko)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/vendor_ramdisk/modules.blocklist
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load.recovery))
 
 BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
 BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.KERNEL_MODULE_DIRS := top
 
-BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_PREBUILT_DIR)/vendor_dlkm/*.ko)
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PREBUILT_DIR)/vendor_dlkm/modules.load))
-BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE :=  $(KERNEL_PREBUILT_DIR)/vendor_dlkm/modules.blocklist
+BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/vendor_dlkm/*.ko)
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_dlkm/modules.load))
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE :=  $(KERNEL_PATH)/vendor_dlkm/modules.blocklist
 
 # Lineage Health
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
