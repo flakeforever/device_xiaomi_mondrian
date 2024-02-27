@@ -2219,8 +2219,6 @@ vendor/lib64/libmiSensorCtrl.so
 vendor/lib64/libmiXmlParser.so
 vendor/lib64/libpaperMode.so
 vendor/lib64/libPlatformValidatorShared.so
-vendor/lib64/libprotobuf-cpp-full-3.9.1.so
-vendor/lib64/libprotobuf-cpp-lite-3.9.1.so
 vendor/lib64/libSnpeHtpPrepare.so
 vendor/lib64/libSnpeHtpV68Stub.so
 vendor/lib64/libsre.so
@@ -2238,8 +2236,6 @@ vendor/lib/libmi_dspp.so
 vendor/lib/libmiSensorCtrl.so
 vendor/lib/libmiXmlParser.so
 vendor/lib/libpaperMode.so
-vendor/lib/libprotobuf-cpp-full-3.9.1.so
-vendor/lib/libprotobuf-cpp-lite-3.9.1.so
 vendor/lib/libsre.so
 vendor/lib/libtruetone.so
 vendor/lib/libvndfwk_detect_jni.qti.so
