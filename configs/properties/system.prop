@@ -61,3 +61,6 @@ persist.sys.fflag.override.settings_enable_monitor_phantom_procs=false
 
 # LMK
 ro.config.low_ram=false
+
+# Disable vsync for cpu rendered apps
+debug.cpurend.vsync=false
