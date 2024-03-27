@@ -364,7 +364,6 @@ PRODUCT_PACKAGES += \
     WifiResTarget_spf
 
 PRODUCT_PACKAGES += \
-    ApertureResMondrian \
     FrameworksResMondrian \
     SettingsProviderResMondrian \
     SettingsResMondrian \
