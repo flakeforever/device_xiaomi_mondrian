@@ -1768,7 +1768,6 @@ vendor/bin/hw/android.hardware.gnss-aidl-service-qti
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
 vendor/bin/mlid
-vendor/bin/qcc-trd|2221776a5d3ef979e8ad828f571ba60bb6508364
 vendor/bin/slim_daemon
 vendor/bin/xtra-daemon
 vendor/bin/xtwifi-client
@@ -2430,12 +2429,39 @@ vendor/lib/libpsi.so
 vendor/lib64/libpsi.so
 
 # QCC
+system_ext/app/QCC/QCC.apk
+system_ext/bin/qccsyshal@1.2-service
+system_ext/etc/init/vendor.qti.hardware.qccsyshal@1.2-service.rc
+system_ext/lib/libqcc.so
+system_ext/lib/libqcc_file_agent_sys.so
+system_ext/lib/libqccdme.so
+system_ext/lib/libqccfileservice.so
+system_ext/lib/vendor.qti.hardware.qccsyshal@1.0.so
+system_ext/lib/vendor.qti.hardware.qccsyshal@1.1.so
+system_ext/lib/vendor.qti.hardware.qccsyshal@1.2-halimpl.so
+system_ext/lib/vendor.qti.hardware.qccsyshal@1.2.so
+system_ext/lib/vendor.qti.hardware.qccvndhal@1.0.so
+system_ext/lib/vendor.qti.qccvndhal_aidl-V1-ndk.so
+system_ext/lib64/libqcc.so
+system_ext/lib64/libqcc_file_agent_sys.so
+system_ext/lib64/libqccdme.so
+system_ext/lib64/libqccfileservice.so
+system_ext/lib64/vendor.qti.hardware.qccsyshal@1.0.so
+system_ext/lib64/vendor.qti.hardware.qccsyshal@1.1.so
+system_ext/lib64/vendor.qti.hardware.qccsyshal@1.2-halimpl.so
+system_ext/lib64/vendor.qti.hardware.qccsyshal@1.2.so
+system_ext/lib64/vendor.qti.hardware.qccvndhal@1.0.so
+system_ext/lib64/vendor.qti.qccvndhal_aidl-V1-ndk.so
+vendor/bin/qcc-trd|2221776a5d3ef979e8ad828f571ba60bb6508364
+vendor/etc/init/init.qdmastats.rc
 vendor/lib/hw/vendor.qti.hardware.qccvndhal@1.0-impl.so
+vendor/lib/libqcc_file_agent.so
 vendor/lib/vendor.qti.hardware.qccsyshal@1.0.so
 vendor/lib/vendor.qti.hardware.qccsyshal@1.1.so
 vendor/lib/vendor.qti.hardware.qccvndhal@1.0-halimpl.so
 vendor/lib/vendor.qti.hardware.qccvndhal@1.0.so
 vendor/lib64/hw/vendor.qti.hardware.qccvndhal@1.0-impl.so
+vendor/lib64/libqcc_file_agent.so
 vendor/lib64/vendor.qti.hardware.qccsyshal@1.0.so
 vendor/lib64/vendor.qti.hardware.qccsyshal@1.1.so
 vendor/lib64/vendor.qti.hardware.qccvndhal@1.0-halimpl.so
