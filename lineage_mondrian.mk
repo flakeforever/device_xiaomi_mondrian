@@ -28,3 +28,6 @@ BUILD_FINGERPRINT := POCO/mondrian_global/mondrian:12/SKQ1.230401.001/V816.0.3.0
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 TARGET_BOOT_ANIMATION_RES := 1440
+# Evolution-XYZ
+WITH_GMS := true
+TARGET_HAS_UDFPS := true
