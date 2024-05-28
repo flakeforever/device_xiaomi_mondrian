@@ -1,4 +1,4 @@
-# All unpinned blobs below are extracted from HyperOS V816.0.3.0.UMNMIXM
+# All unpinned blobs below are extracted from HyperOS V816.0.5.0.UMNMIXM
 
 # ACDB
 vendor/etc/acdbdata/IDP_UPD/IDP_UPD_acdb_cal.acdb
@@ -1465,6 +1465,7 @@ vendor/lib/libvideomode.so
 vendor/lib/vendor.qti.hardware.qdutils_disp@1.0.so
 
 # Display calibration
+product/etc/displayconfig/display_id_4630946545580055170.xml
 vendor/etc/df_default.xml
 vendor/etc/display/qdcm_calib_data_xiaomi_42_02_0a_cmd_mode_dsc_dsi_panel.json
 vendor/etc/mdss_dsi_m11a_42_02_0a_dsc_cmd_mi.xml
@@ -2405,6 +2406,7 @@ vendor/lib64/libvideooptfeature.so
 vendor/lib64/vendor.qti.hardware.power.powermodule@1.0.so
 
 # Power-off alarm
+system_ext/app/PowerOffAlarm/PowerOffAlarm.apk
 system_ext/framework/vendor.qti.hardware.alarm-V1.0-java.jar
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
 vendor/bin/power_off_alarm
