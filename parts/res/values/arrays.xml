@@ -54,6 +54,7 @@
     <string-array name="dolby_dialogue_entries">
         <item>@string/dolby_off</item>
         <item>@string/dolby_low</item>
+        <item>@string/dolby_standard</item>
         <item>@string/dolby_medium</item>
         <item>@string/dolby_high</item>
         <item>@string/dolby_max</item>
@@ -62,6 +63,7 @@
     <string-array name="dolby_dialogue_values">
         <item>0</item>
         <item>2</item>
+        <item>3</item>
         <item>6</item>
         <item>9</item>
         <item>12</item>

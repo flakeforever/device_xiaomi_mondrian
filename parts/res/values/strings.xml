@@ -33,6 +33,7 @@
     <string name="dolby_off">Off</string>
     <string name="dolby_on">On</string>
     <string name="dolby_low">Low</string>
+    <string name="dolby_standard">Standard</string>
     <string name="dolby_medium">Medium</string>
     <string name="dolby_high">High</string>
     <string name="dolby_max">Max</string>
