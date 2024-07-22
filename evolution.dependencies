@@ -25,9 +25,9 @@
     },
     { 
         "remote"       : "github",
-        "repository"   : "AOSPA/android_device_xiaomi_sepolicy",
+        "repository"   : "flakeforever/device_xiaomi_sepolicy",
         "target_path"  : "device/xiaomi/sepolicy",
-        "branch"       : "uvite"
+        "branch"       : "udc"
     },
     { 
         "remote"       : "github",
