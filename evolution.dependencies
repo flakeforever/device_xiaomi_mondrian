@@ -1,27 +1,33 @@
 [
     { 
         "remote"       : "github",
-        "repository"   : "Evolution-XYZ-Devices/device_xiaomi_mondrian",
+        "repository"   : "Evolution-X-Devices/device_xiaomi_mondrian",
         "target_path"  : "device/xiaomi/mondrian",
-        "branch"       : "Evolution-XYZ"
+        "branch"       : "udc"
     },
     { 
         "remote"       : "github",
-        "repository"   : "Evolution-XYZ-Devices/device_xiaomi_mondrian-kernel",
+        "repository"   : "Evolution-X-Devices/device_xiaomi_mondrian-kernel",
         "target_path"  : "device/xiaomi/mondrian-kernel",
         "branch"       : "udc"
     },
     { 
         "remote"       : "github",
-        "repository"   : "Evolution-XYZ-Devices/kernel_xiaomi_sm8475",
+        "repository"   : "Evolution-X-Devices/kernel_xiaomi_sm8475",
         "target_path"  : "kernel/xiaomi/sm8475",
         "branch"       : "udc"
     },
     { 
         "remote"       : "github",
-        "repository"   : "Evolution-XYZ-Devices/vendor_xiaomi_mondrian",
+        "repository"   : "Evolution-X-Devices/vendor_xiaomi_mondrian",
         "target_path"  : "vendor/xiaomi/mondrian",
         "branch"       : "udc"
+    },
+    { 
+        "remote"       : "github",
+        "repository"   : "AOSPA/android_device_qcom_common",
+        "target_path"  : "device/qcom/common",
+        "branch"       : "uvite"
     },
     { 
         "remote"       : "github",
